@@ -10,7 +10,7 @@ ClientJS helps you find out who your users are and how they are using your app.
 These are the three things that make ClientJS different than other fingerprinting libraries:
 
 1. It is pure JavaScript
-2. It is lightweight, 43 KB
+2. It is lightweight at 43 KB
 3. All user data points are designed to available, not just the 32 bit integer fingerprint
 
       Version: 1.0
