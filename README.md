@@ -13,13 +13,23 @@ These are the three things that make ClientJS different than other fingerprintin
 2. It is lightweight at 43 KB
 3. All user data points are designed to available, not just the 32 bit integer fingerprint
 
-      Version: 1.0
+## Fingerprinting
 
-      Jack Spirou
-      5 Nov 2013
+Simply call create a new JavaScript object which computes information about the client.
+Then call the get fingerprint method which returns the browser/device fingerprint as a 32 bit integer hash ID.
 
- ClientJS.  Return a JavaScript object containing information collected about a client.
-            Return browser/device fingerprint as a 32 bit integer hash ID.
+Here's how you create a fingerprint below:
+
+```javascript
+var client = new ClientJS(); // Create A New Client Object
+var fingerprint = client.getFingerprint(); // Get Client's Fingerprint
+```
+
+Fingerprints allow you to make an "educated guess" if this is a new or returning visitor.
+By taking multiple browser data points, combining them, and representing them as
+a hash ID you can recognize users without cookies or sessions.
+
+## Computed Properties
 
  BUILT UPON:
       - https:github.com/Valve/fingerprintjs
