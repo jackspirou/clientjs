@@ -1,10 +1,8 @@
-ClientJS
-=============
+# ClientJS
 
+**Digital _fingerprinting_ written in _pure_ JavaScript.**
 
- ClientJS.  Digital fingerprinting written in pure JavaScript.
-
-      Version: 0.07
+      Version: 1.0
 
       Jack Spirou
       5 Nov 2013
