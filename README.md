@@ -1,6 +1,6 @@
 # ClientJS
 
-**Digital _fingerprinting_ written in _pure_ JavaScript.**
+**Digital fingerprinting written in _pure JavaScript_.**
 
       Version: 1.0
 
