@@ -31,16 +31,43 @@
           <h1>
 <a name="clientjs" class="anchor" href="#clientjs"><span class="octicon octicon-link"></span></a>ClientJS</h1>
 
-<p>ClientJS.  Digital fingerprinting written in pure JavaScript.</p>
+<p><strong>Digital fingerprinting written in <em>pure JavaScript</em>.</strong></p>
 
-<pre><code>  Version: 0.07
+<p>ClientJS is a JavaScript object that does all of the heavy lifting
+that you'd normally have to do to get information about your users.
+There are very basic questions about users that every web app should ask.
+ClientJS helps you find out who your users are and how they are using your app.</p>
 
-  Jack Spirou
-  5 Nov 2013
-</code></pre>
+<p>These are the three things that make ClientJS different than other fingerprinting libraries:</p>
 
-<p>ClientJS.  Return a JavaScript object containing information collected about a client.
-            Return browser/device fingerprint as a 32 bit integer hash ID.</p>
+<ol>
+<li>It is pure JavaScript</li>
+<li>It is lightweight at 43 KB</li>
+<li>All user data points are designed to available, not just the 32bit integer fingerprint</li>
+</ol><h2>
+<a name="fingerprinting" class="anchor" href="#fingerprinting"><span class="octicon octicon-link"></span></a>Fingerprinting</h2>
+
+<p>Simply create a new ClientJS object. Then call the getFingerprint method which
+returns that browser's or device's fingerprint as a 32bit integer hash ID.</p>
+
+<p>Here's how you can create and print a fingerprint below:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="c1">// Create A New Client Object</span>
+<span class="kd">var</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ClientJS</span><span class="p">();</span>
+
+<span class="c1">// Get Client's Fingerprint</span>
+<span class="kd">var</span> <span class="nx">fingerprint</span> <span class="o">=</span> <span class="nx">client</span><span class="p">.</span><span class="nx">getFingerprint</span><span class="p">();</span>
+
+<span class="c1">// Print the 32bit hash to the console.</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">fingerprint</span><span class="p">);</span>
+</pre></div>
+
+<p>Fingerprint IDs allow you to make an "educated guess" if this is a new or returning visitor.
+By taking multiple browser data points, combining them, and representing them as
+a hash ID you can easily recognize similar browsers and devices without cookies or sessions.</p>
+
+<h2>
+<a name="computed-properties" class="anchor" href="#computed-properties"><span class="octicon octicon-link"></span></a>Computed Properties</h2>
 
 <p>BUILT UPON:
       - https:github.com/Valve/fingerprintjs
