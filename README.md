@@ -5,7 +5,13 @@
 ClientJS is a JavaScript object that does all of the heavy lifting
 that you'd normally have to do to get information about your users.
 There are very basic questions about users that every web app should ask.
-ClientJS helps you find out who your users are and how they are using your app. 
+ClientJS helps you find out who your users are and how they are using your app.
+
+These are the three things that make ClientJS different than other fingerprinting libraries:
+
+1. It is pure JavaScript
+2. It is lightweight, 43 KB
+3. All data points are available, not just the 32 bit integer ID.
 
       Version: 1.0
 
