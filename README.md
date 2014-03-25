@@ -11,14 +11,14 @@ These are the three things that make ClientJS different than other fingerprintin
 
 1. It is pure JavaScript
 2. It is lightweight at 43 KB
-3. All user data points are designed to available, not just the 32 bit integer fingerprint
+3. All user data points are designed to available, not just the 32bit integer fingerprint
 
 ## Fingerprinting
 
 Simply create a new ClientJS object. Then call the getFingerprint method which
 returns that browser's or device's fingerprint as a 32bit integer hash ID.
 
-Here's how you create a fingerprint below:
+Here's how you can create and print a fingerprint below:
 
 ```javascript
 // Create A New Client Object
@@ -33,7 +33,7 @@ console.log(fingerprint);
 
 Fingerprint IDs allow you to make an "educated guess" if this is a new or returning visitor.
 By taking multiple browser data points, combining them, and representing them as
-a hash ID you can recognize easily similar browsers and devices without cookies or sessions.
+a hash ID you can easily recognize similar browsers and devices without cookies or sessions.
 
 ## Computed Properties
 
