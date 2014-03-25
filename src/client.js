@@ -7,14 +7,14 @@
 //      5 Nov 2013
 
 // ClientJS.  Return a JavaScript object containing information collected about a client.
-//            Return browser/device fingerprint as a 32 bit integer hash ID. 
+//            Return browser/device fingerprint as a 32 bit integer hash ID.
 
 // BUILT UPON:
 //      - https://github.com/Valve/fingerprintjs
 //      - http://darkwavetech.com/device_fingerprint.html
 //      - detectmobilebrowsers.com JavaScript Mobile Detection Script
 
-// Dependencies Include: 
+// Dependencies Include:
 //      - ua-parser.js
 //      - fontdetect.js
 //      - swfobject.js
@@ -24,7 +24,7 @@
 //      - userAgent
 //      - screenPrint
 //          - colordepth
-//          - currentResolution 
+//          - currentResolution
 //          - availableResolution
 //          - deviceXDPI
 //          - deviceYDPI
@@ -348,7 +348,7 @@
             }
             return false;
         },
-    
+
         // Is Mobile Windows.  Check if the browser is on a windows mobile device.
         isMobileWindows: function() {
             if(browserData.ua.match(/IEMobile/i)) {
@@ -545,7 +545,7 @@
                     }
                 }
             }
-            
+
             return fontString;
         },
 
@@ -614,7 +614,7 @@
         getCanvasPrint: function () {
             var canvas = document.createElement('canvas');
             var ctx = canvas.getContext('2d');
-      
+
             // https://www.browserleaks.com/canvas#how-does-it-work
             var txt = 'http://valve.github.io';
             ctx.textBaseline = "top";
