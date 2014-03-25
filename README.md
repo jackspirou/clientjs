@@ -2,6 +2,11 @@
 
 **Digital fingerprinting written in _pure JavaScript_.**
 
+ClientJS is a JavaScript object that does all of the heavy lifting
+that you'd normally have to do to get information about your users.
+There are very basic questions about users that every web app should ask.
+ClientJS helps you find out who your users are and how they are using your app. 
+
       Version: 1.0
 
       Jack Spirou
