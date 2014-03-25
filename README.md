@@ -11,7 +11,7 @@ These are the three things that make ClientJS different than other fingerprintin
 
 1. It is pure JavaScript
 2. It is lightweight, 43 KB
-3. All data points are available, not just the 32 bit integer ID.
+3. All user data points are designed to available, not just the 32 bit integer fingerprint
 
       Version: 1.0
 
