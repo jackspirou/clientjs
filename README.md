@@ -2,7 +2,7 @@ ClientJS
 =============
 
 
- ClientJS.  An easy to use, simple, and flexible client information library written in JavaScript.
+ ClientJS.  Digital fingerprinting written in pure JavaScript.
 
       Version: 0.07
 
@@ -10,14 +10,14 @@ ClientJS
       5 Nov 2013
 
  ClientJS.  Return a JavaScript object containing information collected about a client.
-            Return browser/device fingerprint as a 32 bit integer hash ID. 
+            Return browser/device fingerprint as a 32 bit integer hash ID.
 
  BUILT UPON:
       - https:github.com/Valve/fingerprintjs
       - http:darkwavetech.com/device_fingerprint.html
       - detectmobilebrowsers.com JavaScript Mobile Detection Script
 
- Dependencies Include: 
+ Dependencies Include:
       - ua-parser.js
       - fontdetect.js
       - swfobject.js
@@ -27,7 +27,7 @@ ClientJS
       - userAgent
       - screenPrint
           - colordepth
-          - currentResolution 
+          - currentResolution
           - availableResolution
           - deviceXDPI
           - deviceYDPI
