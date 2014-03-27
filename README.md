@@ -1,4 +1,4 @@
-# ClientJS
+# ClientJS [![Build Status](https://travis-ci.org/jackspirou/clientjs.svg?branch=master)](https://travis-ci.org/jackspirou/clientjs)
 
 **Digital fingerprinting written in _pure JavaScript_.**
 
