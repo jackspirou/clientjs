@@ -18,7 +18,7 @@ These are the three things that make ClientJS different than other fingerprintin
 Simply create a new ClientJS object. Then call the getFingerprint method which
 returns that browser's or device's fingerprint as a 32bit integer hash ID.
 
-Here's how you can create and print a fingerprint below:
+Here is how you can create and print a fingerprint below:
 
 ```javascript
 // Create A New Client Object
