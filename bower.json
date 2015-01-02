@@ -1,0 +1,14 @@
+{
+  "name": "fingerprint",
+  "version": "0.0.1",
+  "main": ["dist/client.min.js"],
+  "ignore": [
+    ".travis.yml",
+    ".gitignore",
+    "build",
+    "grunt.js",
+    "LICENSE",
+    "node_modules",
+    "package.json"
+  ]
+}
