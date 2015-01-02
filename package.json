@@ -1,5 +1,9 @@
 {
   "name": "clientjs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jackspirou/clientjs.git"
+  },
   "description": "Simple nodejs, travis and grunt lint testing",
   "author": "Jack Spirou",
   "version": "0.0.1",
