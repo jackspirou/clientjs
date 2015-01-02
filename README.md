@@ -16,6 +16,16 @@ These are the three things that make ClientJS different from other fingerprintin
 Installation
 ------------
 
+To use ClientJS, simply include the `client.min.js` file found in the `dist` directory. `dist/client.min.js`
+
+### Bower
+
+ClientJS is also available as a bower package.
+
+```shell
+bower install fingerprint
+```
+
 Fingerprinting
 --------------
 
