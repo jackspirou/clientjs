@@ -207,7 +207,7 @@
             /(opera\s[mobiletab]+).+version\/((\d+)?[\w\.-]+)/i,                // Opera Mobi/Tablet
             /(opera).+version\/((\d+)?[\w\.]+)/i,                               // Opera > 9.80
             /(opera)[\/\s]+((\d+)?[\w\.]+)/i                                    // Opera < 9.80
-            
+
             ], [NAME, VERSION, MAJOR], [
 
             /\s(opr)\/((\d+)?[\w\.]+)/i                                         // Opera Webkit
@@ -508,7 +508,7 @@
     //////////
 
 
-    // check js environment 
+    // check js environment
     if (typeof(exports) !== UNDEF_TYPE) {
         // nodejs env
         if (typeof(module) !== UNDEF_TYPE && module.exports) {
