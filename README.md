@@ -3,7 +3,7 @@ ClientJS [![Build Status](https://travis-ci.org/jackspirou/clientjs.svg?branch=m
 
 **Device information and digital fingerprinting written in *pure JavaScript*.**
 
-ClientJS is a JavaScript library that makes digital fingerprinting easy. It is also designed for the client data points used in generating the fingerprint to be accessible.
+ClientJS is a JavaScript library that makes digital fingerprinting easy, while also exposing all the browser data points used in generating fingerprints.
 
 If you want to fingerprint the browser of your users, you ***probably*** also want to record other information, such as screen resolution, operating system, browser type, device type, and more.
 
