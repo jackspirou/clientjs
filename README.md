@@ -21,6 +21,7 @@ returns that browser's or device's fingerprint as a 32bit integer hash ID.
 Here is how you can create and print a fingerprint below:
 
 ```javascript
+
 // Create A New Client Object
 var client = new ClientJS();
 
@@ -29,6 +30,7 @@ var fingerprint = client.getFingerprint();
 
 // Print the 32bit hash to the console.
 console.log(fingerprint);
+
 ```
 
 Fingerprint IDs allow you to make an "educated guess" if this is a new or returning visitor.
@@ -151,3 +153,5 @@ a hash ID you can easily recognize similar browsers and devices without cookies 
 
       client.isCanvas();
       client.getCanvasPrint();
+
+http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
