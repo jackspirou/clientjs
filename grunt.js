@@ -2,7 +2,7 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     lint: {
-      files: ['src/client.js']
+      files: ['dist/client.min.js']
     }
   });
 
