@@ -11,6 +11,6 @@
     "grunt": "~0.3.17"
   },
   "scripts": {
-    "test": "grunt travis --verbose"
+    "test": "grunt travis --verbose --force"
   }
 }
