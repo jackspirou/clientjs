@@ -1,1 +1,2 @@
-script: phantomjs dist/client.min.js
+node_js:
+  - 0.8
