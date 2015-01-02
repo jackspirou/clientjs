@@ -23,7 +23,7 @@ To use ClientJS, simply include the `client.min.js` file found in the `dist` dir
 ClientJS is also available as a bower package.
 
 ```shell
-bower install fingerprint
+bower install clientjs
 ```
 
 Fingerprinting
