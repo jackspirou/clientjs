@@ -56,21 +56,21 @@ console.log(fingerprint);
 The current data-points that used to generate fingerprint 32bit integer hash ID is listed below:
 
 -	userAgent
--	screenPrint
--	colordepth
--	currentResolution
--	availableResolution
--	deviceXDPI
--	deviceYDPI
+-	screen print
+-	color depth
+-	current resolution
+-	available resolution
+-	device XDPI
+-	device YDPI
 -	plugin list
 -	font list
--	localStorage
--	sessionStorage
+-	local storage
+-	session storage
 -	timezone
 -	language
--	systemLanguage
+-	system language
 -	cookies
--	canvasPrint
+-	canvas print
 
 Available Methods
 -----------------
