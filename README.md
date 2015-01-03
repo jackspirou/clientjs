@@ -51,21 +51,31 @@ var fingerprint = client.getFingerprint();
 
 // Print the 32bit hash id to the console
 console.log(fingerprint);
-
 ```
 
-Computed Properties
--------------------
+The current data-points that used to generate fingerprint 32bit integer hash ID is listed below:
 
-BUILT UPON: - https:github.com/Valve/fingerprintjs - http:darkwavetech.com/device_fingerprint.html - detectmobilebrowsers.com JavaScript Mobile Detection Script
+-	userAgent
+-	screenPrint
+-	colordepth
+-	currentResolution
+-	availableResolution
+-	deviceXDPI
+-	deviceYDPI
+-	plugin list
+-	font list
+-	localStorage
+-	sessionStorage
+-	timezone
+-	language
+-	systemLanguage
+-	cookies
+-	canvasPrint
 
-Dependencies Include: - ua-parser.js - fontdetect.js - swfobject.js - murmurhash3.js
+Available Methods
+-----------------
 
-BROWSER FINGERPRINT DATA POINTS - userAgent - screenPrint - colordepth - currentResolution - availableResolution - deviceXDPI - deviceYDPI - plugin list - font list - localStorage - sessionStorage - timezone - language - systemLanguage - cookies - canvasPrint
-
-METHOD Naming CONVENTION is[MethodName] = return boolean get[MethodName] = return int|string|object
-
-METHODS
+Below is the current list of available methods to find information on a users browser/device.
 
 ```
   var client = new ClientJS();
@@ -149,4 +159,6 @@ METHODS
   client.getCanvasPrint();
 ```
 
-http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+BUILT UPON: - https:github.com/Valve/fingerprintjs - http:darkwavetech.com/device_fingerprint.html - detectmobilebrowsers.com JavaScript Mobile Detection Script
+
+Dependencies Include: - ua-parser.js - fontdetect.js - swfobject.js - murmurhash3.js
