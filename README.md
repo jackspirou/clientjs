@@ -160,6 +160,30 @@ You can find documentation on each method at [clientjs.jacks.io](http://clientjs
   client.getCanvasPrint();
 ```
 
-BUILT UPON: - https:github.com/Valve/fingerprintjs - http:darkwavetech.com/device_fingerprint.html - detectmobilebrowsers.com JavaScript Mobile Detection Script
+Shoulders of Giants
+-------------------
 
-Dependencies Include: - ua-parser.js - fontdetect.js - swfobject.js - murmurhash3.js
+It is important to note that this project owes much to many other pieces of work. I had the advantage of searching through how many others have approached this problem before me.
+
+Built Upon:
+
+-	https:github.com/Valve/fingerprintjs
+-	http:darkwavetech.com/device_fingerprint.html
+-	detectmobilebrowsers.com
+
+Vendor Code
+-----------
+
+All dependencies are automatically included into `client.min.js` when the `bash build.sh` file compiles this project. They do not need to be included separately.
+
+Dependencies Include:
+
+-	ua-parser.js
+-	fontdetect.js
+-	swfobject.js
+-	murmurhash3.js
+
+LICENSE
+-------
+
+This project is using the GNU GENERAL PUBLIC LICENSE. It is included in the project source code.
