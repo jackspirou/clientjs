@@ -124,6 +124,8 @@
 //      client.isCanvas();
 //      client.getCanvasPrint();
 
+/*jshint undef:false */
+
 // Anonymous auto JavaScript function execution.
 (function (scope) {
     'use strict';
@@ -490,7 +492,7 @@
 
         // Get Silverlight Version.  Return a string containing the Silverlight Version.
         getSilverlightVersion: function () {
-            if (isSilverlight) {
+            if (this.isSilverlight()) {
                 var objPlugin = navigator.plugins["Silverlight Plug-In"];
                 return objPlugin.description;
             }
