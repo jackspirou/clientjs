@@ -34,7 +34,9 @@ bower install clientjs
 Fingerprinting
 --------------
 
-Digital fingerprints based on device/browser settings allow you to make an "educated guess" about the identify of a new or returning visitor. By taking multiple data points, combining them, and representing them as a number, you can easily recognize similar browsers and devices without cookies or sessions.
+Digital fingerprints are based on device/browser settings. They allow you to make an "educated guess" about the identify of a new or returning visitor. By taking multiple data points, combining them, and representing them as a number, you can be surprisingly accurate at recognizing not only browsers and devices, but also individual users.
+
+This technique is especially useful since it accomplishes user/device identification without cookies or sessions.
 
 Simply create a new ClientJS object. Then call the `getFingerprint()` method which will return the browser/device fingerprint as a 32bit integer hash ID.
 
