@@ -16,7 +16,7 @@ Below are some features that make ClientJS different from other fingerprinting l
 Docs/Demo
 ---------
 
-You can find more documentation on ClientJS at [clientjs.jacks.io](http://clientjs.jacks.io/). Also there is an example/demo running. Test it out!
+You can find more documentation on ClientJS at [clientjs.jacks.io](http://clientjs.jacks.io/). Also there is an example/demo.
 
 Installation
 ------------
