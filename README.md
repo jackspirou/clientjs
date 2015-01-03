@@ -5,9 +5,9 @@ ClientJS [![Build Status](https://travis-ci.org/jackspirou/clientjs.svg?branch=m
 
 ClientJS is a JavaScript library that makes digital fingerprinting easy, while also exposing all the browser data-points used in generating fingerprints.
 
-If you want to fingerprint browsers, you are ***probably*** also interested in other client-based information, such as screen resolution, operating system, browser type, device type, and more.
+If you want to fingerprint browsers, you are ***probably*** also interested in other client-based information, such as screen resolution, operating system, browser type, device type, and much more.
 
-Below are some things features that make ClientJS different from other fingerprinting libraries:
+Below are some features that make ClientJS different from other fingerprinting libraries:
 
 -	It's pure native JavaScript
 -	It's decently lightweight at 43 KB
@@ -16,7 +16,7 @@ Below are some things features that make ClientJS different from other fingerpri
 Installation
 ------------
 
-To use ClientJS, simply include the `client.min.js` file found in the `dist` directory. `dist/client.min.js`
+To use ClientJS, simply include the `client.min.js` file found in the `dist` directory, so `dist/client.min.js` when your in the project root directory.
 
 ### Bower
 
@@ -29,18 +29,18 @@ bower install clientjs
 Fingerprinting
 --------------
 
-Simply create a new ClientJS object. Then call the getFingerprint method which returns that browser's or device's fingerprint as a 32bit integer hash ID.
+Simply create a new ClientJS object. Then call the `getFingerprint()` method which will return the browser/device fingerprint as a 32bit integer hash ID.
 
-Here is how you can create and print a fingerprint below:
+Here is an example of how you can create and print a fingerprint below:
 
 ```javascript
-// Create A New Client Object
+// Create a new ClientJS object
 var client = new ClientJS();
 
-// Get Client's Fingerprint
+// Get the client's fingerprint id
 var fingerprint = client.getFingerprint();
 
-// Print the 32bit hash to the console.
+// Print the 32bit hash id to the console
 console.log(fingerprint);
 
 ```
