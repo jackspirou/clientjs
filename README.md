@@ -34,9 +34,11 @@ bower install clientjs
 Fingerprinting
 --------------
 
+Digital fingerprints based on device/browser settings allow you to make an "educated guess" about the identify of a new or returning visitor. By taking multiple data points, combining them, and representing them as a number, you can easily recognize similar browsers and devices without cookies or sessions.
+
 Simply create a new ClientJS object. Then call the `getFingerprint()` method which will return the browser/device fingerprint as a 32bit integer hash ID.
 
-Here is an example of how you can create and print a fingerprint below:
+Below is an example of how you to generate and display a fingerprint:
 
 ```javascript
 // Create a new ClientJS object
@@ -49,8 +51,6 @@ var fingerprint = client.getFingerprint();
 console.log(fingerprint);
 
 ```
-
-Fingerprint IDs allow you to make an "educated guess" if this is a new or returning visitor. By taking multiple browser data points, combining them, and representing them as a hash ID you can easily recognize similar browsers and devices without cookies or sessions.
 
 Computed Properties
 -------------------
