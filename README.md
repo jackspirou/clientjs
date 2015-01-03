@@ -80,7 +80,6 @@ Below is the current list of available methods to find information on a users br
 ```
   var client = new ClientJS();
 
-  client.getSoftwareVersion();
   client.getBrowserData();
   client.getFingerPrint();
 
