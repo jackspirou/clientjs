@@ -55,7 +55,7 @@ console.log(fingerprint);
 
 The current data-points that used to generate fingerprint 32bit integer hash ID is listed below:
 
--	userAgent
+-	user agent
 -	screen print
 -	color depth
 -	current resolution
