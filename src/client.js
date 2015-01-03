@@ -490,7 +490,7 @@
 
         // Get Silverlight Version.  Return a string containing the Silverlight Version.
         getSilverlightVersion: function () {
-            if (isSilverlight()) {
+            if (isSilverlight) {
                 var objPlugin = navigator.plugins["Silverlight Plug-In"];
                 return objPlugin.description;
             }
