@@ -77,6 +77,8 @@ Available Methods
 
 Below is the current list of available methods to find information on a users browser/device.
 
+You can find documentation on each method at [clientjs.jacks.io](http://clientjs.jacks.io/).
+
 ```
   var client = new ClientJS();
 
