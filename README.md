@@ -36,7 +36,7 @@ Fingerprinting
 
 Digital fingerprints are based on device/browser settings. They allow you to make an "educated guess" about the identify of a new or returning visitor. By taking multiple data points, combining them, and representing them as a number, you can be surprisingly accurate at recognizing not only browsers and devices, but also individual users.
 
-This technique is useful at accomplishing user/device identification without cookies or sessions. It is not a full proof technique, but has been shown to be statistically significant at accurately identifying users or devices.
+This technique is useful at accomplishing user/device identification without cookies or sessions. It is not a full proof technique, but has been shown to be statistically significant at accurately identifying devices.
 
 Simply create a new ClientJS object. Then call the `getFingerprint()` method which will return the browser/device fingerprint as a 32bit integer hash ID.
 
