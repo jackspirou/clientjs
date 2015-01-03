@@ -1,7 +1,7 @@
 ClientJS [![Build Status](https://travis-ci.org/jackspirou/clientjs.svg?branch=master)](https://travis-ci.org/jackspirou/clientjs)
 ==================================================================================================================================
 
-**Device information and digital fingerprinting written in *pure JavaScript*.** [clientjs.jacks.io](http://clientjs.jacks.io/)
+**Device information and digital fingerprinting written in *pure JavaScript*.**
 
 ClientJS is a JavaScript library that makes digital fingerprinting easy, while also exposing all the browser data-points used in generating fingerprints.
 
@@ -12,6 +12,11 @@ Below are some features that make ClientJS different from other fingerprinting l
 -	It's pure native JavaScript
 -	It's decently lightweight at 43 KB
 -	All user data points are available by design, not just the 32bit integer fingerprint
+
+Docs/Demo
+---------
+
+You can find more documentation on ClientJS at [clientjs.jacks.io](http://clientjs.jacks.io/). Also there is an example/demo running. Test it out!
 
 Installation
 ------------
