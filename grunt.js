@@ -2,11 +2,11 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     lint: {
-      files: ['dist/client.min.js']
+      files: ['src/client.js']
     }
   });
 
   grunt.registerTask('default', 'lint');
-  // grunt.registerTask('travis', 'lint');
+  grunt.registerTask('travis', 'lint');
 
 };
