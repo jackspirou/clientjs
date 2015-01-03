@@ -8,7 +8,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>ClientJS Documentation</title>
+	<title>ClientJS</title>
 
 	<!-- Bootstrap core CSS -->
 	<!-- Latest compiled and minified CSS -->
@@ -40,7 +40,7 @@
   		<div class="bs-header" id="content">
   			<div class="container">
   				<h1>ClientJS</h1>
-  				<p>Digital fingerprinting written in pure JavaScript.</p>
+  				<p>Device information and digital fingerprinting written in pure JavaScript.</p>
   			</div>
   		</div>
 
@@ -235,26 +235,41 @@
   						<div class="page-header">
   							<h1 id="overview">Overview <a href="https://travis-ci.org/jackspirou/clientjs"><img src="https://travis-ci.org/jackspirou/clientjs.svg?branch=master"></a></h1>
   						</div>
-  						<p class="lead">Get the lowdown on the key pieces of how ClientJS works.  It really is dead simple.</p>
+  						<p class="lead">ClientJS is simple.  It is for finding device information and generating digital fingerprints.</p>
   						<br />
 
   						<h3 id="overview-what-is-this">What Is This?</h3>
   						<p class="lead">ClientJS makes use of many different native JavaScript functions, methods, and opensource resources to find information about the client.</p>
-  						<p>ClientJS easily lets you create a client object to find out as much useful information as you can about what devices are connecting to your site and your product.  You can ask specific questions like, “is the client using iOS or Android?” or better yet, “is the client on an iPad?”  ClientJS even lets you produce browser/device fingerprint IDs so that users don’t have to login to your site.  Get in touch with your users.  Start using ClientJS!</p>
+							<p class="lead">ClientJS easily lets you create a client object to find out as much useful information as you can about what devices are connecting to your site and your product.  You can ask specific questions like, “does the user have an iOS or Android device?” or better yet, “is the user's device an iPad?”  ClientJS even lets you produce browser/device fingerprint IDs.</p>
   						<br />
 
   						<h3 id="overview-why-use-it">Why Use It?</h3>
-  						<p class="lead">Gathering information from different browsers and devices makes it difficult to handle cross compatibility.  We take care of the hard stuff so that you can easily get the client info you need and then keep going.</p>
+  						<p class="lead">Gathering information from different browsers and devices makes it difficult to handle cross compatibility.  We take care of the hard stuff so that you can easily get the client info you need.</p>
   						<br />
-  						<img src="img/hype-cycle-pr.png" >
-  						<br />
-  						<br />
-  						<p>ClientJS attempts to solve the problem of making client data more easily available.  If your not using data to make decisions, you are flying blind.  Good data is necessary for good analytics that help you make better business and tech choices.  Do you have good informative data about how your users connect to your site?  Do you know their average screen size?  ClientJS can help you collect data and make good decisions for your site, application, and business.</p>
+							<p class="lead">ClientJS attempts to solve the problem of making client data more easily available. Good data is necessary for good analytics that help you make better business and tech choices.  Do you have good informative data about how your users connect to your site?  Do you know their average screen size?  ClientJS can help you collect data and make good decisions for your application and business.</p>
   						<br />
 
   						<h3 id="overview-how-to-install-it">How To Install It</h3>
   						<p class="lead">1) Download. 2) Include. 3) Have Fun!</p>
-  						<p>Just include the <strong>'client.min.js'</strong> library in the beginning of your project and you can start testing for mobile devices, installed fonts, calculate browser/device fingerprints, and more!</p>
+
+							<h4>Step 1. Download</h4>
+							<div class="bs-callout bs-callout-info">
+								<h4>Bower</h4>
+								<p>ClientJS is available as a bower package.</p>
+								<br />
+								<p><code>bower install clientjs</code></p>
+							</div>
+
+							<div class="bs-callout bs-callout-info">
+								<h4>Github</h4>
+								<p>ClientJS is hosted on github.</p>
+								<br />
+								<p>Just visit our github page at <a href="https://github.com/jackspirou/clientjs">https://github.com/jackspirou/clientjs</a> and download the minified production JavaScript!</p>
+							</div>
+							<br />
+
+							<h4>Step 2. Include</h4>
+  						<p class="lead">Just include the <strong>'client.min.js'</strong> library in the beginning of your project and you can start testing for mobile devices, installed fonts, calculate browser/device fingerprints, and more!</p>
   						<div class="highlight"><pre><code class="html">
 <span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="nt">&lt;html lang="en"&gt;</span>
@@ -265,11 +280,9 @@
 <span class="nt">...</span>
   						</code></pre></div>
 
-  						<div class="bs-callout bs-callout-info">
-  							<h4>Download The Code On Github</h4>
-  							<p>Just visit our github page at <a href="https://github.com/jackspirou/clientjs">https://github.com/jackspirou/clientjs</a> and download the minified production JavaScript!</p>
-  						</div>
-  						<br />
+							<br />
+							<h4>Step 3. Use it!</h4>
+							<br />
 
   						<h3 id="overview-how-to-use-it">How To Use It</h3>
   						<p class="lead">After you have ClientJS installed, using it is simple!  The first thing you need to do is create a client object and then start calling some methods.</p>
@@ -278,7 +291,7 @@
 	<span class="nt">var client = <span class="s">new ClientJS();</span></span>
 <span class="nt">&lt;/script&gt;</span>
   						</code></pre></div>
-  						<p>See how easy that was!  Now how about we execute some methods?  Let's see if we have a mobile device and if so is it an android or iOS device?  If it is not lets check if Java is installed and its version.</p>
+  						<p class="lead">See how easy that was!  Now how about we execute some methods?  Let's see if we have a mobile device and if so is it an android or iOS device?  If it is not, lets check if Java is installed and its version.</p>
   						<div class="highlight"><pre><code class="html">
 <span class="nt">&lt;script&gt;</span>
 
@@ -306,7 +319,7 @@
 
 <span class="nt">&lt;/script&gt;</span>
   						</code></pre></div>
-  						<p>We can can get much more info with ClientJS, but for now lets just calculate our users device/browser fingerprint.</p>
+  						<p class="lead">We can can get much more info with ClientJS, but for now lets just calculate our users device/browser fingerprint.</p>
   						<div class="highlight"><pre><code class="html">
 <span class="nt">&lt;script&gt;</span>
 
@@ -318,7 +331,7 @@
 
 <span class="nt">&lt;/script&gt;</span>
   						</code></pre></div>
-  						<p>Again, these are just a few examples of what you can do with ClientJS.  Read about more features below:</p>
+  						<p class="lead">Again, these are just a few examples of what you can do with ClientJS.  Read about more features below:</p>
   					</div>
 
   					<!-- ClientJS METHDOS -->
