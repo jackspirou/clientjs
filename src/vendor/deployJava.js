@@ -794,12 +794,4 @@ var deployJava = function() {
     if (h === null) {
       try {
         h = navigator.language;
-      } catch (f) {}
-    }
-    if (h !== null) {
-      h.replace("-", "_");
-      d.locale = h;
-    }
-  }
-  return d;
-}();
+      } catch (f) {}}if(h!==null){h.replace("-","_");d.locale=h;}}return d;}();
