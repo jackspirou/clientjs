@@ -174,7 +174,7 @@ Built Upon:
 Vendor Code
 -----------
 
-All dependencies are automatically included into `client.min.js` when the `bash build.sh` file compiles this project. They do not need to be included separately.
+All dependencies are automatically included into `client.min.js` when the `build.sh` file compiles this project. They do not need to be included separately.
 
 Dependencies Include:
 
