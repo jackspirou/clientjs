@@ -611,14 +611,43 @@
 
         // Is Canvas.  Check if the canvas element is enabled.
         isCanvas: function () {
+
+            // create a canvas element
             var elem = document.createElement('canvas');
-            return !!(elem.getContext && elem.getContext('2d'));
+
+            // try/catch for older browsers that don't support the canvas element
+            try {
+
+              // check if context and context 2d exists
+              return !!(elem.getContext && elem.getContext('2d'));
+
+            } catch(e) {
+
+              // catch if older browser
+              return false;
+            }
         },
 
         // Get Canvas Print.  Return a string containing the canvas URI data.
         getCanvasPrint: function () {
+
+            // create a canvas element
             var canvas = document.createElement('canvas');
-            var ctx = canvas.getContext('2d');
+
+            // define a context var that will be used for browsers with canvas support
+            var ctx;
+
+            // try/catch for older browsers that don't support the canvas element
+            try {
+
+              // attempt to give ctx a 2d canvas context value
+              ctx = canvas.getContext('2d');
+
+            } catch(e) {
+
+              // return empty string if canvas element not supported
+              return "";
+            }
 
             // https://www.browserleaks.com/canvas#how-does-it-work
             var txt = 'http://valve.github.io';
