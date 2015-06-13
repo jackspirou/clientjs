@@ -83,7 +83,7 @@ You can find documentation on each method at [clientjs.jacks.io](http://clientjs
   var client = new ClientJS();
 
   client.getBrowserData();
-  client.getFingerPrint();
+  client.getFingerprint();
 
   client.getUserAgent();
   client.getUserAgentLowerCase();
