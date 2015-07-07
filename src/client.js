@@ -149,7 +149,7 @@
 
         // Get Software Version.  Return a string containing this software version number.
         getSoftwareVersion: function () {
-            var version = "ClientJS 0.05";
+            var version = "ClientJS 0.1.5";
             return version;
         },
 
