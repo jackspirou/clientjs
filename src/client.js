@@ -465,20 +465,23 @@
             return deployJava.getJREs().toString();
         },
 
-        // Is Java.  Check if Java is installed.
+        // Is Flash.  Check if Flash is installed.
         isFlash: function () {
-            objPlayerVersion = swfobject.getFlashPlayerVersion();
-            strTemp = objPlayerVersion.major + "." + objPlayerVersion.minor + "." + objPlayerVersion.release;
-            if (strTemp === "0.0.0") {
-                return false;
+            var objPlugin = navigator.plugins["Shockwave Flash"];
+            if (objPlugin) {
+                return true;
             }
-            return true;
+            return false;
         },
 
         // Get Flash Version.  Return a string containing the Flash Version.
         getFlashVersion: function () {
-            objPlayerVersion = swfobject.getFlashPlayerVersion();
-            return objPlayerVersion.major + "." + objPlayerVersion.minor + "." + objPlayerVersion.release;
+            if (this.isFlash())
+            {
+                objPlayerVersion = swfobject.getFlashPlayerVersion();
+               return objPlayerVersion.major + "." + objPlayerVersion.minor + "." + objPlayerVersion.release;
+            }
+            return "";
         },
 
         // Is Silverlight.  Check if Silverlight is installed.
