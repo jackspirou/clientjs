@@ -1,10 +1,10 @@
 //
 // ClientJS.  An easy to use, simple, and flexible client information library written in JavaScript.
 //
-//      Version: 0.07
+//      Version: 0.1.5
 //
-//      Jack Spirou
-//      5 Nov 2013
+//      Original Author: Jack Spirou
+//      Original Data: 5 Nov 2013
 
 // ClientJS.  Return a JavaScript object containing information collected about a client.
 //            Return browser/device fingerprint as a 32 bit integer hash ID.
