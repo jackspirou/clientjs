@@ -6,7 +6,7 @@
   },
   "description": "Simple nodejs, travis and grunt lint testing",
   "author": "Jack Spirou",
-  "version": "0.0.1",
+  "version": "0.1.5",
   "devDependencies": {
     "grunt": "~0.3.17"
   },
