@@ -2,9 +2,9 @@
   "name": "clientjs",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jackspirou/clientjs.git"
+    "url": "git+https://github.com/jackspirou/clientjs.git"
   },
-  "description": "Simple nodejs, travis and grunt lint testing",
+  "description": "Device information and digital fingerprinting written in pure JavaScript.",
   "author": "Jack Spirou",
   "version": "0.1.5",
   "devDependencies": {
@@ -12,5 +12,19 @@
   },
   "scripts": {
     "test": "grunt travis --verbose --force"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/jackspirou/clientjs/issues"
+  },
+  "homepage": "https://github.com/jackspirou/clientjs#readme",
+  "main": "grunt.js",
+  "keywords": [
+    "browser",
+    "fingerprint",
+    "client",
+    "info",
+    "pure",
+    "javascript"
+  ],
+  "license": "GPL-3.0"
 }
