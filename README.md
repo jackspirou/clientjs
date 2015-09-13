@@ -23,6 +23,8 @@ Installation
 
 To use ClientJS, simply include the `client.min.js` file found in the `dist` directory, so `dist/client.min.js` when your in the project root directory.
 
+ClientJS is avalaible via [bower](http://bower.io/search/?q=clientjs) and [npm](https://www.npmjs.com/package/clientjs).
+
 ### Bower
 
 ClientJS is also available as a bower package.
