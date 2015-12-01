@@ -75,6 +75,7 @@
   								<a href="#Fingerprint">Fingerprint Method</a>
   								<ul class="nav">
   									<li><a href="#Fingerprint-getFingerprint">getFingerprint()</a></li>
+										<li><a href="#Fingerprint-getCustomFingerprint">getCustomFingerprint()</a></li>
   								</ul>
   							</li>
   							<li>
@@ -405,6 +406,25 @@
   						<div class="bs-callout bs-callout-info">
   							<h4>Your Result:</h4>
   							<p id="getFingerprint"></p>
+  						</div>
+							<br />
+
+  						<h3 id="Fingerprint-getCustomFingerprint">getCustomFingerprint()</h3>
+  						<p class="lead">Get Custom Fingerprint.  Take a string of datapoints and return a 32-bit integer representing the browsers fingerprint.</p>
+  						<div class="highlight"><pre><code class="html">
+<span class="nt">&lt;script&gt;</span>
+
+	<span class="nt">var client = <span class="s">new ClientJS();</span> // Create A New Client Object</span>
+
+	<span class="nt">var fingerprint = <span class="s">client.getCustomFingerprint(client.getBrowserData().ua, client.getCanvasPrint());</span> // Get Client's Custom Fingerprint</span>
+
+	<span class="nt">console.log( fingerprint );</span>
+
+<span class="nt">&lt;/script&gt;</span>
+  						</code></pre></div>
+  						<div class="bs-callout bs-callout-info">
+  							<h4>Your Result:</h4>
+  							<p id="getCustomFingerprint"></p>
   						</div>
   					</div>
 
@@ -2239,6 +2259,9 @@ POSSIBILITY OF SUCH DAMAGES.
 
     	$('#title-fingerprint').text(fingerprint);
     	$('#getFingerprint').text(fingerprint);
+			var ua = client.getBrowserData().ua
+			var canvasprint = client.getCanvasPrint()
+			$('#getCustomFingerprint').text(ua, canvasprint);
 
     	$('#getUserAgent').text(client.getUserAgent());
     	$('#getUserAgentLowerCase').text(client.getUserAgentLowerCase());
