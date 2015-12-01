@@ -180,6 +180,18 @@
             return murmurhash3_32_gc(key, seed);
         },
 
+        // Get Custom Fingerprint.  Take a string of datapoints and eturn a 32-bit integer representing the browsers fingerprint.
+        getCustomFingerprint: function() {
+          var bar = '|';
+          var key = "";
+          for (i = 0; i < arguments.length; i++) {
+            if (i + 1 != arguments.length) {
+              key += arguments[i] + bar;
+            }
+          }
+          return murmurhash3_32_gc(key, 256);
+        },
+
         //
         // USER AGENT METHODS
         //
