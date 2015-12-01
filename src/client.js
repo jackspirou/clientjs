@@ -185,10 +185,9 @@
           var bar = '|';
           var key = "";
           for (i = 0; i < arguments.length; i++) {
-            if ((i + 1) == arguments.length) {
-              break;
+            if (i + 1 != arguments.length) {
+              key += String(arguments[i]) + bar;
             }
-            key += String(arguments[i]) + bar;
           }
           return murmurhash3_32_gc(key, 256);
         },
