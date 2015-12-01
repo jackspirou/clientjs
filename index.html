@@ -72,7 +72,7 @@
   								</ul>
   							</li>
   							<li>
-  								<a href="#Fingerprint">Fingerprint Method</a>
+  								<a href="#Fingerprints">Fingerprint Methods</a>
   								<ul class="nav">
   									<li><a href="#Fingerprint-getFingerprint">getFingerprint()</a></li>
 										<li><a href="#Fingerprint-getCustomFingerprint">getCustomFingerprint()</a></li>
@@ -385,7 +385,7 @@
 
   					<div class="bs-docs-section">
   						<div class="page-header">
-  							<h1 id="Fingerprint">Fingerprint Methods</h1>
+  							<h1 id="Fingerprints">Fingerprint Methods</h1>
   						</div>
   						<p class="lead">A device fingerprint or machine fingerprint or browser fingerprint is information collected about a remote computing device for the purpose of identification. Fingerprints can fully or partially identify individual users or devices even when cookies are turned off.</p>
   						<br />
@@ -415,8 +415,10 @@
 <span class="nt">&lt;script&gt;</span>
 
 	<span class="nt">var client = <span class="s">new ClientJS();</span> // Create A New Client Object</span>
+	<span class="nt">var ua = <span class="s">client.getBrowserData().ua;</span></span>
+	<span class="nt">var canvasPrint = <span class="s">client.getCanvasPrint();</span></span>
 
-	<span class="nt">var fingerprint = <span class="s">client.getCustomFingerprint(client.getBrowserData().ua, client.getCanvasPrint());</span> // Get Client's Custom Fingerprint</span>
+	<span class="nt">var fingerprint = <span class="s">client.getCustomFingerprint(ua, canvasPrint);</span>
 
 	<span class="nt">console.log( fingerprint );</span>
 
@@ -2259,9 +2261,9 @@ POSSIBILITY OF SUCH DAMAGES.
 
     	$('#title-fingerprint').text(fingerprint);
     	$('#getFingerprint').text(fingerprint);
-			var ua = client.getBrowserData().ua
-			var canvasprint = client.getCanvasPrint()
-			$('#getCustomFingerprint').text(ua, canvasprint);
+			var ua = client.getBrowserData().ua;
+			var canvasprint = client.getCanvasPrint();
+			$('#getCustomFingerprint').text(client.getCustomFingerprint(ua, canvasprint));
 
     	$('#getUserAgent').text(client.getUserAgent());
     	$('#getUserAgentLowerCase').text(client.getUserAgentLowerCase());
