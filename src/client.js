@@ -1,7 +1,7 @@
 //
 // ClientJS.  An easy to use, simple, and flexible client information library written in JavaScript.
 //
-//      Version: 0.1.5
+//      Version: 0.1.6
 //
 //      Original Author: Jack Spirou
 //      Original Data: 5 Nov 2013
@@ -49,6 +49,7 @@
 //      client.getSoftwareVersion();
 //      client.getBrowserData();
 //      client.getFingerPrint();
+//      client.getCustomFingerprint(...);
 //
 //      client.getUserAgent();
 //      client.getUserAgentLowerCase();
@@ -149,7 +150,7 @@
 
         // Get Software Version.  Return a string containing this software version number.
         getSoftwareVersion: function () {
-            var version = "ClientJS 0.1.5";
+            var version = "ClientJS 0.1.6";
             return version;
         },
 
@@ -680,7 +681,7 @@
 
     };
 
-    if (typeof module === 'object' && typeof exports === 'object') {
+    if (typeof module === 'object' && typeof exports !== "undefined") {
         module.exports = ClientJS;
     }
     scope.ClientJS = ClientJS;

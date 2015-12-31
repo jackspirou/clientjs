@@ -94,6 +94,7 @@ You can find documentation on each method at [clientjs.jacks.io](http://clientjs
 
   client.getBrowserData();
   client.getFingerprint();
+  client.getCustomFingerprint(...);
 
   client.getUserAgent();
   client.getUserAgentLowerCase();
