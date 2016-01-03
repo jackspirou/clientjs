@@ -863,11 +863,6 @@
     //   jQuery always exports to global scope, unless jQuery.noConflict(true) is used,
     //   and we should catch that.
 
-    //
-    // NOTE: The code below is not needed for ClientJS and therefore is
-    // is commented out.
-    //
-    /*
     var $ = window.jQuery || window.Zepto;
     if (typeof $ !== UNDEF_TYPE) {
         var parser = new UAParser();
@@ -883,6 +878,5 @@
             }
         };
     }
-    */
 
 })(typeof window === 'object' ? window : this);

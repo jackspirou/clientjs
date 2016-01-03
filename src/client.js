@@ -136,7 +136,7 @@
 
     // ClientJS constructor which sets the browserData object and returs the client object.
     var ClientJS = function () {
-        var parser = new UAParser();
+        var parser = new (window.UAParser||exports.UAParser);
         browserData = parser.getResult();
         fontDetective = new Detector();
         return this;
