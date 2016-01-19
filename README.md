@@ -194,6 +194,27 @@ Dependencies Include:
 -	swfobject.js
 -	murmurhash3.js
 
+## Contributing
+Begin to colaborate by [forking](https://help.github.com/articles/fork-a-repo/) this repository.
+
+Once you have cloned the project, install all node dependencies. ClientJS uses [Karma](https://karma-runner.github.io/0.13/index.html) as its testing environment.
+
+```shell
+# Install dependencies
+$ npm install
+
+# If you want tu run karma from the command line
+$ npm install -g karma-cli
+```
+Run Karma and enjoy coding!
+
+```shell
+$ karma start
+```
+
+
+Thanks for contribute to ClientJS! Please report any bug [here](https://github.com/jackspirou/clientjs/issues).
+
 LICENSE
 -------
 
