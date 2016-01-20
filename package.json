@@ -8,7 +8,14 @@
   "author": "Jack Spirou",
   "version": "0.1.9",
   "devDependencies": {
-    "grunt": "~0.3.17"
+    "grunt": "~0.3.17",
+    "karma-firefox-launcher": "~0.1.7",
+    "jasmine-core": "~2.4.1",
+    "karma-jasmine": "~0.3.6",
+    "karma-chrome-launcher": "~0.2.2",
+    "karma": "~0.13.19",
+    "karma-safari-launcher": "~0.1.1",
+    "karma-opera-launcher": "~0.3.0"
   },
   "scripts": {
     "test": "grunt travis --verbose --force"
