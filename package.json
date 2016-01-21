@@ -18,7 +18,7 @@
     "karma-opera-launcher": "~0.3.0"
   },
   "scripts": {
-    "test": "grunt travis --verbose --force"
+    "test": "jasmine-node specs"
   },
   "bugs": {
     "url": "https://github.com/jackspirou/clientjs/issues"
