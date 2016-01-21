@@ -61,6 +61,20 @@ describe("ClientJS", function(){
       });
     });
 
+    describe("getWebRTCFingerprint", function(){
+      it("should return valid ips", function(done){
+        client.getWebRTCFingerprint(function(obj){
+          var webRTC = obj;
+          expect(webRTC).toEqual({
+            localAddr: jasmine.stringMatching(/^(192\.168\.|169\.254\.|10\.|172\.(1[6-9]|2\d|3[01]))/),
+            publicAddr: jasmine.any(String),
+            fingerprint: jasmine.any(String)
+          });
+          done();
+        });
+      });
+    });
+
     describe("#isIE|Chrome|Firefox|Safari|Opera", function(){
       it("should return true with the correct browser", function(){
         var browsers = ["IE", "Chrome", "Firefox", "Safari", "Opera"];
