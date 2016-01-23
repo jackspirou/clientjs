@@ -3,7 +3,7 @@ build:
   environment:
     - SAUCE_USERNAME=$$SAUCE_USERNAME
     - SAUCE_ACCESS_KEY=$$SAUCE_ACCESS_KEY
-    - BUILD_NUMBER=$$DRONE_BUILD_NUMBER
+    - BUILD_NUMBER=$DRONE_BUILD_NUMBER
   commands:
     - npm install --quiet
     - npm install --quiet -g istanbul
