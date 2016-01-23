@@ -61,9 +61,9 @@ describe("ClientJS", function(){
       });
     });
 
-    describe("#isIE|Chrome|Firefox|Safari|Opera", function(){
+    describe("#isIE|Chrome|Firefox|Safari|Opera|iPhone|iPad", function(){
       it("should return true with the correct browser", function(){
-        var browsers = ["IE", "Chrome", "Firefox", "Safari", "Opera"];
+        var browsers = ["IE", "Chrome", "Firefox", "Safari", "Opera", "iPhone", "iPad"];
         for (var i = 0; i < browsers.length; i++) {
           var browser = browsers[i],
             isBrowser = client["is" + browser]();
