@@ -40,9 +40,17 @@ module.exports = function(config) {
       base: 'SauceLabs',
       browserName: 'microsoftedge'
     },
+    'SL_IPhone': {
+      base: 'SauceLabs',
+      browserName: 'iPhone'
+    },
     'SL_Android': {
       base: 'SauceLabs',
       browserName: 'android'
+    },
+    'SL_IPad': {
+      base: 'SauceLabs',
+      browserName: 'iPad'
     }
   };
 
