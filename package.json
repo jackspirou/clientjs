@@ -19,7 +19,7 @@
     "karma-sauce-launcher": "^0.3.0"
   },
   "scripts": {
-    "test": "karma start karma.conf-ci.js",
+    "test": "istanbul karma start karma.conf-ci.js",
     "postinstall": "node install.js"
   },
   "bugs": {

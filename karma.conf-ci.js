@@ -52,7 +52,6 @@ module.exports = function(config) {
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
     reporters: ['progress', 'dots', 'saucelabs'],
-    preprocessors: { 'src/client.js': ['coverage'] },
 
 
     // web server port
