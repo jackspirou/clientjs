@@ -3,8 +3,8 @@ build:
   environment:
     - SAUCE_USERNAME=$$SAUCE_USERNAME
     - SAUCE_ACCESS_KEY=$$SAUCE_ACCESS_KEY
-    - BUILD_NUMBER=$DRONE_BUILD_NUMBER
   commands:
+    - export BUILD_NUMBER=$DRONE_BUILD_NUMBER
     - npm install --quiet
     - npm install --quiet -g istanbul
     - npm install --quiet -g karma-cli
