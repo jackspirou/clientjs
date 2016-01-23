@@ -54,46 +54,22 @@ module.exports = function(config) {
     'SL_Chrome': {
       base: 'SauceLabs',
       browserName: 'chrome',
-      platform: 'OS X Mountain Lion 10.8',
+      platform: 'OS X 10.8',
     },
     'SL_Chrome': {
       base: 'SauceLabs',
       browserName: 'chrome',
-      platform: 'OS X Mavericks 10.9',
+      platform: 'OS X 10.9',
     },
     'SL_Chrome': {
       base: 'SauceLabs',
       browserName: 'chrome',
-      platform: 'OS X Yosemite 10.10',
+      platform: 'OS X 10.10',
     },
     'SL_Chrome': {
       base: 'SauceLabs',
       browserName: 'chrome',
-      platform: 'OS X El Capitan 10.11',
-    },
-
-    ////
-    // Mac OSX
-    ////
-    'SL_Chrome': {
-      base: 'SauceLabs',
-      browserName: 'chrome',
-      platform: 'OS X Mountain Lion 10.8',
-    },
-    'SL_Chrome': {
-      base: 'SauceLabs',
-      browserName: 'chrome',
-      platform: 'OS X Mavericks 10.9',
-    },
-    'SL_Chrome': {
-      base: 'SauceLabs',
-      browserName: 'chrome',
-      platform: 'OS X Yosemite 10.10',
-    },
-    'SL_Chrome': {
-      base: 'SauceLabs',
-      browserName: 'chrome',
-      platform: 'OS X El Capitan 10.11',
+      platform: 'OS X 10.11',
     },
 
     ////
@@ -111,7 +87,7 @@ module.exports = function(config) {
     'SL_Chrome': {
       base: 'SauceLabs',
       browserName: 'chrome',
-      platform: 'iOS Simulator',
+      platform: 'iOS',
     },
 
     ////
