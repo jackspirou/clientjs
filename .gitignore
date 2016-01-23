@@ -1,6 +1,11 @@
-#
+##
+# DRONE
+##
+.secrets.yml
+
+##
 # NODE
-#
+##
 
 # Logs
 logs

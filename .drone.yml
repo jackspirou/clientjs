@@ -1,5 +1,17 @@
 build:
   image: node:latest
+  environment:
+    - SAUCE_USERNAME=$$SAUCE_USERNAME
+    - SAUCE_ACCESS_KEY=$$SAUCE_ACCESS_KEY
   commands:
-    - npm install
+    - npm install --quiet
+    - npm install --quiet -g istanbul
+    - npm install --quiet -g karma-cli
     - npm test
+
+publish:
+  coverage:
+    token: $$GITHUB_TOKEN
+    include: jackspirou/clientjs/coverage/lcov.info
+    when:
+      branch: master

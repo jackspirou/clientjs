@@ -8,23 +8,25 @@
   "author": "Jack Spirou",
   "version": "0.1.9",
   "devDependencies": {
-    "grunt": "~0.3.17",
-    "karma-firefox-launcher": "~0.1.7",
     "jasmine-core": "~2.4.1",
-    "karma-jasmine": "~0.3.6",
-    "karma-chrome-launcher": "~0.2.2",
     "karma": "~0.13.19",
+    "karma-chrome-launcher": "~0.2.2",
+    "karma-coverage": "^0.5.3",
+    "karma-firefox-launcher": "~0.1.7",
+    "karma-jasmine": "^0.3.6",
+    "karma-opera-launcher": "~0.3.0",
     "karma-safari-launcher": "~0.1.1",
-    "karma-opera-launcher": "~0.3.0"
+    "karma-sauce-launcher": "^0.3.0"
   },
   "scripts": {
-    "test": "jasmine-node specs"
+    "test": "karma start karma.conf-ci.js",
+    "postinstall": "node install.js"
   },
   "bugs": {
     "url": "https://github.com/jackspirou/clientjs/issues"
   },
   "homepage": "https://github.com/jackspirou/clientjs#readme",
-  "main": "grunt.js",
+  "main": "karma.conf-ci.js",
   "keywords": [
     "browser",
     "fingerprint",

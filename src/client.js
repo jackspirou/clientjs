@@ -186,7 +186,7 @@
         getCustomFingerprint: function() {
           var bar = '|';
           var key = "";
-          for (i = 0; i < arguments.length; i++) {
+          for (var i = 0; i < arguments.length; i++) {
             key += arguments[i] + bar;
           }
           return murmurhash3_32_gc(key, 256);
