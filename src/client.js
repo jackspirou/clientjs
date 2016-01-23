@@ -248,7 +248,7 @@
 
         // Is Mobile Safari.  Check if the browser is Safari.
         isMobileSafari: function () {
-            return (/Mobile Safari/i.test(browserData.browser.name));
+            return (/Mobile\sSafari/i.test(browserData.browser.name));
         },
 
         // Is Opera.  Check if the browser is Opera.

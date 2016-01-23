@@ -26,7 +26,4 @@
 
 # Assume compiler.jar exists in the users $HOME/bin directory.
 # Compile using proper settings and include vendor dependiencies.
-java -jar ~/bin/compiler.jar --compilation_level SIMPLE_OPTIMIZATIONS --js=src/vendor/ua-parser.js --js=src/vendor/fontdetect.js --js=src/vendor/swfobject.js --js=src/vendor/murmurhash3.js --js=src/vendor/deployJava.js --js=src/client.js --js_output_file=src/client.min.js
-
-# Copy the compiled source file to the dist (distribution) directory.
-cp src/client.min.js dist/client.min.js
+java -jar ~/bin/compiler.jar --compilation_level SIMPLE_OPTIMIZATIONS --js=src/vendor/ua-parser.js --js=src/vendor/fontdetect.js --js=src/vendor/swfobject.js --js=src/vendor/murmurhash3.js --js=src/vendor/deployJava.js --js=src/client.js --js_output_file=dist/client.min.js
