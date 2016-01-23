@@ -15,103 +15,25 @@ module.exports = function(config) {
 
   // Browsers to run on Sauce Labs
   var customLaunchers = {
-  ////
-  // Chrome
-  ////
-
-    ////
-    // Windows OS
-    ////
     'SL_Chrome': {
       base: 'SauceLabs',
-      browserName: 'chrome',
-      platform: 'Windows XP',
-    },
-    'SL_Chrome': {
-      base: 'SauceLabs',
-      browserName: 'chrome',
-      platform: 'Windows 7',
-    },
-    'SL_Chrome': {
-      base: 'SauceLabs',
-      browserName: 'chrome',
-      platform: 'Windows 8',
-    },
-    'SL_Chrome': {
-      base: 'SauceLabs',
-      browserName: 'chrome',
-      platform: 'Windows 8.1',
-    },
-    'SL_Chrome': {
-      base: 'SauceLabs',
-      browserName: 'chrome',
-      platform: 'Windows 10',
-    },
-
-    ////
-    // Mac OSX
-    ////
-    'SL_Chrome': {
-      base: 'SauceLabs',
-      browserName: 'chrome',
-      platform: 'OS X 10.8',
-    },
-    'SL_Chrome': {
-      base: 'SauceLabs',
-      browserName: 'chrome',
-      platform: 'OS X 10.9',
-    },
-    'SL_Chrome': {
-      base: 'SauceLabs',
-      browserName: 'chrome',
-      platform: 'OS X 10.10',
-    },
-    'SL_Chrome': {
-      base: 'SauceLabs',
-      browserName: 'chrome',
-      platform: 'OS X 10.11',
-    },
-
-    ////
-    // Linux
-    ////
-    'SL_Chrome': {
-      base: 'SauceLabs',
-      browserName: 'chrome',
-      platform: 'Linux',
-    },
-
-    ////
-    // Apple iOS
-    ////
-    'SL_Chrome': {
-      base: 'SauceLabs',
-      browserName: 'chrome',
-      platform: 'iOS',
-    },
-
-    ////
-    // Google Android
-    ////
-    'SL_Chrome': {
-      base: 'SauceLabs',
-      browserName: 'chrome',
-      platform: 'Android',
-    },
-
-
-    'SL_InternetExplorer': {
-      base: 'SauceLabs',
-      browserName: 'internet explorer',
-      version: '10'
+      browserName: 'chrome'
     },
     'SL_FireFox': {
       base: 'SauceLabs',
       browserName: 'firefox',
     },
+    'SL_Safari': {
+      base: 'SauceLabs',
+      browserName: 'safari',
+    },
+    'SL_InternetExplorer': {
+      base: 'SauceLabs',
+      browserName: 'internet explorer',
+      version: '10'
+    },
     'SL_Edge': {
       base: 'SauceLabs',
-      platform: 'Windows 10',
       browserName: 'microsoftedge'
     }
   };
