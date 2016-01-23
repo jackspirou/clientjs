@@ -27,6 +27,10 @@ module.exports = function(config) {
       base: 'SauceLabs',
       browserName: 'safari',
     },
+    'SL_Opera': {
+      base: 'SauceLabs',
+      browserName: 'opera',
+    },
     'SL_InternetExplorer': {
       base: 'SauceLabs',
       browserName: 'internet explorer',
@@ -35,6 +39,10 @@ module.exports = function(config) {
     'SL_Edge': {
       base: 'SauceLabs',
       browserName: 'microsoftedge'
+    },
+    'SL_Android': {
+      base: 'SauceLabs',
+      browserName: 'android'
     }
   };
 
