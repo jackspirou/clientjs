@@ -61,6 +61,7 @@
 //      client.isChrome();
 //      client.isFirefox();
 //      client.isSafari();
+//      client.isMobileSafari();
 //      client.isOpera();
 //
 //      client.getEngine();
@@ -243,6 +244,11 @@
         // Is Safari.  Check if the browser is Safari.
         isSafari: function () {
             return (/Safari/i.test(browserData.browser.name));
+        },
+
+        // Is Mobile Safari.  Check if the browser is Safari.
+        isMobileSafari: function () {
+            return (/Mobile Safari/i.test(browserData.browser.name));
         },
 
         // Is Opera.  Check if the browser is Opera.
