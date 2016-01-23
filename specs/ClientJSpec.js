@@ -61,7 +61,7 @@ describe("ClientJS", function(){
       });
     });
 
-    describe("#isIE|Chrome|Firefox|Safari|Opera|iPhone|iPad", function(){
+    describe("#isIE|Chrome|Firefox|Safari|Opera|Mobile Safari", function(){
       it("should return true with the correct browser", function(){
         var browsers = ["IE", "Chrome", "Firefox", "Safari", "Opera", "Mobile Safari"];
         for (var i = 0; i < browsers.length; i++) {
