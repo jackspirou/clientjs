@@ -175,21 +175,6 @@ module.exports = function(config) {
     }
   };
 
-  'SL_Chrome': {
-      base: 'SauceLabs',
-      platform: 'OS X 10.11',
-      browserName: 'chrome',
-      customData: {
-        awesome: true
-      }
-    },
-    'SL_Firefox': {
-      base: 'SauceLabs',
-      platform: 'OS X 10.11',
-      browserName: 'firefox'
-    },
-  }
-
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
