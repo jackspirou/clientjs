@@ -96,42 +96,7 @@ module.exports = function(config) {
     'SL_Chrome': {
       base: 'SauceLabs',
       browserName: 'chrome',
-      platform: 'Android 2.3',
-    },
-    'SL_Chrome': {
-      base: 'SauceLabs',
-      browserName: 'chrome',
-      platform: 'Android 4.0',
-    },
-    'SL_Chrome': {
-      base: 'SauceLabs',
-      browserName: 'chrome',
-      platform: 'Android 4.1',
-    },
-    'SL_Chrome': {
-      base: 'SauceLabs',
-      browserName: 'chrome',
-      platform: 'Android 4.2',
-    },
-    'SL_Chrome': {
-      base: 'SauceLabs',
-      browserName: 'chrome',
-      platform: 'Android 4.3',
-    },
-    'SL_Chrome': {
-      base: 'SauceLabs',
-      browserName: 'chrome',
-      platform: 'Android 4.4',
-    },
-    'SL_Chrome': {
-      base: 'SauceLabs',
-      browserName: 'chrome',
-      platform: 'Android 5.0',
-    },
-    'SL_Chrome': {
-      base: 'SauceLabs',
-      browserName: 'chrome',
-      platform: 'Android 5.1',
+      platform: 'Android',
     },
 
 
