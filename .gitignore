@@ -2,6 +2,7 @@
 # DRONE
 ##
 .secrets.yml
+sauce.json
 
 ##
 # NODE

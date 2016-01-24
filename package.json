@@ -1,32 +1,12 @@
 {
   "name": "clientjs",
+  "version": "0.1.9",
+  "homepage": "https://clientjs.org",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jackspirou/clientjs.git"
+    "url": "git://github.com/jackspirou/clientjs.git"
   },
   "description": "Device information and digital fingerprinting written in pure JavaScript.",
-  "author": "Jack Spirou",
-  "version": "0.1.9",
-  "devDependencies": {
-    "jasmine-core": "~2.4.1",
-    "karma": "~0.13.19",
-    "karma-chrome-launcher": "~0.2.2",
-    "karma-coverage": "^0.5.3",
-    "karma-firefox-launcher": "~0.1.7",
-    "karma-jasmine": "^0.3.6",
-    "karma-opera-launcher": "~0.3.0",
-    "karma-safari-launcher": "~0.1.1",
-    "karma-sauce-launcher": "^0.3.0"
-  },
-  "scripts": {
-    "test": "istanbul cover karma start karma.conf-ci.js",
-    "postinstall": "node install.js"
-  },
-  "bugs": {
-    "url": "https://github.com/jackspirou/clientjs/issues"
-  },
-  "homepage": "https://github.com/jackspirou/clientjs#readme",
-  "main": "karma.conf-ci.js",
   "keywords": [
     "browser",
     "fingerprint",
@@ -35,5 +15,33 @@
     "pure",
     "javascript"
   ],
-  "license": "GPL-3.0"
+  "author": "Jack Spirou <jack@spirou.io> (http://twitter.com/jack_spirou)",
+  "contributors": [
+    {"name": "Jack Spirou", "url": "http://twitter.com/jack_spirou", "email": "jack@spirou.io"},
+    {"name": "Daniel Montoya", "url": "http://twitter.com/dsmontoya", "email": "dsmontoyam@gmail.com"}
+  ],
+  "bugs": {
+    "url": "https://github.com/jackspirou/clientjs/issues"
+  },
+  "scripts": {
+    "test": "node test.js",
+    "postinstall": "node install.js"
+  },
+  "main": "karma.conf-ci.js",
+  "devDependencies": {
+    "jasmine-core": "~2.4.1",
+    "karma": "^0.13.19",
+    "karma-chrome-launcher": "~0.2.2",
+    "karma-coverage": "^0.5.3",
+    "karma-firefox-launcher": "~0.1.7",
+    "karma-jasmine": "^0.3.6",
+    "karma-opera-launcher": "~0.3.0",
+    "karma-safari-launcher": "~0.1.1",
+    "karma-sauce-launcher": "^0.3.0"
+  },
+  "license": "Apache-2.0",
+  "licenses": [{
+    "type": "Apache-2.0",
+    "url": "http://www.apache.org/licenses/LICENSE-2.0"
+  }]
 }
