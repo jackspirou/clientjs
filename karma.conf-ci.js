@@ -63,11 +63,9 @@ module.exports = function(config) {
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
 
-
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ['jasmine'],
-
 
     // list of files / patterns to load in the browser
     files: [
@@ -75,12 +73,23 @@ module.exports = function(config) {
       'specs/**/*.js'
     ],
 
-
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress', 'dots', 'saucelabs'],
+    reporters: ['progress', 'coverage', 'saucelabs'],
+    preprocessors: {
+      'src/**/*.js': ['coverage']
+    },
 
+    coverageReporter: {
+      // specify a common output directory
+      dir: 'coverage',
+      reporters: [
+        // reporters supporting the `file` property, use `subdir` to directly
+        // output them in the `dir` directory
+        { type: 'lcovonly', subdir: '.', file: 'lcov.info' }
+      ]
+    },
 
     // web server port
     port: 9876,
