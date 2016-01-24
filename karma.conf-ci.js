@@ -74,7 +74,7 @@ module.exports = function(config) {
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
     reporters: ['progress', 'coverage', 'saucelabs'],
     preprocessors: {
-      'src/**/*.js': ['coverage']
+      'src/*.js': ['coverage']
     },
 
     coverageReporter: {
@@ -94,7 +94,7 @@ module.exports = function(config) {
 
     // level of logging
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-    logLevel: config.LOG_INFO,
+    logLevel: config.LOG_DEBUG,
 
     captureTimeout: 180000,
     customLaunchers: customLaunchers,
