@@ -63,11 +63,19 @@ describe("ClientJS", function(){
 
     describe("#isIE|Chrome|Firefox|Safari|Opera|MobileSafari", function(){
       it("should return true with the correct browser", function(){
-        var browsers = ["IE", "Chrome", "Firefox", "Safari", "Opera", "MobileSafari"];
-        for (var i = 0; i < browsers.length; i++) {
-          var browser = browsers[i],
+        var tests = [
+          {"browser":"IE", "result":"IE"},
+          {"browser":"Chrome", "result":"Chrome"},
+          {"browser":"Firefox", "result":"Firefox"},
+          {"browser":"Safari", "result":"Safari"},
+          {"browser":"Opera", "result":"Opera"},
+          {"browser":"MobileSafari", "result":"Mobile Safari"}
+        ];
+        for (var i = 0; i < tests.length; i++) {
+          var browser = tests[i].browser,
+               result = tests[i].result,
             isBrowser = client["is" + browser]();
-          if (client.getBrowser() == browser) {
+          if (client.getBrowser() == result) {
             expect(isBrowser).toBeTruthy()
           } else expect(isBrowser).toBeFalsy()
         }
