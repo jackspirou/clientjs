@@ -56,6 +56,10 @@ module.exports = function(config) {
 
   config.set({
 
+    sauceLabs: {
+      testName: 'ClientJS'
+    },
+
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
 
@@ -87,9 +91,6 @@ module.exports = function(config) {
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
     logLevel: config.LOG_INFO,
 
-    sauceLabs: {
-      testName: 'Karma and Sauce Labs demo'
-    },
     captureTimeout: 120000,
     customLaunchers: customLaunchers,
 
