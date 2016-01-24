@@ -427,7 +427,7 @@
 
         // Get Screen Print.  Return a string containing screen information.
         getScreenPrint: function () {
-            return "Current Resolution: " + this.getCurrentResolution() + ", Avaiable Resolution: " + this.getAvailableResolution() + ", Color Depth: " + this.getColorDepth() + ", Device XDPI: " + this.getDeviceXDPI() + ", Device YDPI: " + this.getDeviceYDPI();
+            return "Current Resolution: " + this.getCurrentResolution() + ", Available Resolution: " + this.getAvailableResolution() + ", Color Depth: " + this.getColorDepth() + ", Device XDPI: " + this.getDeviceXDPI() + ", Device YDPI: " + this.getDeviceYDPI();
         },
 
         // Get Color Depth.  Return a string containing the color depth.
