@@ -1,5 +1,5 @@
 # Drone
-secrets.yml
+.secrets.yml
 
 # OS
 .DS_Store

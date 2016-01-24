@@ -105,6 +105,7 @@
   									<li><a href="#Browser-isFirefox">isFirefox()</a></li>
   									<li><a href="#Browser-isSafari">isSafari()</a></li>
   									<li><a href="#Browser-isOpera">isOpera()</a></li>
+										<li><a href="#Browser-isMobileSafari">isMobileSafari()</a></li>
   								</ul>
   							</li>
   							<li>
@@ -644,6 +645,25 @@
   						<div class="bs-callout bs-callout-info">
   							<h4>Your Result:</h4>
   							<p id="isOpera"></p>
+  						</div>
+							<br />
+
+							<h3 id="Browser-isMobileSafari">isMobileSafari()</h3>
+  						<p class="lead">Is MobileSafari.  Check if the browser is Mobile Safari.</p>
+  						<div class="highlight"><pre><code class="html">
+<span class="nt">&lt;script&gt;</span>
+
+	<span class="nt">var client = <span class="s">new ClientJS();</span> // Create A New Client Object</span>
+
+	<span class="nt">var isMobileSafari = <span class="s">client.isMobileSafari();</span> // Check For Mobile Safari</span>
+
+	<span class="nt">console.log( isMobileSafari );</span>
+
+<span class="nt">&lt;/script&gt;</span>
+  						</code></pre></div>
+  						<div class="bs-callout bs-callout-info">
+  							<h4>Your Result:</h4>
+  							<p id="isMobileSafari"></p>
   						</div>
   					</div>
 
@@ -1789,6 +1809,7 @@
     	$('#isFirefox').text(client.isFirefox());
     	$('#isSafari').text(client.isSafari());
     	$('#isOpera').text(client.isOpera());
+			$('#isMobileSafari').text(client.isMobileSafari());
 
     	$('#getEngine').text(client.getEngine());
     	$('#getEngineVersion').text(client.getEngineVersion());
