@@ -201,4 +201,4 @@ $ karma start
 Thanks for contribute to ClientJS! Please report any bug [here](https://github.com/jackspirou/clientjs/issues).
 
 ## LICENSE
-This project is using the GNU GENERAL PUBLIC LICENSE. It is included in the project source code.
+This project is using the Apache LICENSE Version 2.0. It is included in the project source code.
