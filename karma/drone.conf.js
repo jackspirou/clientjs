@@ -36,6 +36,10 @@ module.exports = function(config) {
       browserName: 'internet explorer',
       version: '10'
     },
+    'SL_Edge': {
+      base: 'SauceLabs',
+      browserName: 'microsoftedge'
+    },
     'SL_IPhone': {
       base: 'SauceLabs',
       browserName: 'iPhone'
@@ -57,7 +61,7 @@ module.exports = function(config) {
     },
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '',
+    basePath: '../',
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
@@ -72,20 +76,7 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress', 'coverage', 'saucelabs'],
-    preprocessors: {
-      'src/*.js': ['coverage']
-    },
-
-    coverageReporter: {
-      // specify a common output directory
-      dir: 'coverage',
-      reporters: [
-        // reporters supporting the `file` property, use `subdir` to directly
-        // output them in the `dir` directory
-        { type: 'lcovonly', subdir: '.', file: 'lcov.info' }
-      ]
-    },
+    reporters: ['progress', 'saucelabs'],
 
     // web server port
     port: 9876,

@@ -17,15 +17,24 @@
   ],
   "author": "Jack Spirou <jack@spirou.io> (http://twitter.com/jack_spirou)",
   "contributors": [
-    {"name": "Jack Spirou", "url": "http://twitter.com/jack_spirou", "email": "jack@spirou.io"},
-    {"name": "Daniel Montoya", "url": "http://twitter.com/dsmontoya", "email": "dsmontoyam@gmail.com"}
+    {
+      "name": "Jack Spirou",
+      "url": "http://twitter.com/jack_spirou",
+      "email": "jack@spirou.io"
+    },
+    {
+      "name": "Daniel Montoya",
+      "url": "http://twitter.com/dsmontoya",
+      "email": "dsmontoyam@gmail.com"
+    }
   ],
   "bugs": {
     "url": "https://github.com/jackspirou/clientjs/issues"
   },
   "scripts": {
+    "postinstall": "node install.js",
     "test": "node test.js",
-    "postinstall": "node install.js"
+    "posttest": "./node_modules/karma/bin/karma start karma/coverage.conf.js"
   },
   "main": "karma.conf-ci.js",
   "devDependencies": {
@@ -36,12 +45,16 @@
     "karma-firefox-launcher": "~0.1.7",
     "karma-jasmine": "^0.3.6",
     "karma-opera-launcher": "~0.3.0",
+    "karma-phantomjs-launcher": "^0.2.3",
     "karma-safari-launcher": "~0.1.1",
-    "karma-sauce-launcher": "^0.3.0"
+    "karma-sauce-launcher": "^0.3.0",
+    "phantomjs": "^1.9.19"
   },
   "license": "Apache-2.0",
-  "licenses": [{
-    "type": "Apache-2.0",
-    "url": "http://www.apache.org/licenses/LICENSE-2.0"
-  }]
+  "licenses": [
+    {
+      "type": "Apache-2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  ]
 }
