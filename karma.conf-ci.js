@@ -36,10 +36,6 @@ module.exports = function(config) {
       browserName: 'internet explorer',
       version: '10'
     },
-    'SL_Edge': {
-      base: 'SauceLabs',
-      browserName: 'microsoftedge'
-    },
     'SL_IPhone': {
       base: 'SauceLabs',
       browserName: 'iPhone'
@@ -61,7 +57,7 @@ module.exports = function(config) {
     },
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '../',
+    basePath: '',
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
