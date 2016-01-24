@@ -61,23 +61,19 @@ describe("ClientJS", function(){
       });
     });
 
-    describe("#isIE|Chrome|Firefox|Safari|Opera|MobileSafari", function(){
+    describe("#isIE|Chrome|Firefox|Safari|Opera", function(){
       it("should return true with the correct browser", function(){
-        var tests = [
-          {"browser":"IE", "result":"IE"},
-          {"browser":"Chrome", "result":"Chrome"},
-          {"browser":"Firefox", "result":"Firefox"},
-          {"browser":"Safari", "result":"Safari"},
-          {"browser":"Opera", "result":"Opera"},
-          {"browser":"MobileSafari", "result":"Mobile Safari"}
-        ];
-        for (var i = 0; i < tests.length; i++) {
-          var browser = tests[i].browser,
-               result = tests[i].result,
+        var browsers = ["IE", "Chrome", "Firefox", "Safari", "Opera"];
+        for (var i = 0; i < browsers.length; i++) {
+          var browser = browsers[i],
             isBrowser = client["is" + browser]();
-          if (client.getBrowser() == result) {
+          if (client.getBrowser() == browser) {
             expect(isBrowser).toBeTruthy()
-          } else expect(isBrowser).toBeFalsy()
+          } else if (client.getBrowser() == "Mobile Safari" && browser == "Safari") {
+            expect(isBrowser).toBeTruthy()
+          }else{
+            expect(isBrowser).toBeFalsy()
+          }
         }
       });
     });
