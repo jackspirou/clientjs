@@ -1,6 +1,6 @@
 {
   "name": "clientjs",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "main": ["dist/client.min.js"],
   "ignore": [
     ".travis.yml",

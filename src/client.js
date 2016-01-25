@@ -1,7 +1,7 @@
 //
 // ClientJS.  An easy to use, simple, and flexible client information library written in JavaScript.
 //
-//      Version: 0.1.9
+//      Version: 0.1.10
 //
 //      Original Author: Jack Spirou
 //      Original Data: 5 Nov 2013
@@ -152,7 +152,7 @@
 
         // Get Software Version.  Return a string containing this software version number.
         getSoftwareVersion: function () {
-            var version = "ClientJS 0.1.9";
+            var version = "ClientJS 0.1.10";
             return version;
         },
 
