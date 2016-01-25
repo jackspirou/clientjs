@@ -17,7 +17,7 @@ Below are some features that make ClientJS different from other fingerprinting l
 You can find more documentation and demos on each method at [clientjs.org](https://clientjs.org/).
 
 ## Installation
-To use ClientJS, simply include the file found at `dist/client.min.js`.
+To use ClientJS, simply include `dist/client.min.js`.
 
 ClientJS is available for download via [bower](http://bower.io/search/?q=clientjs) and [npm](https://www.npmjs.com/package/clientjs).
 
