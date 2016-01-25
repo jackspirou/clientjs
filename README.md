@@ -4,8 +4,6 @@
 
 [![Sauce Test Status](https://saucelabs.com/browser-matrix/clientjs.svg)](https://saucelabs.com/u/clientjs)
 
-> The Windows 10 EDGE browser passes our tests, but is not shown above due to current incompatibilities with the `karma-coverage` plugin at [github.com/karma-runner/karma-coverage](https://github.com/karma-runner/karma-coverage).
-
 ClientJS is a JavaScript library that makes digital fingerprinting easy, while also exposing all the browser data-points used in generating fingerprints.
 
 If you want to fingerprint browsers, you are **_probably_** also interested in other client-based information, such as screen resolution, operating system, browser type, device type, and much more.

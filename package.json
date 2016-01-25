@@ -32,9 +32,10 @@
     "url": "https://github.com/jackspirou/clientjs/issues"
   },
   "scripts": {
-    "postinstall": "node install.js",
-    "test": "node test.js",
-    "posttest": "./node_modules/karma/bin/karma start karma/coverage.conf.js"
+    "postinstall": "node scripts/install.js",
+    "test": "node scripts/test.js",
+    "posttest": "./node_modules/karma/bin/karma start karma/coverage.conf.js",
+    "prepublish": "sh scripts/build.sh"
   },
   "main": "karma.conf-ci.js",
   "devDependencies": {
