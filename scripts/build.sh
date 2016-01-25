@@ -1,4 +1,8 @@
 #
+# NOTE: THIS FILE HAS BEEN DEPRECATED, MINIFICATIONS ARE DONE NOW VIA GULP. 
+#
+
+#
 # File: build.sh
 #
 # This script uses the Google Closure Compiler to build the client.min.js file.

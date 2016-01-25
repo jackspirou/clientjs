@@ -35,17 +35,12 @@
     "postinstall": "node scripts/install.js",
     "test": "node scripts/test.js",
     "posttest": "./node_modules/karma/bin/karma start karma/aircover.conf.js",
-    "prepublish": "sh scripts/build.sh"
+    "prepublish": "./node_modules/gulp/bin/gulp.js"
   },
   "main": "dist/client.min.js",
   "devDependencies": {
-    "eslint": "^0.14.1",
-    "gulp": "^3.8.11",
+    "gulp": "^3.9.0",
     "gulp-closure-compiler": "^0.4.0",
-    "gulp-concat": "^2.6.0",
-    "gulp-eslint": "^0.4.2",
-    "gulp-minify": "0.0.5",
-    "gulp-rename": "^1.2.2",
     "jasmine-core": "~2.4.1",
     "karma": "^0.13.19",
     "karma-chrome-launcher": "~0.2.2",
