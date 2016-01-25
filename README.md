@@ -10,26 +10,24 @@ If you want to fingerprint browsers, you are **_probably_** also interested in o
 
 Below are some features that make ClientJS different from other fingerprinting libraries:
 - It's pure native JavaScript
-- It's decently lightweight at 43 KB
+- It's decently lightweight at ~45 KB
 - All user data points are available by design, not just the 32bit integer fingerprint
 
-## Docs/Demo
-You can find more documentation on ClientJS at [clientjs.org](https://clientjs.org/). Also there is an example/demo.
+## Documentation and Demos
+You can find more documentation and demos on each method at [clientjs.org](https://clientjs.org/).
 
 ## Installation
-To use ClientJS, simply include the `client.min.js` file found in the `dist` directory, so `dist/client.min.js` when your in the project root directory.
+To use ClientJS, simply include the file found at `dist/client.min.js`.
 
-ClientJS is avalaible via [bower](http://bower.io/search/?q=clientjs) and [npm](https://www.npmjs.com/package/clientjs).
+ClientJS is available for download via [bower](http://bower.io/search/?q=clientjs) and [npm](https://www.npmjs.com/package/clientjs).
 
 ### npm
-ClientJS is available via npm.
 
 ```shell
 npm install clientjs
 ```
 
 ### Bower
-ClientJS is also available as a bower package.
 
 ```shell
 bower install clientjs
