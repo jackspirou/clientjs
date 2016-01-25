@@ -36,11 +36,15 @@ bower install clientjs
 ```
 
 ## Fingerprinting
-Digital fingerprints are based on device/browser settings. They allow you to make an "educated guess" about the identify of a new or returning visitor. By taking multiple data points, combining them, and representing them as a number, you can be surprisingly accurate at recognizing not only browsers and devices, but also individual users.
+Digital fingerprints are based on device/browser settings.
+They allow you to make an "educated guess" about the identify of a new or returning visitor.
+By taking multiple data points, combining them, and representing them as a number, you can be surprisingly accurate at recognizing not only browsers and devices, but also individual users.
 
-This is useful for identifying users or devices without cookies or sessions. It is not a full proof technique, but it has been shown to be statistically significant at accurately identifying devices.
+This is useful for identifying users or devices without cookies or sessions.
+It is not a full proof technique, but it has been shown to be statistically significant at accurately identifying devices.
 
-Simply create a new ClientJS object. Then call the `getFingerprint()` method which will return the browser/device fingerprint as a 32bit integer hash ID.
+Simply create a new ClientJS object.
+Then call the `getFingerprint()` method which will return the browser/device fingerprint as a 32bit integer hash ID.
 
 Below is an example of how to generate and display a fingerprint:
 
@@ -161,7 +165,8 @@ You can find documentation on each method at [clientjs.org](https://clientjs.org
 ```
 
 ## Shoulders of Giants
-It is important to note this project owes much to other pieces great works. We had the advantage of observing how others had approached this problem.
+It is important to note this project owes much to other pieces great works.
+We had the advantage of observing how others had approached this problem.
 
 Built Upon:
 - https:github.com/Valve/fingerprintjs
