@@ -41,6 +41,7 @@
   "devDependencies": {
     "eslint": "^0.14.1",
     "gulp": "^3.8.11",
+    "gulp-closure-compiler": "^0.4.0",
     "gulp-concat": "^2.6.0",
     "gulp-eslint": "^0.4.2",
     "gulp-minify": "0.0.5",

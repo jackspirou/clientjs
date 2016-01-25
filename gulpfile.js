@@ -2,7 +2,9 @@ var gulp = require("gulp"),
     eslint = require("gulp-eslint"),
     rename = require("gulp-rename"),
     minify = require("gulp-minify"),
-    concat = require('gulp-concat');
+    concat = require('gulp-concat'),
+    closureCompiler = require('gulp-closure-compiler');
+
 
 gulp.task("lint", function() {
   return gulp
@@ -14,12 +16,17 @@ gulp.task("lint", function() {
 
 gulp.task('compress', function() {
   gulp.src("src/**/*.js")
-    .pipe(concat('client.js'))
-    .pipe(minify({ext:{min:'.min.js'}}))
-    .pipe(gulp.dest('dist'))
+    .pipe(closureCompiler({
+      // compilerPath is optional, since google-closure-compiler is a dependency
+      // compilerPath: 'bower_components/closure-compiler/lib/vendor/compiler.jar',
+      fileName: 'client.min.js',
+      compilerFlags: {compilation_level: 'SIMPLE_OPTIMIZATIONS'}
+    }))
+    .pipe(gulp.dest('dist'));
 });
 
-gulp.task("default", ["lint", "compress"], function() {});
+
+gulp.task("default", ["compress"], function() {});
 
 /*
 gulp.task("minify", function() {
