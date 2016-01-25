@@ -159,7 +159,7 @@ You can find documentation on each method at [clientjs.org](https://clientjs.org
 ```
 
 ## Shoulders of Giants
-It is important to note that this project owes much to many other pieces of work. I had the advantage of searching through how many others have approached this problem before me.
+It is important to note this project owes much to other pieces great works. We had the advantage of observing how others had approached this problem.
 
 Built Upon:
 - https:github.com/Valve/fingerprintjs
@@ -167,7 +167,7 @@ Built Upon:
 - detectmobilebrowsers.com
 
 ## Vendor Code
-All dependencies are automatically included into `client.min.js` when the `build.sh` file compiles this project. They do not need to be included separately.
+All dependencies are included into `client.min.js` when the `build.sh` bash file minifies the project. Vendored dependencies should not be included separately.
 
 Dependencies Include:
 - ua-parser.js
@@ -176,9 +176,9 @@ Dependencies Include:
 - murmurhash3.js
 
 ## Contributing
-Begin to colaborate by [forking](https://help.github.com/articles/fork-a-repo/) this repository.
+Collaborate by [forking](https://help.github.com/articles/fork-a-repo/) this project and sending a Pull Request this way.
 
-Once you have cloned the project, install all node dependencies. ClientJS uses [Karma](https://karma-runner.github.io/0.13/index.html) as its testing environment.
+Once cloned, install all dependencies. ClientJS uses [Karma](https://karma-runner.github.io/0.13/index.html) as its testing environment.
 
 ```shell
 # Install dependencies
@@ -194,7 +194,7 @@ Run Karma and enjoy coding!
 $ karma start
 ```
 
-Thanks for contribute to ClientJS! Please report any bug [here](https://github.com/jackspirou/clientjs/issues).
+Thanks for contributing to ClientJS! Please report any bug [here](https://github.com/jackspirou/clientjs/issues).
 
 ## LICENSE
 This project is using the Apache LICENSE Version 2.0. It is included in the project source code.
