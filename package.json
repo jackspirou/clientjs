@@ -34,7 +34,7 @@
   "scripts": {
     "postinstall": "node scripts/install.js",
     "test": "node scripts/test.js",
-    "posttest": "./node_modules/karma/bin/karma start karma/coverage.conf.js",
+    "posttest": "./node_modules/karma/bin/karma start karma/aircover.conf.js",
     "prepublish": "sh scripts/build.sh"
   },
   "main": "karma.conf-ci.js",
