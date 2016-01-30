@@ -15,15 +15,17 @@ Below are some features that make ClientJS different from other fingerprinting l
 - It's decently lightweight at ~45 KB
 - All user data points are available by design, not just the 32bit integer fingerprint
 
-## Documentation and Demos
-You can find more documentation and demos on each method at [clientjs.org](https://clientjs.org/).
+## Documentation, Examples, and Demos
+You can find documentation, examples, and demos on each method at [clientjs.org](https://clientjs.org/).
 
 ## Installation
+
+### Manually
 To use ClientJS, simply include `dist/client.min.js`.
 
 ClientJS is available for download via [bower](http://bower.io/search/?q=clientjs) and [npm](https://www.npmjs.com/package/clientjs).
 
-### npm
+### NPM
 
 ```shell
 npm install clientjs
@@ -191,7 +193,7 @@ Once cloned, install all dependencies. ClientJS uses [Karma](https://karma-runne
 # Install dependencies
 $ npm install
 
-# If you want tu run karma from the command line
+# If you want to run karma from the command line
 $ npm install -g karma-cli
 ```
 
@@ -200,6 +202,9 @@ Run Karma and enjoy coding!
 ```shell
 $ karma start
 ```
+
+### Style Guide
+This project attempts to follow [this style guide](https://github.com/airbnb/javascript).
 
 Thanks for contributing to ClientJS! Please report any bug [here](https://github.com/jackspirou/clientjs/issues).
 
