@@ -1,4 +1,5 @@
-var spawn = require('child_process').spawn, karma;
+var spawn = require('child_process').spawn;
+var karma;
 
 if (process.env.CI || process.env.DRONE) {
   if (process.env.DRONE_BRANCH == 'master') {
