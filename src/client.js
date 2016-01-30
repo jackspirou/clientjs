@@ -1,14 +1,15 @@
 // ClientJS.  An easy to use, simple, and flexible client information library written in JavaScript.
 
 // Anonymous auto JavaScript function execution.
-(function(scope) {
+(function (scope) {
   'use strict';
 
-  let browserData; // Global user agent browser object.
-  let fontDetective; // Global font detective object.
+  const fontArray = ['Abadi MT Condensed Light', 'Adobe Fangsong Std', 'Adobe Hebrew', 'Adobe Ming Std', 'Agency FB', 'Aharoni', 'Andalus', 'Angsana New', 'AngsanaUPC', 'Aparajita', 'Arab', 'Arabic Transparent', 'Arabic Typesetting', 'Arial Baltic', 'Arial Black', 'Arial CE', 'Arial CYR', 'Arial Greek', 'Arial TUR', 'Arial', 'Batang', 'BatangChe', 'Bauhaus 93', 'Bell MT', 'Bitstream Vera Serif', 'Bodoni MT', 'Bookman Old Style', 'Braggadocio', 'Broadway', 'Browallia New', 'BrowalliaUPC', 'Calibri Light', 'Calibri', 'Californian FB', 'Cambria Math', 'Cambria', 'Candara', 'Castellar', 'Casual', 'Centaur', 'Century Gothic', 'Chalkduster', 'Colonna MT', 'Comic Sans MS', 'Consolas', 'Constantia', 'Copperplate Gothic Light', 'Corbel', 'Cordia New', 'CordiaUPC', 'Courier New Baltic', 'Courier New CE', 'Courier New CYR', 'Courier New Greek', 'Courier New TUR', 'Courier New', 'DFKai-SB', 'DaunPenh', 'David', 'DejaVu LGC Sans Mono', 'Desdemona', 'DilleniaUPC', 'DokChampa', 'Dotum', 'DotumChe', 'Ebrima', 'Engravers MT', 'Eras Bold ITC', 'Estrangelo Edessa', 'EucrosiaUPC', 'Euphemia', 'Eurostile', 'FangSong', 'Forte', 'FrankRuehl', 'Franklin Gothic Heavy', 'Franklin Gothic Medium', 'FreesiaUPC', 'French Script MT', 'Gabriola', 'Gautami', 'Georgia', 'Gigi', 'Gisha', 'Goudy Old Style', 'Gulim', 'GulimChe', 'GungSeo', 'Gungsuh', 'GungsuhChe', 'Haettenschweiler', 'Harrington', 'Hei S', 'HeiT', 'Heisei Kaku Gothic', 'Hiragino Sans GB', 'Impact', 'Informal Roman', 'IrisUPC', 'Iskoola Pota', 'JasmineUPC', 'KacstOne', 'KaiTi', 'Kalinga', 'Kartika', 'Khmer UI', 'Kino MT', 'KodchiangUPC', 'Kokila', 'Kozuka Gothic Pr6N', 'Lao UI', 'Latha', 'Leelawadee', 'Levenim MT', 'LilyUPC', 'Lohit Gujarati', 'Loma', 'Lucida Bright', 'Lucida Console', 'Lucida Fax', 'Lucida Sans Unicode', 'MS Gothic', 'MS Mincho', 'MS PGothic', 'MS PMincho', 'MS Reference Sans Serif', 'MS UI Gothic', 'MV Boli', 'Magneto', 'Malgun Gothic', 'Mangal', 'Marlett', 'Matura MT Script Capitals', 'Meiryo UI', 'Meiryo', 'Menlo', 'Microsoft Himalaya', 'Microsoft JhengHei', 'Microsoft New Tai Lue', 'Microsoft PhagsPa', 'Microsoft Sans Serif', 'Microsoft Tai Le', 'Microsoft Uighur', 'Microsoft YaHei', 'Microsoft Yi Baiti', 'MingLiU', 'MingLiU-ExtB', 'MingLiU_HKSCS', 'MingLiU_HKSCS-ExtB', 'Miriam Fixed', 'Miriam', 'Mongolian Baiti', 'MoolBoran', 'NSimSun', 'Narkisim', 'News Gothic MT', 'Niagara Solid', 'Nyala', 'PMingLiU', 'PMingLiU-ExtB', 'Palace Script MT', 'Palatino Linotype', 'Papyrus', 'Perpetua', 'Plantagenet Cherokee', 'Playbill', 'Prelude Bold', 'Prelude Condensed Bold', 'Prelude Condensed Medium', 'Prelude Medium', 'PreludeCompressedWGL Black', 'PreludeCompressedWGL Bold', 'PreludeCompressedWGL Light', 'PreludeCompressedWGL Medium', 'PreludeCondensedWGL Black', 'PreludeCondensedWGL Bold', 'PreludeCondensedWGL Light', 'PreludeCondensedWGL Medium', 'PreludeWGL Black', 'PreludeWGL Bold', 'PreludeWGL Light', 'PreludeWGL Medium', 'Raavi', 'Rachana', 'Rockwell', 'Rod', 'Sakkal Majalla', 'Sawasdee', 'Script MT Bold', 'Segoe Print', 'Segoe Script', 'Segoe UI Light', 'Segoe UI Semibold', 'Segoe UI Symbol', 'Segoe UI', 'Shonar Bangla', 'Showcard Gothic', 'Shruti', 'SimHei', 'SimSun', 'SimSun-ExtB', 'Simplified Arabic Fixed', 'Simplified Arabic', 'Snap ITC', 'Sylfaen', 'Symbol', 'Tahoma', 'Times New Roman Baltic', 'Times New Roman CE', 'Times New Roman CYR', 'Times New Roman Greek', 'Times New Roman TUR', 'Times New Roman', 'TlwgMono', 'Traditional Arabic', 'Trebuchet MS', 'Tunga', 'Tw Cen MT Condensed Extra Bold', 'Ubuntu', 'Umpush', 'Univers', 'Utopia', 'Utsaah', 'Vani', 'Verdana', 'Vijaya', 'Vladimir Script', 'Vrinda', 'Webdings', 'Wide Latin', 'Wingdings'];
+  let browserData;
+  let fontDetective;
 
   // ClientJS constructor which sets the browserData object and returs the client object.
-  var ClientJS = function() {
+  const ClientJS = function () {
     let parser = new(window.UAParser || exports.UAParser);
     browserData = parser.getResult();
     fontDetective = new Detector();
@@ -18,13 +19,11 @@
   // ClientJS prototype which contains all methods.
   ClientJS.prototype = {
 
-    //
-    // MAIN METHODS
-    //
+    /* ClientJS METHODS */
 
     // Get Software Version.  Return a string containing this software version number.
     getSoftwareVersion() {
-      return "0.1.11";
+      return '0.1.11';
     },
 
     // Get Browser Data.  Return an object containing browser user agent.
@@ -57,16 +56,15 @@
     // Get Custom Fingerprint.  Take a string of datapoints and eturn a 32-bit integer representing the browsers fingerprint.
     getCustomFingerprint() {
       const bar = '|';
-      let key = "";
+      let key = '';
       for (var i = 0; i < arguments.length; i++) {
         key += arguments[i] + bar;
       }
+
       return murmurhash3_32_gc(key, 256);
     },
 
-    //
-    // USER AGENT METHODS
-    //
+    /* USER AGENT METHODS */
 
     // Get User Agent.  Return a string containing unparsed user agent.
     getUserAgent() {
@@ -78,9 +76,7 @@
       return browserData.ua.toLowerCase();
     },
 
-    //
-    // BROWSER METHODS
-    //
+    /* BROWSER METHODS */
 
     // Get Browser.  Return a string containing the browser name.
     getBrowser() {
@@ -127,7 +123,7 @@
       return (/Opera/i.test(browserData.browser.name));
     },
 
-    /
+    //
     // ENGINE METHODS
     //
 
@@ -226,28 +222,22 @@
 
     // Is Mobile.  Check if the browser is on an android mobile device.
     isMobileAndroid() {
-      if (browserData.ua.match(/Android/i)) {
-        return true;
-      }
-      return false;
+      return browserData.ua.match(/Android/i);
     },
 
     // Is Mobile Opera.  Check if the browser is on an opera mobile device.
     isMobileOpera() {
-      if (browserData.ua.match(/Opera Mini/i)) {
-        return true;
-      }
-      return false;
+      return browserData.ua.match(/Opera Mini/i);
     },
 
     // Is Mobile Windows.  Check if the browser is on a windows mobile device.
     isMobileWindows() {
-      return browserData.ua.match(/IEMobile/i)
+      return browserData.ua.match(/IEMobile/i);
     },
 
     // Is Mobile BlackBerry.  Check if the browser is on a blackberry mobile device.
     isMobileBlackBerry() {
-      return browserData.ua.match(/BlackBerry/i)
+      return browserData.ua.match(/BlackBerry/i);
     },
 
     //
@@ -256,22 +246,22 @@
 
     // Is Mobile iOS.  Check if the browser is on an Apple iOS device.
     isMobileIOS() {
-      return browserData.ua.match(/iPhone|iPad|iPod/i)
+      return browserData.ua.match(/iPhone|iPad|iPod/i);
     },
 
     // Is Iphone.  Check if the browser is on an Apple iPhone.
     isIphone() {
-      return browserData.ua.match(/iPhone/i)
+      return browserData.ua.match(/iPhone/i);
     },
 
     // Is Ipad.  Check if the browser is on an Apple iPad.
     isIpad() {
-      return browserData.ua.match(/iPad/i)
+      return browserData.ua.match(/iPad/i);
     },
 
     // Is Ipod.  Check if the browser is on an Apple iPod.
     isIpod() {
-      return browserData.ua.match(/iPod/i)
+      return browserData.ua.match(/iPod/i);
     },
 
     //
@@ -280,7 +270,7 @@
 
     // Get Screen Print.  Return a string containing screen information.
     getScreenPrint() {
-      return "Current Resolution: " + this.getCurrentResolution() + ", Available Resolution: " + this.getAvailableResolution() + ", Color Depth: " + this.getColorDepth() + ", Device XDPI: " + this.getDeviceXDPI() + ", Device YDPI: " + this.getDeviceYDPI();
+      return 'Current Resolution: ' + this.getCurrentResolution() + ', Available Resolution: ' + this.getAvailableResolution() + ', Color Depth: ' + this.getColorDepth() + ', Device XDPI: ' + this.getDeviceXDPI() + ', Device YDPI: ' + this.getDeviceYDPI();
     },
 
     // Get Color Depth.  Return a string containing the color depth.
@@ -290,12 +280,12 @@
 
     // Get Current Resolution.  Return a string containing the current resolution.
     getCurrentResolution() {
-      return screen.width + "x" + screen.height;
+      return screen.width + 'x' + screen.height;
     },
 
     // Get Available Resolution.  Return a string containing the available resolution.
     getAvailableResolution() {
-      return screen.availWidth + "x" + screen.availHeight;
+      return screen.availWidth + 'x' + screen.availHeight;
     },
 
     // Get Device XPDI.  Return a string containing the device XPDI.
@@ -314,11 +304,12 @@
 
     // Get Plugins.  Return a string containing a list of installed plugins.
     getPlugins() {
-      let pluginsList = "";
-      for (let i = 0; i < navigator.plugins.length-1; i++) {
-        pluginsList += navigator.plugins[i].name + ", ";
+      let pluginsList = '';
+      for (let i = 0; i < navigator.plugins.length - 1; i++) {
+        pluginsList += navigator.plugins[i].name + ', ';
       }
-      pluginsList += navigator.plugins[navigator.plugins.length-1].name;
+
+      pluginsList += navigator.plugins[navigator.plugins.length - 1].name;
       return pluginsList;
     },
 
@@ -334,10 +325,11 @@
 
     // Is Flash.  Check if Flash is installed.
     isFlash() {
-      const objPlugin = navigator.plugins["Shockwave Flash"];
+      const objPlugin = navigator.plugins['Shockwave Flash'];
       if (objPlugin) {
         return true;
       }
+
       return false;
     },
 
@@ -345,27 +337,30 @@
     getFlashVersion() {
       if (this.isFlash()) {
         objPlayerVersion = swfobject.getFlashPlayerVersion();
-        return objPlayerVersion.major + "." + objPlayerVersion.minor + "." + objPlayerVersion.release;
+        return objPlayerVersion.major + '.' + objPlayerVersion.minor + '.' + objPlayerVersion.release;
       }
-      return "";
+
+      return '';
     },
 
     // Is Silverlight.  Check if Silverlight is installed.
     isSilverlight() {
-      const objPlugin = navigator.plugins["Silverlight Plug-In"];
+      const objPlugin = navigator.plugins['Silverlight Plug-In'];
       if (objPlugin) {
         return true;
       }
+
       return false;
     },
 
     // Get Silverlight Version.  Return a string containing the Silverlight Version.
     getSilverlightVersion() {
       if (this.isSilverlight()) {
-        const objPlugin = navigator.plugins["Silverlight Plug-In"];
+        const objPlugin = navigator.plugins['Silverlight Plug-In'];
         return objPlugin.description;
       }
-      return "";
+
+      return '';
     },
 
     //
@@ -377,16 +372,18 @@
       if (navigator.mimeTypes.length) {
         return true;
       }
+
       return false;
     },
 
     // Get Mime Types.  Return a string containing a list of installed mime types.
     getMimeTypes() {
-      let mimeTypeList = "";
+      let mimeTypeList = '';
 
       for (let i = 0; i < navigator.mimeTypes.length - 1; i++) {
-          mimeTypeList += navigator.mimeTypes[i].description + ", ";
+        mimeTypeList += navigator.mimeTypes[i].description + ', ';
       }
+
       mimeTypeList += navigator.mimeTypes[navigator.mimeTypes.length - 1].description;
       return mimeTypeList;
     },
@@ -396,15 +393,13 @@
     //
 
     // Is Font.  Check if a font is installed.
-    isFont: function(font) {
+    isFont(font) {
       return fontDetective.detect(font);
     },
 
     // Get Fonts.  Return a string containing a list of installed fonts.
     getFonts() {
-      const fontArray = ["Abadi MT Condensed Light", "Adobe Fangsong Std", "Adobe Hebrew", "Adobe Ming Std", "Agency FB", "Aharoni", "Andalus", "Angsana New", "AngsanaUPC", "Aparajita", "Arab", "Arabic Transparent", "Arabic Typesetting", "Arial Baltic", "Arial Black", "Arial CE", "Arial CYR", "Arial Greek", "Arial TUR", "Arial", "Batang", "BatangChe", "Bauhaus 93", "Bell MT", "Bitstream Vera Serif", "Bodoni MT", "Bookman Old Style", "Braggadocio", "Broadway", "Browallia New", "BrowalliaUPC", "Calibri Light", "Calibri", "Californian FB", "Cambria Math", "Cambria", "Candara", "Castellar", "Casual", "Centaur", "Century Gothic", "Chalkduster", "Colonna MT", "Comic Sans MS", "Consolas", "Constantia", "Copperplate Gothic Light", "Corbel", "Cordia New", "CordiaUPC", "Courier New Baltic", "Courier New CE", "Courier New CYR", "Courier New Greek", "Courier New TUR", "Courier New", "DFKai-SB", "DaunPenh", "David", "DejaVu LGC Sans Mono", "Desdemona", "DilleniaUPC", "DokChampa", "Dotum", "DotumChe", "Ebrima", "Engravers MT", "Eras Bold ITC", "Estrangelo Edessa", "EucrosiaUPC", "Euphemia", "Eurostile", "FangSong", "Forte", "FrankRuehl", "Franklin Gothic Heavy", "Franklin Gothic Medium", "FreesiaUPC", "French Script MT", "Gabriola", "Gautami", "Georgia", "Gigi", "Gisha", "Goudy Old Style", "Gulim", "GulimChe", "GungSeo", "Gungsuh", "GungsuhChe", "Haettenschweiler", "Harrington", "Hei S", "HeiT", "Heisei Kaku Gothic", "Hiragino Sans GB", "Impact", "Informal Roman", "IrisUPC", "Iskoola Pota", "JasmineUPC", "KacstOne", "KaiTi", "Kalinga", "Kartika", "Khmer UI", "Kino MT", "KodchiangUPC", "Kokila", "Kozuka Gothic Pr6N", "Lao UI", "Latha", "Leelawadee", "Levenim MT", "LilyUPC", "Lohit Gujarati", "Loma", "Lucida Bright", "Lucida Console", "Lucida Fax", "Lucida Sans Unicode", "MS Gothic", "MS Mincho", "MS PGothic", "MS PMincho", "MS Reference Sans Serif", "MS UI Gothic", "MV Boli", "Magneto", "Malgun Gothic", "Mangal", "Marlett", "Matura MT Script Capitals", "Meiryo UI", "Meiryo", "Menlo", "Microsoft Himalaya", "Microsoft JhengHei", "Microsoft New Tai Lue", "Microsoft PhagsPa", "Microsoft Sans Serif", "Microsoft Tai Le", "Microsoft Uighur", "Microsoft YaHei", "Microsoft Yi Baiti", "MingLiU", "MingLiU-ExtB", "MingLiU_HKSCS", "MingLiU_HKSCS-ExtB", "Miriam Fixed", "Miriam", "Mongolian Baiti", "MoolBoran", "NSimSun", "Narkisim", "News Gothic MT", "Niagara Solid", "Nyala", "PMingLiU", "PMingLiU-ExtB", "Palace Script MT", "Palatino Linotype", "Papyrus", "Perpetua", "Plantagenet Cherokee", "Playbill", "Prelude Bold", "Prelude Condensed Bold", "Prelude Condensed Medium", "Prelude Medium", "PreludeCompressedWGL Black", "PreludeCompressedWGL Bold", "PreludeCompressedWGL Light", "PreludeCompressedWGL Medium", "PreludeCondensedWGL Black", "PreludeCondensedWGL Bold", "PreludeCondensedWGL Light", "PreludeCondensedWGL Medium", "PreludeWGL Black", "PreludeWGL Bold", "PreludeWGL Light", "PreludeWGL Medium", "Raavi", "Rachana", "Rockwell", "Rod", "Sakkal Majalla", "Sawasdee", "Script MT Bold", "Segoe Print", "Segoe Script", "Segoe UI Light", "Segoe UI Semibold", "Segoe UI Symbol", "Segoe UI", "Shonar Bangla", "Showcard Gothic", "Shruti", "SimHei", "SimSun", "SimSun-ExtB", "Simplified Arabic Fixed", "Simplified Arabic", "Snap ITC", "Sylfaen", "Symbol", "Tahoma", "Times New Roman Baltic", "Times New Roman CE", "Times New Roman CYR", "Times New Roman Greek", "Times New Roman TUR", "Times New Roman", "TlwgMono", "Traditional Arabic", "Trebuchet MS", "Tunga", "Tw Cen MT Condensed Extra Bold", "Ubuntu", "Umpush", "Univers", "Utopia", "Utsaah", "Vani", "Verdana", "Vijaya", "Vladimir Script", "Vrinda", "Webdings", "Wide Latin", "Wingdings"];
-      let fontString = "";
-
+      let fontString = '';
       for (let i = 0; i < fontArray.length - 1; i++) {
         if (fontDetective.detect(fontArray[i])) {
           fontString += fontArray[i];
@@ -452,7 +447,7 @@
     // Get Time Zone.  Return a string containing the time zone.
     getTimeZone() {
       var rightNow = new Date();
-      return String(String(rightNow).split("(")[1]).split(")")[0];
+      return String(String(rightNow).split('(')[1]).split(')')[0];
     },
 
     //
@@ -510,29 +505,32 @@
       } catch (e) {
 
         // return empty string if canvas element not supported
-        return "";
+        return '';
       }
 
       // https://www.browserleaks.com/canvas#how-does-it-work
       // Text with lowercase/uppercase/punctuation symbols
       let txt = 'ClientJS,org <canvas> 1.0';
-      ctx.textBaseline = "top";
+      ctx.textBaseline = 'top';
+
       // The most common type
       ctx.font = "14px 'Arial'";
-      ctx.textBaseline = "alphabetic";
-      ctx.fillStyle = "#f60";
+      ctx.textBaseline = 'alphabetic';
+      ctx.fillStyle = '#f60';
       ctx.fillRect(125, 1, 62, 20);
+
       // Some tricks for color mixing to increase the difference in rendering
-      ctx.fillStyle = "#069";
+      ctx.fillStyle = '#069';
       ctx.fillText(txt, 2, 15);
-      ctx.fillStyle = "rgba(102, 204, 0, 0.7)";
+      ctx.fillStyle = 'rgba(102, 204, 0, 0.7)';
       ctx.fillText(txt, 4, 17);
       return canvas.toDataURL();
-    }
+    },
   };
 
-  if (typeof module === 'object' && typeof exports !== "undefined") {
+  if (typeof module === 'object' && typeof exports !== 'undefined') {
     module.exports = ClientJS;
   }
+
   scope.ClientJS = ClientJS;
 })(window);
