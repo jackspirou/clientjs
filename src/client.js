@@ -305,8 +305,8 @@ class ClientJS {
     return pluginsList;
   }
 
-  // Is Java.  Check if Java is installed.
-  isJava() {
+  // Has Java.  Check if Java is installed.
+  hasJava() {
     return navigator.javaEnabled();
   }
 
@@ -315,8 +315,8 @@ class ClientJS {
     return deployJava.getJREs().toString();
   }
 
-  // Is Flash.  Check if Flash is installed.
-  isFlash() {
+  // has Flash.  Check if Flash is installed.
+  hasFlash() {
     const objPlugin = navigator.plugins['Shockwave Flash'];
     if (objPlugin) {
       return true;
@@ -335,8 +335,8 @@ class ClientJS {
     return '';
   }
 
-  // Is Silverlight.  Check if Silverlight is installed.
-  isSilverlight() {
+  // has Silverlight.  Check if Silverlight is installed.
+  hasSilverlight() {
     const objPlugin = navigator.plugins['Silverlight Plug-In'];
     if (objPlugin) {
       return true;
@@ -359,8 +359,8 @@ class ClientJS {
   // MIME TYPE METHODS
   //
 
-  // Is Mime Types.  Check if a mime type is installed.
-  isMimeTypes() {
+  // Has Mime Types.  Check if a mime type is installed.
+  hasMimeTypes() {
     if (navigator.mimeTypes.length) {
       return true;
     }
@@ -384,8 +384,8 @@ class ClientJS {
   // FONT METHODS
   //
 
-  // Is Font.  Check if a font is installed.
-  isFont(font) {
+  // has Font.  Check if a font is installed.
+  hasFont(font) {
     return fontDetective.detect(font);
   }
 
@@ -409,8 +409,8 @@ class ClientJS {
   // STORAGE METHODS
   //
 
-  // Is Local Storage.  Check if local storage is enabled.
-  isLocalStorage() {
+  // Has Local Storage.  Check if local storage is enabled.
+  hasLocalStorage() {
     try {
       return !!scope.localStorage;
     } catch (e) {
@@ -418,8 +418,8 @@ class ClientJS {
     }
   }
 
-  // Is Session Storage.  Check if session storage is enabled.
-  isSessionStorage() {
+  // Has Session Storage.  Check if session storage is enabled.
+  hasSessionStorage() {
     try {
       return !!scope.sessionStorage;
     } catch (e) {
@@ -427,8 +427,8 @@ class ClientJS {
     }
   }
 
-  // Is Cookie.  Check if cookies are enabled.
-  isCookie() {
+  // Has Cookies.  Check if cookies are enabled.
+  hasCookies() {
     return navigator.cookieEnabled;
   }
 
@@ -460,8 +460,8 @@ class ClientJS {
   // CANVAS METHODS
   //
 
-  // Is Canvas.  Check if the canvas element is enabled.
-  isCanvas() {
+  // Has Canvas.  Check if the canvas element is enabled.
+  hasCanvas() {
 
     // create a canvas element
     const elem = document.createElement('canvas');
