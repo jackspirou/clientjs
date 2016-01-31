@@ -1,4 +1,4 @@
-module.exports = function(config) {
+module.exports = function (config) {
 
   config.set({
 
@@ -12,7 +12,7 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       'src/**/*.js',
-      'specs/**/*.js'
+      'specs/**/*.js',
     ],
 
     // test results reporter to use
@@ -20,7 +20,7 @@ module.exports = function(config) {
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
     reporters: ['progress', 'coverage'],
     preprocessors: {
-      'src/*.js': ['coverage']
+      'src/*.js': ['coverage'],
     },
 
     browsers: ['PhantomJS'],
@@ -29,12 +29,13 @@ module.exports = function(config) {
       // specify a common output directory
       dir: 'coverage',
       reporters: [
+
         // reporters supporting the `file` property, use `subdir` to directly
         // output them in the `dir` directory
-        { type: 'lcovonly', subdir: '.', file: 'lcov.info' }
-      ]
+        { type: 'lcovonly', subdir: '.', file: 'lcov.info' },
+      ],
     },
 
-    singleRun: true
+    singleRun: true,
   });
 };
