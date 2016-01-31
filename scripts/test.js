@@ -5,10 +5,10 @@ if (process.env.CI || process.env.DRONE) {
 
   if (process.env.DRONE_BRANCH == 'master') {
     process.env.SAUCE_USERNAME = process.env.PRIMARY_SAUCE_USERNAME;
-    process.env.SAUCE_USERNAME = process.env.PRIMARY_SAUCE_ACCESS_KEY;
+    process.env.SAUCE_ACCESS_KEY = process.env.PRIMARY_SAUCE_ACCESS_KEY;
   }else {
     process.env.SAUCE_USERNAME = process.env.SECONDARY_SAUCE_USERNAME;
-    process.env.SAUCE_USERNAME = process.env.SECONDARY_SAUCE_ACCESS_KEY;
+    process.env.SAUCE_ACCESS_KEY = process.env.SECONDARY_SAUCE_ACCESS_KEY;
   }
 
   karma = spawn('./node_modules/karma/bin/karma', ['start', 'karma/drone.conf.js']);
