@@ -11,7 +11,9 @@ class ClientJS {
     this.set('fontDetective', fontDetective);
   }
 
-  /* ClientJS METHODS */
+  //
+  // CLIENTJS METHODS
+  //
 
   // Get Software Version.  Return a string containing this software version number.
   getSoftwareVersion() {
@@ -56,7 +58,9 @@ class ClientJS {
     return murmurhash3_32_gc(key, 256);
   }
 
-  /* USER AGENT METHODS */
+  //
+  // USER AGENT METHODS
+  //
 
   // Get User Agent.  Return a string containing unparsed user agent.
   getUserAgent() {
@@ -68,7 +72,9 @@ class ClientJS {
     return this.parser.ua.toLowerCase();
   }
 
-  /* BROWSER METHODS */
+  //
+  // BROWSER METHODS
+  //
 
   // Get Browser.  Return a string containing the browser name.
   getBrowser() {
