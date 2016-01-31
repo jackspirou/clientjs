@@ -2,7 +2,7 @@
 
 **Device information and digital fingerprinting written in _pure_ JavaScript.**
 
-[![Sauce Test Status](https://saucelabs.com/buildstatus/clientjs)](https://saucelabs.com/u/clientjs) [![Build Status](http://beta.drone.io/api/badges/jackspirou/clientjs/status.svg)](http://beta.drone.io/jackspirou/clientjs) [![Aircover Coverage](https://aircover.co/badges/jackspirou/clientjs/coverage.svg)](https://aircover.co/jackspirou/clientjs) [![Kanban board for ClientJS issues at https://huboard.com/jackspirou/clientjs](https://img.shields.io/badge/Hu-Board-7965cc.svg)](https://huboard.com/jackspirou/clientjs) [![Join the chat at https://gitter.im/jackspirou/clientjs](https://badges.gitter.im/jackspirou/clientjs.svg)](https://gitter.im/jackspirou/clientjs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Build Status](http://beta.drone.io/api/badges/jackspirou/clientjs/status.svg)](http://beta.drone.io/jackspirou/clientjs) ![Killing Flash](https://img.shields.io/badge/killing-flash-brightgreen.svg?style=flat) [![Aircover Coverage](https://aircover.co/badges/jackspirou/clientjs/coverage.svg)](https://aircover.co/jackspirou/clientjs) [![Kanban board for ClientJS issues at https://huboard.com/jackspirou/clientjs](https://img.shields.io/badge/Hu-Board-7965cc.svg)](https://huboard.com/jackspirou/clientjs) [![Join the chat at https://gitter.im/jackspirou/clientjs](https://badges.gitter.im/jackspirou/clientjs.svg)](https://gitter.im/jackspirou/clientjs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 [![Sauce Test Status](https://saucelabs.com/browser-matrix/clientjs.svg)](https://saucelabs.com/u/clientjs)
 
