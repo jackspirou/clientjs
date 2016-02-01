@@ -5,7 +5,7 @@
   /**
    * Creates an instance of ClientJS.
    *
-   * @class ClientJS Page Class specification
+   * @class ClientJS Class specification
    * @alias ClientJS
    */
   var ClientJS = function () {
