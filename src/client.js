@@ -1,3 +1,8 @@
+/**
+ * ClientJS module.
+ * @module ClientJS
+ */
+
 (function (global) {
   'use strict';
 
