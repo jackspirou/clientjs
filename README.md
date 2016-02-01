@@ -1,4 +1,4 @@
-# ClientJS
+![Sauce Test Status](logo.jpg)
 
 **Device information and digital fingerprinting written in _pure_ JavaScript.**
 
