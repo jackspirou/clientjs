@@ -8,6 +8,15 @@ describe('ClientJS', function () {
     expect(client).not.toBeNull();
   });
 
+  describe('#_getFilters', function () {
+    it('should successfully call each method', function(){
+      var filters = client._getFilters();
+      for(a in filters) {
+        expect(client[a]).not.toBeUndefined()
+      }
+    });
+  });
+
   describe('#getVersion', function () {
     it('should be a string', function () {
       expect(client.getVersion()).toEqual(jasmine.any(String));

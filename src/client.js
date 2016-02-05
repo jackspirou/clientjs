@@ -21,6 +21,38 @@
   //
 
   /**
+   * Returns the default filters for generating the fingerprint.
+   *
+   * @this ClientJS
+   * @return {Object} The default filters.
+   */
+  ClientJS.prototype._getFilters = function () {
+    return {
+      getUserAgent: true,
+      getCPU: true,
+      getCurrentResolution: true,
+      getAvailableResolution: true,
+      getColorDepth: true,
+      getDeviceXDPI: true,
+      getDeviceYDPI: true,
+      getPlugins: true,
+      getFonts: true,
+      hasCookies: true,
+      hasLocalStorage: true,
+      hasSessionStorage: true,
+      getTimeZone: true,
+      getLanguage: true,
+      getSystemLanguage: true,
+      getCanvasPrint: true
+    };
+  };
+
+  ClientJS.prototype._extend = function(source, target){
+    for (var x in source) target[x] = source[x];
+    return target;
+  };
+
+  /**
    * Returns the semver version number of the running ClientJS release.
    *
    * @this ClientJS
