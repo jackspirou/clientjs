@@ -100,6 +100,37 @@
     return murmurhash3_32_gc(key, seed);
   };
 
+  /**
+   * Return a string representing the browsers fingerprint.
+   *
+   * @this ClientJS
+   * @param {Object} Filters to be triggered.
+   * @param {Function} Called when generator is done.
+   * @return {string} The unique browser fingerprint.
+   */
+  ClientJS.prototype.getFingerprintAsync = function (filters, done) {
+    var bar = '|',
+        key = '',
+        that = this;
+
+    this.filters = this._extend(this._getDefaultFilters(), filters);
+
+    this._ipAddressesFilter(function(ips){
+      key += ips;
+      that.filters.ipAddresses = false;
+      for (var f in that.filters) {
+        if (that.filters[f])
+          key += that['_'+f+'Filter']() + bar;
+      }
+      done();
+    });
+
+    var seed = 256;
+
+    //TODO: ctph.js
+    return murmurhash3_32_gc(key, seed);
+  };
+
   // Get Custom Fingerprint.
   /**
    * Takes an string array of data points and return a fingerprint.
@@ -1120,7 +1151,10 @@
       done("");
     } else {
       this.getIPAddresses(function(ips){
-        done(ips)
+        if (ips){
+          done(ips.publicAddr + '|' + ips.localAddr + '|' + ips.ipv6);
+        } else
+          done(null)
       })
     }
   };

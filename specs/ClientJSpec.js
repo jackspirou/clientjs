@@ -140,6 +140,14 @@ describe('ClientJS', function () {
         });
       });
 
+      describe('#getFingerprintAsync', function () {
+        it('should return a String', function (done) {
+          client.getFingerprintAsync({},function () {
+            done();
+          })
+        });
+      });
+
       describe('#getCustomFingerprint', function () {
         var customFingerprint;
         beforeEach(function () {
