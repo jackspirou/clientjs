@@ -87,6 +87,24 @@ describe('ClientJS', function () {
       });
     });
 
+    describe("getIPAddresses", function(){
+      it("should return valid ips", function(done){
+        client.getIPAddresses(function(ipAddresses){
+          if (client.isChrome() || client.isFirefox() || client.isIE() || (client.isOpera() && !client.isMobile())) {
+            expect(ipAddresses).toEqual({
+              localAddr: jasmine.stringMatching(/^(192\.168\.|169\.254\.|10\.|172\.(1[6-9]|2\d|3[01]))/),
+              publicAddr: jasmine.any(String),
+              fingerprint: jasmine.any(String)
+            });
+          } else {
+            expect(ipAddresses).toBeNull()
+          }
+
+          done();
+        });
+      });
+    });
+
     describe('#isIE|Chrome|Firefox|Safari|Opera', function () {
       it('should return true with the correct browser', function () {
         var browsers = ['IE', 'Chrome', 'Firefox', 'Safari', 'Opera'];

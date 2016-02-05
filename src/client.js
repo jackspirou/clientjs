@@ -177,6 +177,129 @@
   };
 
   /**
+   * Fetch local and public ip addresses
+   *
+   * @this ClientJS
+   * @param {Function} Called on success and returns {localAddr, publicAddr, ipv6}.
+   * @param {Function} Called on error and returns the error.
+   */
+
+  ClientJS.prototype.getIPAddresses = function (done){
+    //Warning: incompatible with many browsers: http://caniuse.com/#feat=rtcpeerconnection
+    var response = {},
+        that = this,
+        ipDups = {},
+        RTCPeerConnection = window.RTCPeerConnection
+              || window.mozRTCPeerConnection
+              || window.webkitRTCPeerConnection,
+              useWebKit = !!window.webkitRTCPeerConnection;
+
+      if (!RTCPeerConnection) {
+        if (done)
+          done(null);
+        return;
+      }
+
+      //Bypass webrtc blocking using iframe
+      try {
+          if (!RTCPeerConnection) {
+              that._makeWebRTCFrame('webRTC_iframe');
+              var win = ipDups.contentWindow;
+              RTCPeerConnection = win.RTCPeerConnection
+              || win.mozRTCPeerConnection
+              || win.webkitRTCPeerConnection;
+              useWebKit = !!win.webkitRTCPeerConnection;
+          }
+      } catch (e) {
+          if (done)
+            done(null);
+      }
+
+      //RtpDataChannels is needed to get external ip from stun server.
+      var mediaConstraints = {optional: [{RtpDataChannels: true}]},
+          servers = {iceServers: [{urls: "stun:stun.services.mozilla.com"}]};
+
+      try {
+          var pc = new RTCPeerConnection(servers, mediaConstraints);
+      } catch (e) {
+          if (done)
+            done(null);
+      }
+
+      //listen for ice candidates to arrive
+      var iceCount = 0, sdpLineCount = 0, iceTimer;
+      pc.onicecandidate = function(ice) {
+          //skip non-candidate events
+          if (ice.candidate) {
+              iceCount++;
+              saveIPs(ice.candidate.candidate);
+              try {clearTimeout(iceTimer);}
+              catch (e) {}
+              //wait for more ice candidates to arrive
+              iceTimer = setTimeout(compareSDPAndIceCount, 150);
+          }
+      };
+
+      //store all ips into ipDups object
+      function saveIPs(candidate) {
+          // match just the IP address
+          var ipRegex = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/,
+            ipAddr = ipRegex.exec(JSON.stringify(candidate))[1];
+
+          // remove dups and avoid matching twice.
+          if (ipDups[ipAddr] === undefined) {
+            ipDups[ipAddr] = true;
+            // save addresses in response
+            //local addresses
+            if (ipAddr.match(/^(192\.168\.|169\.254\.|10\.|172\.(1[6-9]|2\d|3[01]))/))
+              response.localAddr = ipAddr;
+            //IPv6 addresses
+            else if (ipAddr.match(/^[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7}$/))
+              response.ipv6 = ipAddr;
+            //assume the rest are public IPs
+            else
+              response.publicAddr = ipAddr;
+          }
+      };
+
+      function compareSDPAndIceCount() {
+          iceTimer = null;
+          var lines = pc.localDescription.sdp.split('\n');
+          lines.forEach(function (sdpLine) {
+              if (sdpLine.indexOf("a=candidate:") === 0) {
+                  sdpLineCount++;
+                  saveIPs(sdpLine);
+              } else if (sdpLine.indexOf("a=fingerprint:") === 0) {
+                response.fingerprint = sdpLine.substring(14, sdpLine.length)
+              }
+          });
+          if (done)
+            done(response);
+      }
+
+      pc.createDataChannel(null);
+      //create an offer sdp
+      pc.createOffer(function(result){
+        //trigger the stun server request
+        pc.setLocalDescription(result, function(){}, function(){});
+      }, function(){});
+  };
+
+  /**
+   * Creates an iframe that allows getIPAddresses works correctly
+   *
+   * @this ClientJS
+   * @param {string} New iframe name.
+   */
+  ClientJS.prototype._makeWebRTCFrame = function (name){
+    var obj = document.createElement('iframe');
+    obj.setAttribute('id', name);
+    obj.setAttribute('sandbox', 'allow-same-origin');
+    obj.setAttribute('style', 'display: none');
+    document.getElementsByTagName('body')[0].appendChild(obj);
+  };
+
+  /**
    * Return a boolean indicating if the browser type is IE.
    *
    * @this ClientJS
@@ -926,6 +1049,13 @@
     ctx.fillText(txt, 4, 17);
     return canvas.toDataURL();
   };
+
+  function NotSupportedError(message) {
+    this.name = "NotSupportedError";
+    this.message = (message || "");
+  }
+
+  NotSupportedError.prototype = Error.prototype;
 
   if (typeof module === 'object' && typeof exports !== 'undefined') {
     module.exports = ClientJS;
