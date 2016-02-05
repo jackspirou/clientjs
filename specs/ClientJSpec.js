@@ -8,11 +8,11 @@ describe('ClientJS', function () {
     expect(client).not.toBeNull();
   });
 
-  describe('#_getFilters', function () {
+  describe('#_getDefaultFilters', function () {
     it('should successfully call each method', function(){
-      var filters = client._getFilters();
+      var filters = client._getDefaultFilters();
       for(a in filters) {
-        expect(client[a]).not.toBeUndefined()
+        expect(client["_" + a + "Filter"]).not.toBeUndefined()
       }
     });
   });

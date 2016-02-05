@@ -26,24 +26,25 @@
    * @this ClientJS
    * @return {Object} The default filters.
    */
-  ClientJS.prototype._getFilters = function () {
+  ClientJS.prototype._getDefaultFilters = function () {
     return {
-      getUserAgent: true,
-      getCPU: true,
-      getCurrentResolution: true,
-      getAvailableResolution: true,
-      getColorDepth: true,
-      getDeviceXDPI: true,
-      getDeviceYDPI: true,
-      getPlugins: true,
-      getFonts: true,
-      hasCookies: true,
-      hasLocalStorage: true,
-      hasSessionStorage: true,
-      getTimeZone: true,
-      getLanguage: true,
-      getSystemLanguage: true,
-      getCanvasPrint: true
+      userAgent: true,
+      cpu: true,
+      currentResolution: true,
+      availableResolution: true,
+      colorDepth: true,
+      deviceXDPI: true,
+      deviceYDPI: true,
+      plugins: true,
+      fonts: true,
+      cookieEnabled: true,
+      localStorageEnabled: true,
+      sessionStorageEnabled: true,
+      timezone: true,
+      language: true,
+      systemLanguage: true,
+      canvas: true,
+      ipAddresses: true
     };
   };
 
@@ -1050,16 +1051,79 @@
     return canvas.toDataURL();
   };
 
-  function NotSupportedError(message) {
-    this.name = "NotSupportedError";
-    this.message = (message || "");
-  }
+  ClientJS.prototype._userAgentFilter = function(){
+    return this.getUserAgent();
+  };
 
-  NotSupportedError.prototype = Error.prototype;
+  ClientJS.prototype._cpuFilter = function(){
+    return this.getCPU();
+  };
 
-  if (typeof module === 'object' && typeof exports !== 'undefined') {
-    module.exports = ClientJS;
-  }
+  ClientJS.prototype._currentResolutionFilter = function(){
+    return this.getCurrentResolution();
+  };
+
+  ClientJS.prototype._availableResolutionFilter = function(){
+    return this.getAvailableResolution();
+  };
+
+  ClientJS.prototype._colorDepthFilter = function(){
+    return this.getColorDepth();
+  };
+
+  ClientJS.prototype._deviceXDPIFilter = function(){
+    return this.getDeviceXDPI();
+  };
+
+  ClientJS.prototype._deviceYDPIFilter = function(){
+    return this.getDeviceYDPI();
+  };
+
+  ClientJS.prototype._pluginsFilter = function(){
+    return this.getPlugins();
+  };
+
+  ClientJS.prototype._fontsFilter = function(){
+    return this.getFonts();
+  };
+
+  ClientJS.prototype._cookieEnabledFilter = function(){
+    return this.hasCookies();
+  };
+
+  ClientJS.prototype._localStorageEnabledFilter = function(){
+    return this.hasLocalStorage();
+  };
+
+  ClientJS.prototype._sessionStorageEnabledFilter = function(){
+    return this.hasSessionStorage();
+  };
+
+  ClientJS.prototype._timezoneFilter = function(){
+    return this.getTimeZone();
+  };
+
+  ClientJS.prototype._languageFilter = function(){
+    return this.getLanguage();
+  };
+
+  ClientJS.prototype._systemLanguageFilter = function(){
+    return this.getSystemLanguage();
+  };
+
+  ClientJS.prototype._canvasFilter = function(){
+    return this.getCanvasPrint();
+  };
+
+  ClientJS.prototype._ipAddressesFilter = function(done){
+    if (this.filters.ipAddresses == false) {
+      done("");
+    } else {
+      this.getIPAddresses(function(ips){
+        done(ips)
+      })
+    }
+  };
 
   global.ClientJS = ClientJS;
 })(window);
