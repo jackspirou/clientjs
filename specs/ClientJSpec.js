@@ -17,6 +17,23 @@ describe('ClientJS', function () {
     });
   });
 
+  describe('#_extend', function () {
+    it('should update source object', function(){
+      var source = {
+            false: false,
+            true: true
+          },
+          target = {
+            false: true,
+            newVal: 26
+          };
+
+      client._extend(source, target)
+      expect(source).toEqual(jasmine.objectContaining(target));
+      expect(source).toEqual(jasmine.objectContaining({true: true}));
+    });
+  });
+
   describe('#getVersion', function () {
     it('should be a string', function () {
       expect(client.getVersion()).toEqual(jasmine.any(String));

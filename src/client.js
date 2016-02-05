@@ -48,8 +48,8 @@
   };
 
   ClientJS.prototype._extend = function(source, target){
-    for (var x in source) target[x] = source[x];
-    return target;
+    for (var x in target) source[x] = target[x];
+    return source;
   };
 
   /**
