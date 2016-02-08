@@ -78,6 +78,54 @@ describe('ClientJS', function () {
       });
     });
 
+    describe('#getEngine', function () {
+      it('should be equal to parser.engine.name', function () {
+        expect(client.getEngine()).toEqual(browserParser.engine.name);
+      });
+    });
+
+    describe('#getEngineVersion', function () {
+      it('should be equal to parser.engine.version', function () {
+        expect(client.getEngineVersion()).toEqual(browserParser.engine.version);
+      });
+    });
+
+    describe('#getOS', function () {
+      it('should be equal to parser.os.name', function () {
+        expect(client.getOS()).toEqual(browserParser.os.name);
+      });
+    });
+
+    describe('#getOSVersion', function () {
+      it('should be equal to parser.os.version', function () {
+        expect(client.getOSVersion()).toEqual(browserParser.os.version);
+      });
+    });
+
+    describe('#getDevice', function () {
+      it('should be equal to parser.device.model', function () {
+        expect(client.getDevice()).toEqual(browserParser.device.model);
+      });
+    });
+
+    describe('#getDeviceType', function () {
+      it('should be equal to parser.device.type', function () {
+        expect(client.getDeviceType()).toEqual(browserParser.device.type);
+      });
+    });
+
+    describe('#getDeviceVendor', function () {
+      it('should be equal to parser.device.vendor', function () {
+        expect(client.getDeviceVendor()).toEqual(browserParser.device.vendor);
+      });
+    });
+
+    describe('#getCPU', function () {
+      it('should be equal to parser.cpu.architecture', function () {
+        expect(client.getCPU()).toEqual(browserParser.cpu.architecture);
+      });
+    });
+
     describe('#getCanvasPrint', function () {
       it('should return a String', function () {
         expect(client.getCanvasPrint()).toEqual(jasmine.any(String));
@@ -93,6 +141,12 @@ describe('ClientJS', function () {
       describe('#getFingerPrint', function () {
         it('should return a Number', function () {
           expect(fingerprint).toEqual(jasmine.any(Number));
+        });
+
+        var secondFingerprint;
+        it('should be consistent', function () {
+          secondFingerprint = client.getFingerprint();
+          expect(fingerprint).toEqual(secondFingerprint);
         });
       });
 
