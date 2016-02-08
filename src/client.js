@@ -111,17 +111,23 @@
   ClientJS.prototype.getFingerprintAsync = function (filters, done) {
     var bar = '|',
         key = '',
-        that = this;
+        that = this,
+        datapoints = {};
 
     this.filters = this._extend(this._getDefaultFilters(), filters);
 
     this._ipAddressesFilter(function(ips){
       key += ips;
+      datapoints.ipAddresses = ips;
       that.filters.ipAddresses = false;
       for (var f in that.filters) {
-        if (that.filters[f])
-          key += that['_'+f+'Filter']() + bar;
+        if (that.filters[f]) {
+          var datapoint = that['_'+f+'Filter']();
+          key += datapoint + bar;
+          datapoints[f] = datapoint;
+        }
       }
+      console.log(key)
       done();
     });
 
@@ -1152,7 +1158,7 @@
     } else {
       this.getIPAddresses(function(ips){
         if (ips){
-          done(ips.publicAddr + '|' + ips.localAddr + '|' + ips.ipv6);
+          done(ips.publicAddr + '|' + ips.localAddr + '|' + ips.ipv6 + '|');
         } else
           done(null)
       })
