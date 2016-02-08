@@ -105,8 +105,7 @@
    *
    * @this ClientJS
    * @param {Object} Filters to be triggered.
-   * @param {Function} Called when generator is done.
-   * @return {string} The unique browser fingerprint.
+   * @param {Function} Called when generator is done and returns the fingerprint and datapoints used.
    */
   ClientJS.prototype.getFingerprintAsync = function (filters, done) {
     var bar = '|',
@@ -120,21 +119,17 @@
       key += ips;
       datapoints.ipAddresses = ips;
       that.filters.ipAddresses = false;
+
       for (var f in that.filters) {
         if (that.filters[f]) {
           var datapoint = that['_'+f+'Filter']();
-          key += datapoint + bar;
+          key += (f == 'canvas' ? ctph.digest(datapoint) : datapoint) + bar;
           datapoints[f] = datapoint;
         }
       }
-      console.log(key)
-      done();
+
+      done(ctph.digest(key), datapoints);
     });
-
-    var seed = 256;
-
-    //TODO: ctph.js
-    return murmurhash3_32_gc(key, seed);
   };
 
   // Get Custom Fingerprint.

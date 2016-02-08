@@ -141,10 +141,49 @@ describe('ClientJS', function () {
       });
 
       describe('#getFingerprintAsync', function () {
-        it('should return a String', function (done) {
-          client.getFingerprintAsync({},function () {
+        var fp
+        beforeEach(function(done){
+          client.getFingerprintAsync({},function (fingerprint, datapoints) {
+            fp = fingerprint;
             done();
-          })
+          });
+        });
+
+        it('should return a String', function () {
+          expect(fp).toEqual(jasmine.any(String));
+        });
+
+        describe("similarity", function(){
+          //TODO: test similarity against different canvas fingerprints
+
+          describe("with different user agent", function(){
+            var newClient, newFingerprint;
+
+            beforeEach(function(done){
+              navigator.__defineGetter__('userAgent', function(){
+                return 'foo';
+              });
+
+              if (navigator.userAgent != 'foo') {
+                var __originalNavigator = navigator;
+                navigator = new Object();
+                navigator.__proto__ = __originalNavigator;
+                navigator.__defineGetter__('userAgent', function () { return 'foo'; });
+              }
+
+              newClient = new ClientJS();
+
+              newClient.getFingerprintAsync({},function (fingerprint, datapoints) {
+                newFingerprint = fingerprint;
+                done();
+              });
+            });
+
+            it('should be greater than 70 and less than 100 if only user agent is modified', function () {
+              expect(ctph.similarity(newFingerprint, fp)).toBeGreaterThan(70);
+              expect(ctph.similarity(newFingerprint, fp)).toBeLessThan(100);
+            });
+          });
         });
       });
 
