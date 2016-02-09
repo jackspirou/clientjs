@@ -1162,14 +1162,15 @@
 
   ClientJS.prototype._ipAddressesFilter = function (done) {
     if (this.filters.ipAddresses == false) {
-      done("");
+      done('');
     } else {
       this.getIPAddresses(function (ips) {
         if (ips) {
           done(ips.publicAddr + '|' + ips.localAddr + '|' + ips.ipv6 + '|');
-        } else
-          done(null)
-      })
+        } else {
+          done(null);
+        }
+      });
     }
   };
 
