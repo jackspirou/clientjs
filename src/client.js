@@ -37,7 +37,7 @@
       getDeviceYDPI: true,
       getPlugins: true,
       getFonts: true,
-      getCookies: true,
+      hasCookies: true,
       hasLocalStorage: true,
       hasSessionStorage: true,
       getTimeZone: true,
