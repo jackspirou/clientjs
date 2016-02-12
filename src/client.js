@@ -13,6 +13,7 @@
     var p = new(window.UAParser || exports.UAParser);
     this._parser = p.getResult();
     this._fontDetective = new Detector();
+    this.options = this.getDefaultOptions();
     return this;
   };
 
@@ -107,21 +108,26 @@
    * @param {Object} options to be triggered.
    * @param {Function} Called when generator is done and returns the fingerprint and datapoints used.
    */
-  ClientJS.prototype.getFingerprintAsync = function (options, callback) {
+  ClientJS.prototype.getFingerprintAsync = function (newOptions, callback) {
     var bar = '|';
     var key = '';
     var _this = this;
-    var datapoints = _this.extendOptions(_this.getDefaultOptions(), options);
+    var datapoints = {};
+    var options = this.options;;
 
-    // if (datapoints.getIPAddresses === true) {}
+    options = this.extendOptions(options, newOptions);
 
-    for (var f in datapoints) {
-      if (datapoints.hasOwnProperty(f) && datapoints[f] === true && datapoints[f] !== 'getIPAddresses') {
-        var datapoint = _this[f]();
-        key += (f == 'canvas' ? ctph.digest(datapoint) : datapoint) + bar;
-        datapoints[f] = datapoint;
+    this.getIPAddressesOption(function(ips){
+      if (ips) key += ips;
+
+      for (var o in options) {
+        if (options[o] === true && options[o] !== 'getIPAddresses') {
+          var datapoint = _this[o]();
+          key += (o == 'canvas' ? ctph.digest(datapoint) : datapoint) + bar;
+          datapoints[o] = datapoint;
+        }
       }
-    }
+    });
 
     callback(ctph.digest(key), datapoints);
   };
@@ -143,6 +149,16 @@
     }
 
     return murmurhash3_32_gc(key, 256);
+  };
+
+  ClientJS.prototype.getIPAddressesOption = function (callback) {
+    if (this.options.getIPAddresses == true) {
+      this.getIPAddresses(function(ips){
+        callback(ips)
+      });
+    } else {
+      callback();
+    }
   };
 
   //
@@ -224,7 +240,7 @@
 
     if (!RTCPeerConnection) {
       if (callback) {
-        callback(null);
+        callback('');
       }
 
       return;
@@ -242,7 +258,7 @@
       }
     } catch (e) {
       if (callback) {
-        callback(null);
+        callback('');
       }
     }
 
@@ -254,7 +270,7 @@
       var pc = new RTCPeerConnection(servers, mediaConstraints);
     } catch (e) {
       if (callback) {
-        callback(null);
+        callback('');
       }
     }
 

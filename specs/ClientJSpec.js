@@ -34,6 +34,23 @@ describe('ClientJS', function () {
     });
   });
 
+  describe('#getIPAddressesOption', function(){
+    it("should not return ip addresses by default", function(done){
+      client.getIPAddressesOption(function(ips){
+        expect(ips).toBeUndefined();
+        done();
+      });
+    });
+
+    it("should return ip addresses if options.getIPAddresses is truthy", function(done){
+      client.options.getIPAddresses = true;
+      client.getIPAddressesOption(function(ips){
+        expect(ips).not.toBeUndefined();
+        done();
+      });
+    });
+  });
+
   describe('#getVersion', function () {
     it('should be a string', function () {
       expect(client.getVersion()).toEqual(jasmine.any(String));
