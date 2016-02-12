@@ -13,6 +13,7 @@
     var p = new(window.UAParser || exports.UAParser);
     this._parser = p.getResult();
     this._fontDetective = new Detector();
+    this.options = this.getDefaultOptions();
     return this;
   };
 
@@ -26,29 +27,29 @@
    * @this ClientJS
    * @return {Object} The default filters.
    */
-  ClientJS.prototype._getDefaultFilters = function () {
+  ClientJS.prototype.getDefaultOptions = function () {
     return {
-      userAgent: true,
-      cpu: true,
-      currentResolution: true,
-      availableResolution: true,
-      colorDepth: true,
-      deviceXDPI: true,
-      deviceYDPI: true,
-      plugins: true,
-      fonts: true,
-      cookieEnabled: true,
-      localStorageEnabled: true,
-      sessionStorageEnabled: true,
-      timezone: true,
-      language: true,
-      systemLanguage: true,
-      canvas: true,
-      ipAddresses: true,
+      getUserAgent: true,
+      getCPU: true,
+      getCurrentResolution: true,
+      getAvailableResolution: true,
+      getColorDepth: true,
+      getDeviceXDPI: true,
+      getDeviceYDPI: true,
+      getPlugins: true,
+      getFonts: true,
+      hasCookies: true,
+      hasLocalStorage: true,
+      hasSessionStorage: true,
+      getTimeZone: true,
+      getLanguage: true,
+      getSystemLanguage: true,
+      getCanvasPrint: true,
+      getIPAddresses: false,
     };
   };
 
-  ClientJS.prototype._extend = function (source, target) {
+  ClientJS.prototype.extendOptions = function (source, target) {
     for (var x in target) source[x] = target[x];
     return source;
   };
@@ -104,32 +105,31 @@
    * Return a string representing the browsers fingerprint.
    *
    * @this ClientJS
-   * @param {Object} Filters to be triggered.
+   * @param {Object} options to be triggered.
    * @param {Function} Called when generator is done and returns the fingerprint and datapoints used.
    */
-  ClientJS.prototype.getFingerprintAsync = function (filters, done) {
+  ClientJS.prototype.getFingerprintAsync = function (newOptions, callback) {
     var bar = '|';
     var key = '';
     var _this = this;
     var datapoints = {};
+    var options = this.options;;
 
-    this.filters = this._extend(this._getDefaultFilters(), filters);
+    options = this.extendOptions(options, newOptions);
 
-    this._ipAddressesFilter(function (ips) {
-      key += ips;
-      datapoints.ipAddresses = ips;
-      _this.filters.ipAddresses = false;
+    this.getIPAddressesOption(function(ips){
+      if (ips) key += ips;
 
-      for (var f in _this.filters) {
-        if (_this.filters[f]) {
-          var datapoint = _this['_' + f + 'Filter']();
-          key += (f == 'canvas' ? ctph.digest(datapoint) : datapoint) + bar;
-          datapoints[f] = datapoint;
+      for (var o in options) {
+        if (options[o] === true && options[o] !== 'getIPAddresses') {
+          var datapoint = _this[o]();
+          key += (o == 'canvas' ? ctph.digest(datapoint) : datapoint) + bar;
+          datapoints[o] = datapoint;
         }
       }
-
-      done(ctph.digest(key), datapoints);
     });
+
+    callback(ctph.digest(key), datapoints);
   };
 
   // Get Custom Fingerprint.
@@ -149,6 +149,16 @@
     }
 
     return murmurhash3_32_gc(key, 256);
+  };
+
+  ClientJS.prototype.getIPAddressesOption = function (callback) {
+    if (this.options.getIPAddresses == true) {
+      this.getIPAddresses(function(ips){
+        callback(ips)
+      });
+    } else {
+      callback();
+    }
   };
 
   //
@@ -212,13 +222,14 @@
   /**
    * Fetch local and public ip addresses
    *
+   * Warning: incompatible with many browsers: http://caniuse.com/#feat=rtcpeerconnection
+   *
    * @this ClientJS
    * @param {Function} Called on success and returns {localAddr, publicAddr, ipv6}.
    * @param {Function} Called on error and returns the error.
    */
+  ClientJS.prototype.getIPAddresses = function (callback) {
 
-  ClientJS.prototype.getIPAddresses = function (done) {
-    //Warning: incompatible with many browsers: http://caniuse.com/#feat=rtcpeerconnection
     var response = {};
     var _this = this;
     var ipDups = {};
@@ -228,14 +239,14 @@
                             window.webkitRTCPeerConnection;
 
     if (!RTCPeerConnection) {
-      if (done) {
-        done(null);
+      if (callback) {
+        callback('');
       }
 
       return;
     }
 
-    // Bypass webrtc blocking using iframe
+    // bypass WebRTC blocking using iframe
     try {
       if (!RTCPeerConnection) {
         _this._makeWebRTCFrame('webRTC_iframe');
@@ -246,8 +257,8 @@
                             win.webkitRTCPeerConnection;
       }
     } catch (e) {
-      if (done) {
-        done(null);
+      if (callback) {
+        callback('');
       }
     }
 
@@ -258,8 +269,8 @@
     try {
       var pc = new RTCPeerConnection(servers, mediaConstraints);
     } catch (e) {
-      if (done) {
-        done(null);
+      if (callback) {
+        callback('');
       }
     }
 
@@ -268,19 +279,19 @@
     var sdpLineCount = 0;
     var iceTimer;
     pc.onicecandidate = function (ice) {
+
       // skip non-candidate events
       if (ice.candidate) {
         iceCount++;
         saveIPs(ice.candidate.candidate);
-        try {clearTimeout(iceTimer);}
-        catch (e) {}
+        try {clearTimeout(iceTimer);} catch (e) {}
 
         // wait for more ice candidates to arrive
         iceTimer = setTimeout(compareSDPAndIceCount, 150);
       }
     };
 
-    //store all ips into ipDups object
+    // store all IPs into ipDups object
     function saveIPs(candidate) {
 
       // match just the IP address
@@ -292,13 +303,16 @@
         ipDups[ipAddr] = true;
 
         // save addresses in response
-        //local addresses
         if (ipAddr.match(/^(192\.168\.|169\.254\.|10\.|172\.(1[6-9]|2\d|3[01]))/)) {
+
+          // local addresses
           response.localAddr = ipAddr;
         } else if (ipAddr.match(/^[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7}$/)) {
+
           // IPv6 addresses
           response.ipv6 = ipAddr;
         } else {
+
           //assume the rest are public IPs
           response.publicAddr = ipAddr;
         }
@@ -317,8 +331,8 @@
         }
       });
 
-      if (done) {
-        done(response);
+      if (callback) {
+        callback(response);
       }
     }
 
@@ -326,6 +340,7 @@
 
     //create an offer sdp
     pc.createOffer(function (result) {
+
       //trigger the stun server request
       pc.setLocalDescription(result, function () {}, function () {});
     }, function () {});
@@ -1096,79 +1111,15 @@
     return canvas.toDataURL();
   };
 
-  ClientJS.prototype._userAgentFilter = function () {
-    return this.getUserAgent();
-  };
-
-  ClientJS.prototype._cpuFilter = function () {
-    return this.getCPU();
-  };
-
-  ClientJS.prototype._currentResolutionFilter = function () {
-    return this.getCurrentResolution();
-  };
-
-  ClientJS.prototype._availableResolutionFilter = function () {
-    return this.getAvailableResolution();
-  };
-
-  ClientJS.prototype._colorDepthFilter = function () {
-    return this.getColorDepth();
-  };
-
-  ClientJS.prototype._deviceXDPIFilter = function () {
-    return this.getDeviceXDPI();
-  };
-
-  ClientJS.prototype._deviceYDPIFilter = function () {
-    return this.getDeviceYDPI();
-  };
-
-  ClientJS.prototype._pluginsFilter = function () {
-    return this.getPlugins();
-  };
-
-  ClientJS.prototype._fontsFilter = function () {
-    return this.getFonts();
-  };
-
-  ClientJS.prototype._cookieEnabledFilter = function () {
-    return this.hasCookies();
-  };
-
-  ClientJS.prototype._localStorageEnabledFilter = function () {
-    return this.hasLocalStorage();
-  };
-
-  ClientJS.prototype._sessionStorageEnabledFilter = function () {
-    return this.hasSessionStorage();
-  };
-
-  ClientJS.prototype._timezoneFilter = function () {
-    return this.getTimeZone();
-  };
-
-  ClientJS.prototype._languageFilter = function () {
-    return this.getLanguage();
-  };
-
-  ClientJS.prototype._systemLanguageFilter = function () {
-    return this.getSystemLanguage();
-  };
-
-  ClientJS.prototype._canvasFilter = function () {
-    return this.getCanvasPrint();
-  };
-
-  ClientJS.prototype._ipAddressesFilter = function (done) {
+  ClientJS.prototype._ipAddressesFilter = function (callback) {
     if (this.filters.ipAddresses == false) {
-      done('');
+      callback('');
     } else {
       this.getIPAddresses(function (ips) {
         if (ips) {
-          done(ips.publicAddr + '|' + ips.localAddr + '|' + ips.ipv6 + '|');
+          callback(ips.publicAddr + '|' + ips.localAddr + '|' + ips.ipv6 + '|');
         } else {
-          done(null);
+          callback(null);
         }
       });
     }

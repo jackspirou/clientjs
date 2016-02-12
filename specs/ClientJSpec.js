@@ -8,16 +8,16 @@ describe('ClientJS', function () {
     expect(client).not.toBeNull();
   });
 
-  describe('#_getDefaultFilters', function () {
+  describe('#getDefaultOptions', function () {
     it('should successfully call each method', function(){
-      var filters = client._getDefaultFilters();
-      for(a in filters) {
-        expect(client["_" + a + "Filter"]).not.toBeUndefined()
+      var options = client.getDefaultOptions();
+      for(o in options) {
+        expect(client[o]).not.toBeUndefined()
       }
     });
   });
 
-  describe('#_extend', function () {
+  describe('#extendOptions', function () {
     it('should update source object', function(){
       var source = {
             false: false,
@@ -28,9 +28,26 @@ describe('ClientJS', function () {
             newVal: 26
           };
 
-      client._extend(source, target)
+      client.extendOptions(source, target)
       expect(source).toEqual(jasmine.objectContaining(target));
       expect(source).toEqual(jasmine.objectContaining({true: true}));
+    });
+  });
+
+  describe('#getIPAddressesOption', function(){
+    it("should not return ip addresses by default", function(done){
+      client.getIPAddressesOption(function(ips){
+        expect(ips).toBeUndefined();
+        done();
+      });
+    });
+
+    it("should return ip addresses if options.getIPAddresses is truthy", function(done){
+      client.options.getIPAddresses = true;
+      client.getIPAddressesOption(function(ips){
+        expect(ips).not.toBeUndefined();
+        done();
+      });
     });
   });
 
