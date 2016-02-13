@@ -117,7 +117,7 @@
 
     options = this.extendOptions(options, newOptions);
 
-    this.getIPAddressesOption(function(ips){
+    this.getIPAddressesOption(function (ips) {
       if (ips) key += ips;
 
       for (var o in options) {
@@ -153,8 +153,8 @@
 
   ClientJS.prototype.getIPAddressesOption = function (callback) {
     if (this.options.getIPAddresses == true) {
-      this.getIPAddresses(function(ips){
-        callback(ips)
+      this.getIPAddresses(function (ips) {
+        callback(ips);
       });
     } else {
       callback();
