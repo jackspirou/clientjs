@@ -113,23 +113,26 @@
     var key = '';
     var _this = this;
     var datapoints = {};
-    var options = this.options;;
+    var options = this.options;
 
     options = this.extendOptions(options, newOptions);
 
     this.getIPAddressesOption(function (ips) {
-      if (ips) key += ips;
+      if (ips || ips === '') {
+        key += ips.localAddr + bar + ips.publicAddr;
+        datapoints.getIPAddresses = ips;
+      }
 
       for (var o in options) {
-        if (options[o] === true && options[o] !== 'getIPAddresses') {
+        if (options[o] === true && o !== 'getIPAddresses') {
           var datapoint = _this[o]();
           key += (o == 'canvas' ? ctph.digest(datapoint) : datapoint) + bar;
           datapoints[o] = datapoint;
         }
       }
-    });
 
-    callback(ctph.digest(key), datapoints);
+      callback(ctph.digest(key), datapoints);
+    });
   };
 
   // Get Custom Fingerprint.

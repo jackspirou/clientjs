@@ -114,7 +114,7 @@ describe('ClientJS', function () {
               fingerprint: jasmine.any(String)
             });
           } else {
-            expect(ipAddresses).toBeNull()
+            expect(ipAddresses).toEqual('');
           }
 
           done();
@@ -212,16 +212,34 @@ describe('ClientJS', function () {
       });
 
       describe('#getFingerprintAsync', function () {
-        var fp
+        var fp;
+        var dp;
         beforeEach(function(done){
           client.getFingerprintAsync({},function (fingerprint, datapoints) {
             fp = fingerprint;
+            dp = datapoints;
             done();
           });
         });
 
-        it('should return a String', function () {
-          expect(fp).toEqual(jasmine.any(String));
+        describe('fingerprint', function () {
+          it('should return a String', function () {
+            expect(fp).toEqual(jasmine.any(String));
+          });
+        });
+
+        describe('datapoints', function () {
+          it('should not include getIPAddresses by default', function () {
+            expect(dp.getIPAddresses).toBeUndefined();
+          });
+
+          it('should include getIPAddresses if added to the options', function (done) {
+            client.getFingerprintAsync({getIPAddresses: true},function (fingerprint, datapoints) {
+              dp = datapoints;
+              expect(dp.getIPAddresses).not.toBeUndefined();
+              done();
+            });
+          });
         });
 
         describe("similarity", function(){
