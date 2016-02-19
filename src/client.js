@@ -119,14 +119,14 @@
 
     this.getIPAddressesOption(function (ips) {
       if (ips || ips === '') {
-        key += ips.localAddr + bar + ips.publicAddr;
+        key += ips.localAddr + bar + ips.publicAddr + bar;
         datapoints.getIPAddresses = ips;
       }
 
       for (var o in options) {
         if (options[o] === true && o !== 'getIPAddresses') {
           var datapoint = _this[o]();
-          key += (o == 'canvas' ? ctph.digest(datapoint) : datapoint) + bar;
+          key += (o === 'getCanvasPrint' ? ctph.digest(datapoint) : datapoint) + bar;
           datapoints[o] = datapoint;
         }
       }
