@@ -1075,7 +1075,7 @@
    * @this ClientJS
    * @return {string} The unique canvas URI data.
    */
-  ClientJS.prototype.getCanvasPrint = function () {
+  ClientJS.prototype.getCanvasPrint = function (customText) {
 
     // create a canvas element
     var canvas = document.createElement('canvas');
@@ -1097,7 +1097,7 @@
 
     // https://www.browserleaks.com/canvas#how-does-it-work
     // Text with lowercase/uppercase/punctuation symbols
-    var txt = 'ClientJS,org <canvas> 1.0';
+    var txt = customText ? customText : 'ClientJS,org <canvas> 1.0';  //just for debugging.
     ctx.textBaseline = 'top';
 
     // The most common type

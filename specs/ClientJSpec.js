@@ -191,6 +191,13 @@ describe('ClientJS', function () {
       it('should return a String', function () {
         expect(client.getCanvasPrint()).toEqual(jasmine.any(String));
       });
+
+      it('should generate different canvasPrints', function () {
+        var cp1 = client.getCanvasPrint('DeadPool <3');
+        var cp2 = client.getCanvasPrint('SpiderMan :3');
+
+        expect(cp1).not.toEqual(cp2);
+      });
     });
 
     describe('Fingerprint generators', function () {
@@ -272,6 +279,10 @@ describe('ClientJS', function () {
               expect(ctph.similarity(newFingerprint, fp)).toBeGreaterThan(70);
               expect(ctph.similarity(newFingerprint, fp)).toBeLessThan(100);
             });
+          });
+
+          xdescribe("with different canvas fingerprint", function () {
+            //TODO
           });
         });
       });
