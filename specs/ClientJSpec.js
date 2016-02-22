@@ -108,7 +108,7 @@ describe('ClientJS', function () {
       it("should return valid ips", function(done){
         client.getIPAddresses(function(ipAddresses){
           //reference: http://caniuse.com/#feat=rtcpeerconnection
-          if ((client.isChrome() && !client.isMobileIOS()) || client.isFirefox() || client.isIE() || (client.isOpera() && !client.isMobile())) {
+          if ((client.isChrome() && !client.isMobileIOS()) || client.isFirefox() || (client.isOpera() && !client.isMobile())) {
             expect(ipAddresses).toEqual({
               localAddr: jasmine.stringMatching(/^(192\.168\.|169\.254\.|10\.|172\.(1[6-9]|2\d|3[01]))/),
               publicAddr: jasmine.any(String),
