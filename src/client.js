@@ -126,7 +126,7 @@
       for (var o in options) {
         if (options[o] === true && o !== 'getIPAddresses') {
           var datapoint = _this[o]();
-          key += (o === 'getCanvasPrint' ? ctph.digest(datapoint) : datapoint) + bar;
+          key += datapoint + bar;
           datapoints[o] = datapoint;
         }
       }

@@ -193,8 +193,8 @@ describe('ClientJS', function () {
       });
 
       it('should generate different canvasPrints', function () {
-        var cp1 = client.getCanvasPrint('DeadPool <3');
-        var cp2 = client.getCanvasPrint('SpiderMan :3');
+        var cp1 = client.getCanvasPrint('Fo0!');
+        var cp2 = client.getCanvasPrint('BaR?');
 
         expect(cp1).not.toEqual(cp2);
       });
@@ -276,13 +276,33 @@ describe('ClientJS', function () {
             });
 
             it('should be greater than 70 and less than 100 if only user agent is modified', function () {
-              expect(ctph.similarity(newFingerprint, fp)).toBeGreaterThan(70);
-              expect(ctph.similarity(newFingerprint, fp)).toBeLessThan(100);
+              var similarity = ctph.similarity(newFingerprint, fp);
+              expect(similarity).toBeGreaterThan(90);
+              expect(similarity).toBeLessThan(100);
+              console.log(similarity)
             });
           });
 
-          xdescribe("with different canvas fingerprint", function () {
-            //TODO
+          describe("with different canvas fingerprint", function () {
+
+            it('should be greater...', function () {
+              var vars = {};
+
+              vars.cp1 = client.getCanvasPrint('Fo0!');
+              vars.cp2 = client.getCanvasPrint('BaR?');
+
+              for (var i = 1; i <= 2; i++) {
+                client.getCanvasPrint = jasmine.createSpy().and.returnValue(vars['cp' + i])
+
+                client.getFingerprintAsync({}, function (fingerprint, datapoints) {
+                  vars['fp' + i] = fingerprint;
+                });
+              }
+
+              var similarity = ctph.similarity(vars.fp1, vars.fp2)
+              expect(similarity).toBeGreaterThan(17);
+              expect(similarity).toBeLessThan(35);
+            });
           });
         });
       });
