@@ -107,7 +107,8 @@ describe('ClientJS', function () {
     describe("getIPAddresses", function(){
       it("should return valid ips", function(done){
         client.getIPAddresses(function(ipAddresses){
-          if (client.isChrome() || client.isFirefox() || client.isIE() || (client.isOpera() && !client.isMobile())) {
+          //reference: http://caniuse.com/#feat=rtcpeerconnection
+          if ((client.isChrome() && !client.isMobileIOS()) || client.isFirefox() || client.isIE() || (client.isOpera() && !client.isMobile())) {
             expect(ipAddresses).toEqual({
               localAddr: jasmine.stringMatching(/^(192\.168\.|169\.254\.|10\.|172\.(1[6-9]|2\d|3[01]))/),
               publicAddr: jasmine.any(String),
@@ -279,7 +280,6 @@ describe('ClientJS', function () {
               var similarity = ctph.similarity(newFingerprint, fp);
               expect(similarity).toBeGreaterThan(90);
               expect(similarity).toBeLessThan(100);
-              console.log(similarity)
             });
           });
 
