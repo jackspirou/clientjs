@@ -254,18 +254,7 @@ describe('ClientJS', function () {
           it('should be greater than 90 and less than 100 with different user agent', function (done) {
             var newFingerprint;
 
-            navigator.__defineGetter__('userAgent', function(){
-              return 'foo';
-            });
-
-            if (navigator.userAgent != 'foo') {
-              var __originalNavigator = navigator;
-              navigator = new Object();
-              navigator.__proto__ = __originalNavigator;
-              navigator.__defineGetter__('userAgent', function () { return 'foo'; });
-            }
-
-            client = new ClientJS();
+            client.getUserAgent = jasmine.createSpy().and.returnValue('foo')
 
             client.getFingerprintAsync({},function (fingerprint, datapoints) {
               newFingerprint = fingerprint;
@@ -283,7 +272,7 @@ describe('ClientJS', function () {
             vars.cp2 = client.getCanvasPrint('BaR?');
 
             for (var i = 1; i <= 2; i++) {
-              client.getCanvasPrint = jasmine.createSpy().and.returnValue(vars['cp' + i])
+              client.getCanvasPrint = jasmine.createSpy().and.returnValue(vars['cp' + i]);
 
               client.getFingerprintAsync({}, function (fingerprint, datapoints) {
                 vars['fp' + i] = fingerprint;
