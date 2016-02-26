@@ -201,6 +201,14 @@ describe('ClientJS', function () {
       });
     });
 
+    describe('#getWebglFingerprint', function () {
+      var webglfp;
+      it('should return a string', function () {
+        webglfp =  client.getWebglFingerprint();
+        expect(webglfp).toEqual(jasmine.any(String));
+      });
+    });
+
     describe('Fingerprint generators', function () {
       var fingerprint;
       beforeEach(function () {
