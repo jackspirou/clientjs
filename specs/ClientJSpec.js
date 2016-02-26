@@ -265,7 +265,7 @@ describe('ClientJS', function () {
             });
           });
 
-          it('should be greater than 17 and less than 35 with different canvas fingerprint', function () {
+          it('should be greater than 17 and less than 35.1 with different canvas fingerprint', function () {
             var vars = {};
 
             vars.cp1 = client.getCanvasPrint('Fo0!');
@@ -281,7 +281,21 @@ describe('ClientJS', function () {
 
             var similarity = ctph.similarity(vars.fp1, vars.fp2)
             expect(similarity).toBeGreaterThan(17);
-            expect(similarity).toBeLessThan(35);
+            expect(similarity).toBeLessThan(35.1);
+          });
+
+          it('should be greater than 97 and less than 100 with different language', function () {
+            var newFingerprint;
+            client.getLanguage = jasmine.createSpy().and.returnValue('en');
+
+            client.getFingerprintAsync({}, function (fingerprint, datapoints) {
+              newFingerprint = fingerprint;
+            });
+
+            var similarity = ctph.similarity(fp, newFingerprint);
+
+            expect(similarity).toBeGreaterThan(97);
+            expect(similarity).toBeLessThan(100);
           });
         });
       });
