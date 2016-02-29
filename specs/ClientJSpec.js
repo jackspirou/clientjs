@@ -209,6 +209,42 @@ describe('ClientJS', function () {
       });
     });
 
+    describe('#getGraphicsDriverVendor', function () {
+      var vendor;
+      it('should return a string', function () {
+        vendor =  client.getGraphicsDriverVendor();
+        expect(vendor).toEqual(jasmine.any(String));
+      });
+    });
+
+    describe('#getGraphicsDriverRenderer', function () {
+      var vendor;
+      it('should return a string', function () {
+        vendor =  client.getGraphicsDriverRenderer();
+        expect(vendor).toEqual(jasmine.any(String));
+      });
+    });
+
+    describe('#getGraphicsDriverInfo', function () {
+      var driverInfo;
+
+      it('should contcat vendor and renderer', function () {
+        driverInfo =  client.getGraphicsDriverInfo();
+        vendorAndRenderer = client.getGraphicsDriverVendor() + ' ' + client.getGraphicsDriverRenderer();
+
+        expect(driverInfo).toEqual(vendorAndRenderer);
+      });
+
+      it('should call getGraphicsDriverVendor and getGraphicsDriverRenderer', function () {
+        client.getGraphicsDriverVendor = jasmine.createSpy('getGraphicsDriverVendor');
+        client.getGraphicsDriverRenderer = jasmine.createSpy('getGraphicsDriverRenderer');
+        client.getGraphicsDriverInfo()
+
+        expect(client.getGraphicsDriverVendor).toHaveBeenCalled();
+        expect(client.getGraphicsDriverRenderer).toHaveBeenCalled();
+      });
+    });
+
     describe('Fingerprint generators', function () {
       var fingerprint;
       beforeEach(function () {
@@ -304,6 +340,19 @@ describe('ClientJS', function () {
 
             expect(similarity).toBeGreaterThan(97);
             expect(similarity).toBeLessThan(100);
+          });
+
+          it('should be greater than 95 and less than 100 with different graphics driver info', function () {
+            var newFingerprint;
+            client.getGraphicsDriverInfo = jasmine.createSpy().and.returnValue('Graphics Driver Vendor XYZ 1234N');
+
+            client.getFingerprintAsync({}, function (fingerprint, datapoints) {
+              newFingerprint = fingerprint;
+              var similarity = ctph.similarity(fp, newFingerprint);
+
+              expect(similarity).toBeGreaterThan(95);
+              expect(similarity).toBeLessThan(100);
+            });
           });
         });
       });

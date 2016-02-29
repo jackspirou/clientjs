@@ -46,6 +46,7 @@
       getSystemLanguage: true,
       getCanvasPrint: true,
       getIPAddresses: false,
+      getGraphicsDriverInfo: true
     };
   };
 
@@ -1233,6 +1234,31 @@
     }
 
     return result.join("|");
+  };
+
+
+  ClientJS.prototype.getGraphicsDriverInfo = function(){
+    return this.getGraphicsDriverVendor() + ' ' + this.getGraphicsDriverRenderer();
+  };
+
+  ClientJS.prototype.getGraphicsDriverVendor = function(){
+    var gl = this.createWebglCanvas();
+    if(!gl) return '';
+    var debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+    if (!debugInfo) return '';
+    var vendor = gl.getParameter(debugInfo.UNMASKED_VENDOR_WEBGL);
+
+    return vendor;
+  };
+
+  ClientJS.prototype.getGraphicsDriverRenderer = function(){
+    var gl = this.createWebglCanvas();
+    if(!gl) return '';
+    var debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+    if (!debugInfo) return '';
+    var renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
+
+    return renderer;
   };
 
   /**
