@@ -9,7 +9,7 @@
    * @alias ClientJS
    */
   var ClientJS = function () {
-    this._version = '0.1.11';
+    this._version = 'v1.0.0-rc.1';
     var p = new(window.UAParser || exports.UAParser);
     this._parser = p.getResult();
     this._fontDetective = new Detector();
