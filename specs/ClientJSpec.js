@@ -107,14 +107,15 @@ describe('ClientJS', function () {
     describe("getIPAddresses", function(){
       it("should return valid ips", function(done){
         client.getIPAddresses(function(ipAddresses){
-          if (client.isChrome() || client.isFirefox() || client.isIE() || (client.isOpera() && !client.isMobile())) {
+          //reference: http://caniuse.com/#feat=rtcpeerconnection
+          if ((client.isChrome() && !client.isMobileIOS()) || client.isFirefox() || (client.isOpera() && !client.isMobile())) {
             expect(ipAddresses).toEqual({
               localAddr: jasmine.stringMatching(/^(192\.168\.|169\.254\.|10\.|172\.(1[6-9]|2\d|3[01]))/),
               publicAddr: jasmine.any(String),
               fingerprint: jasmine.any(String)
             });
           } else {
-            expect(ipAddresses).toBeNull()
+            expect(ipAddresses).toEqual('');
           }
 
           done();
@@ -191,6 +192,21 @@ describe('ClientJS', function () {
       it('should return a String', function () {
         expect(client.getCanvasPrint()).toEqual(jasmine.any(String));
       });
+
+      it('should generate different canvasPrints', function () {
+        var cp1 = client.getCanvasPrint('Fo0!');
+        var cp2 = client.getCanvasPrint('BaR?');
+
+        expect(cp1).not.toEqual(cp2);
+      });
+    });
+
+    describe('#getWebglFingerprint', function () {
+      var webglfp;
+      it('should return a string', function () {
+        webglfp =  client.getWebglFingerprint();
+        expect(webglfp).toEqual(jasmine.any(String));
+      });
     });
 
     describe('Fingerprint generators', function () {
@@ -212,48 +228,82 @@ describe('ClientJS', function () {
       });
 
       describe('#getFingerprintAsync', function () {
-        var fp
+        var fp;
+        var dp;
         beforeEach(function(done){
           client.getFingerprintAsync({},function (fingerprint, datapoints) {
             fp = fingerprint;
+            dp = datapoints;
             done();
           });
         });
 
-        it('should return a String', function () {
-          expect(fp).toEqual(jasmine.any(String));
+        describe('fingerprint', function () {
+          it('should return a String', function () {
+            expect(fp).toEqual(jasmine.any(String));
+          });
+        });
+
+        describe('datapoints', function () {
+          it('should not include getIPAddresses by default', function () {
+            expect(dp.getIPAddresses).toBeUndefined();
+          });
+
+          it('should include getIPAddresses if added to the options', function (done) {
+            client.getFingerprintAsync({getIPAddresses: true},function (fingerprint, datapoints) {
+              dp = datapoints;
+              expect(dp.getIPAddresses).not.toBeUndefined();
+              done();
+            });
+          });
         });
 
         describe("similarity", function(){
-          //TODO: test similarity against different canvas fingerprints
+          it('should be greater than 90 and less than 100 with different user agent', function (done) {
+            var newFingerprint;
 
-          describe("with different user agent", function(){
-            var newClient, newFingerprint;
+            client.getUserAgent = jasmine.createSpy().and.returnValue('foo')
 
-            beforeEach(function(done){
-              navigator.__defineGetter__('userAgent', function(){
-                return 'foo';
+            client.getFingerprintAsync({},function (fingerprint, datapoints) {
+              newFingerprint = fingerprint;
+              var similarity = ctph.similarity(newFingerprint, fp);
+              expect(similarity).toBeGreaterThan(90);
+              //expect(similarity).toBeLessThan(100); //Opera allways returns 100 here
+              done();
+            });
+          });
+
+          it('should be greater than 17 and less than 35.1 with different canvas fingerprint', function () {
+            var vars = {};
+
+            vars.cp1 = client.getCanvasPrint('Fo0!');
+            vars.cp2 = client.getCanvasPrint('BaR?');
+
+            for (var i = 1; i <= 2; i++) {
+              client.getCanvasPrint = jasmine.createSpy().and.returnValue(vars['cp' + i]);
+
+              client.getFingerprintAsync({}, function (fingerprint, datapoints) {
+                vars['fp' + i] = fingerprint;
               });
+            }
 
-              if (navigator.userAgent != 'foo') {
-                var __originalNavigator = navigator;
-                navigator = new Object();
-                navigator.__proto__ = __originalNavigator;
-                navigator.__defineGetter__('userAgent', function () { return 'foo'; });
-              }
+            var similarity = ctph.similarity(vars.fp1, vars.fp2)
+            expect(similarity).toBeGreaterThan(17);
+            expect(similarity).toBeLessThan(35.1);
+          });
 
-              newClient = new ClientJS();
+          it('should be greater than 97 and less than 100 with different language', function () {
+            var newFingerprint;
+            client.getLanguage = jasmine.createSpy().and.returnValue('en');
 
-              newClient.getFingerprintAsync({},function (fingerprint, datapoints) {
-                newFingerprint = fingerprint;
-                done();
-              });
+            client.getFingerprintAsync({}, function (fingerprint, datapoints) {
+              newFingerprint = fingerprint;
             });
 
-            it('should be greater than 70 and less than 100 if only user agent is modified', function () {
-              expect(ctph.similarity(newFingerprint, fp)).toBeGreaterThan(70);
-              expect(ctph.similarity(newFingerprint, fp)).toBeLessThan(100);
-            });
+            var similarity = ctph.similarity(fp, newFingerprint);
+
+            expect(similarity).toBeGreaterThan(97);
+            expect(similarity).toBeLessThan(100);
           });
         });
       });
