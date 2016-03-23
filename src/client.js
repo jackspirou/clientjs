@@ -46,6 +46,8 @@
       getSystemLanguage: true,
       getCanvasPrint: true,
       getIPAddresses: false,
+      getGraphicsDriverInfo: true,
+      getMediaDevices: false
     };
   };
 
@@ -117,14 +119,10 @@
 
     options = this.extendOptions(options, newOptions);
 
-    this.getIPAddressesOption(function (ips) {
-      if (ips || ips === '') {
-        key += ips.localAddr + bar + ips.publicAddr + bar;
-        datapoints.getIPAddresses = ips;
-      }
-
+    this.getAsyncOptions(datapoints, function (k) {
+      key += k;
       for (var o in options) {
-        if (options[o] === true && o !== 'getIPAddresses') {
+        if (options[o] === true && o !== 'getIPAddresses' && o !== 'getMediaDevices') {
           var datapoint = _this[o]();
           key += datapoint + bar;
           datapoints[o] = datapoint;
@@ -154,10 +152,42 @@
     return murmurhash3_32_gc(key, 256);
   };
 
+  ClientJS.prototype.getAsyncOptions = function (datapoints, callback) {
+    var key = '';
+    var bar ='|';
+    var _this = this;
+
+    this.getIPAddressesOption(function (ips) {
+      if (ips !== undefined) {
+        key += ips.localAddr + bar + ips.publicAddr + bar;
+        datapoints.getIPAddresses = ips;
+      }
+
+      _this.getMediaDevicesOption(function (mediaDevices) {
+        if (mediaDevices !== undefined) {
+          key += mediaDevices;
+          datapoints.getMediaDevices = mediaDevices;
+        }
+
+        callback(key);
+      });
+    });
+  };
+
   ClientJS.prototype.getIPAddressesOption = function (callback) {
     if (this.options.getIPAddresses == true) {
       this.getIPAddresses(function (ips) {
         callback(ips);
+      });
+    } else {
+      callback();
+    }
+  };
+
+  ClientJS.prototype.getMediaDevicesOption = function (callback) {
+    if (this.options.getMediaDevices === true) {
+      this.getMediaDevices(function (mediaDevices) {
+        callback(mediaDevices);
       });
     } else {
       callback();
@@ -1239,6 +1269,31 @@
     return result.join("|");
   };
 
+
+  ClientJS.prototype.getGraphicsDriverInfo = function(){
+    return this.getGraphicsDriverVendor() + ' ' + this.getGraphicsDriverRenderer();
+  };
+
+  ClientJS.prototype.getGraphicsDriverVendor = function(){
+    var gl = this.createWebglCanvas();
+    if(!gl) return '';
+    var debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+    if (!debugInfo) return '';
+    var vendor = gl.getParameter(debugInfo.UNMASKED_VENDOR_WEBGL);
+
+    return vendor;
+  };
+
+  ClientJS.prototype.getGraphicsDriverRenderer = function(){
+    var gl = this.createWebglCanvas();
+    if(!gl) return '';
+    var debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+    if (!debugInfo) return '';
+    var renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
+
+    return renderer;
+  };
+
   /**
    * Returns a canvas element.
    *
@@ -1255,6 +1310,34 @@
 
     if (!gl) gl = null;
     return gl;
+  };
+
+  /**
+   * Returns a list of media devices if available.
+   * Otherwise, it returns an empty string.
+   * Visit https://developer.mozilla.org/en-US/docs/Web/API/MediaDeviceInfo further read.
+   *
+   * @this ClientJS
+   * @return {string} media devices or empty string.
+   */
+  ClientJS.prototype.getMediaDevices = function (callback) {
+    var mediaDevices = '';
+
+    if (navigator.mediaDevices && navigator.mediaDevices.enumerateDevices) {
+      navigator.mediaDevices.enumerateDevices()
+      .then(function(devices) {
+        devices.forEach(function(device) {
+          mediaDevices += device.kind + ":" + device.label + device.groudId + '#' + (device.deviceId) + ';';
+        });
+
+        callback(mediaDevices);
+      })
+      .catch(function(err) {
+        console.log(err.name + ": " + error.message);
+      });
+    } else {
+      callback(mediaDevices);
+    }
   };
 
   ClientJS.prototype._ipAddressesFilter = function (callback) {

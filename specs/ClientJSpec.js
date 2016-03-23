@@ -51,6 +51,23 @@ describe('ClientJS', function () {
     });
   });
 
+  describe('#getMediaDevicesOption', function(){
+    it("should not return media devices by default", function(done){
+      client.getMediaDevicesOption(function(mediaDevices){
+        expect(mediaDevices).toBeUndefined();
+        done();
+      });
+    });
+
+    it("should return ip addresses if options.getIPAddresses is truthy", function(done){
+      client.options.getIPAddresses = true;
+      client.getIPAddressesOption(function(ips){
+        expect(ips).not.toBeUndefined();
+        done();
+      });
+    });
+  });
+
   describe('#getVersion', function () {
     it('should be a string', function () {
       expect(client.getVersion()).toEqual(jasmine.any(String));
@@ -209,6 +226,57 @@ describe('ClientJS', function () {
       });
     });
 
+    describe('#getGraphicsDriverVendor', function () {
+      var vendor;
+      it('should return a string', function () {
+        vendor =  client.getGraphicsDriverVendor();
+        expect(vendor).toEqual(jasmine.any(String));
+      });
+    });
+
+    describe('#getGraphicsDriverRenderer', function () {
+      var vendor;
+      it('should return a string', function () {
+        vendor =  client.getGraphicsDriverRenderer();
+        expect(vendor).toEqual(jasmine.any(String));
+      });
+    });
+
+    describe('#getGraphicsDriverInfo', function () {
+      var driverInfo;
+
+      it('should contcat vendor and renderer', function () {
+        driverInfo =  client.getGraphicsDriverInfo();
+        vendorAndRenderer = client.getGraphicsDriverVendor() + ' ' + client.getGraphicsDriverRenderer();
+
+        expect(driverInfo).toEqual(vendorAndRenderer);
+      });
+
+      it('should call getGraphicsDriverVendor and getGraphicsDriverRenderer', function () {
+        client.getGraphicsDriverVendor = jasmine.createSpy('getGraphicsDriverVendor');
+        client.getGraphicsDriverRenderer = jasmine.createSpy('getGraphicsDriverRenderer');
+        client.getGraphicsDriverInfo()
+
+        expect(client.getGraphicsDriverVendor).toHaveBeenCalled();
+        expect(client.getGraphicsDriverRenderer).toHaveBeenCalled();
+      });
+    });
+
+    describe('#getMediaDevices', function () {
+      var mediaDevices;
+
+      beforeEach(function (done) {
+        mediaDevices = client.getMediaDevices(function(md){
+          mediaDevices = md;
+          done();
+        });
+      });
+
+      it('should return a string', function () {
+        expect(mediaDevices).toEqual(jasmine.any(String));
+      });
+    });
+
     describe('Fingerprint generators', function () {
       var fingerprint;
       beforeEach(function () {
@@ -249,10 +317,22 @@ describe('ClientJS', function () {
             expect(dp.getIPAddresses).toBeUndefined();
           });
 
+          it('should not include getMediaDevices by default', function () {
+            expect(dp.getMediaDevices).toBeUndefined();
+          });
+
           it('should include getIPAddresses if added to the options', function (done) {
             client.getFingerprintAsync({getIPAddresses: true},function (fingerprint, datapoints) {
               dp = datapoints;
               expect(dp.getIPAddresses).not.toBeUndefined();
+              done();
+            });
+          });
+
+          it('should include getMediaDevices if added to the options', function (done) {
+            client.getFingerprintAsync({getMediaDevices: true},function (fingerprint, datapoints) {
+              dp = datapoints;
+              expect(dp.getMediaDevices).not.toBeUndefined();
               done();
             });
           });
@@ -304,6 +384,56 @@ describe('ClientJS', function () {
 
             expect(similarity).toBeGreaterThan(97);
             expect(similarity).toBeLessThan(100);
+          });
+
+          it('should be greater than 95 and less than 100 with different graphics driver info', function () {
+            var newFingerprint;
+            client.getGraphicsDriverInfo = jasmine.createSpy().and.returnValue('Graphics Driver Vendor XYZ 1234N Graphics Driver Vendor XYZ 1234N Graphics Driver Vendor XYZ 1234N Graphics Driver Vendor XYZ 1234N Graphics Driver');
+
+            client.getFingerprintAsync({}, function (fingerprint, datapoints) {
+              newFingerprint = fingerprint;
+              var similarity = ctph.similarity(fp, newFingerprint);
+
+              expect(similarity).toBeGreaterThan(95);
+              expect(similarity).toBeLessThan(100);
+            });
+          });
+
+          it('should be greater than 94 and less than 100 with two media devices more', function (done) {
+            var newFingerprint;
+            var mediaDevices;
+
+            client.getMediaDevices(function (md) {
+              mediaDevices = md;
+            });
+
+            client.getMediaDevicesOption = jasmine.createSpy().and.callFake(function(callback){
+              callback(mediaDevices + 'audioinput:undefined#17672367228;videoinput:undefined#6909382487');
+            });
+
+            client.getFingerprintAsync({},function (fingerprint) {
+              newFingerprint = fingerprint;
+              var similarity = ctph.similarity(fp, newFingerprint);
+              expect(similarity).toBeGreaterThan(94);
+              expect(similarity).toBeLessThan(100);
+              done()
+            });
+          });
+
+          it('should be greater than 94 and less than 100 with different media devices', function (done) {
+            var newFingerprint;
+
+            client.getMediaDevicesOption = jasmine.createSpy().and.callFake(function(callback){
+              callback('videoinput:undefined#EFVEeRjv7CGKNsmS0IyLOMkmlHnYNV8vAmTD8KX+GLg=;audioinput:undefined#V3ZmhtoZdYJDiaTlEDWy+FVvGtbvPOviGvGh3UgEkxk=;audioinput:undefined#kFtf600O1esdlq2m0aam+8EDe+V7TYmX9eZ6FmNAels=;audioinput:undefined#UOePYGe9MR/zaA23ZjSOT3QH1OG63Lz4CW5YfB7lct0=;');
+            });
+
+            client.getFingerprintAsync({},function (fingerprint) {
+              newFingerprint = fingerprint;
+              var similarity = ctph.similarity(fp, newFingerprint);
+              expect(similarity).toBeGreaterThan(94);
+              expect(similarity).toBeLessThan(100);
+              done()
+            });
           });
         });
       });
