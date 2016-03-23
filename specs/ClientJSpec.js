@@ -388,7 +388,7 @@ describe('ClientJS', function () {
 
           it('should be greater than 95 and less than 100 with different graphics driver info', function () {
             var newFingerprint;
-            client.getGraphicsDriverInfo = jasmine.createSpy().and.returnValue('Graphics Driver Vendor XYZ 1234N');
+            client.getGraphicsDriverInfo = jasmine.createSpy().and.returnValue('Graphics Driver Vendor XYZ 1234N Graphics Driver Vendor XYZ 1234N Graphics Driver Vendor XYZ 1234N Graphics Driver Vendor XYZ 1234N Graphics Driver');
 
             client.getFingerprintAsync({}, function (fingerprint, datapoints) {
               newFingerprint = fingerprint;
@@ -399,7 +399,7 @@ describe('ClientJS', function () {
             });
           });
 
-          it('should be greater than 95 and less than 100 with two media devices more', function (done) {
+          it('should be greater than 94 and less than 100 with two media devices more', function (done) {
             var newFingerprint;
             var mediaDevices;
 
@@ -414,13 +414,13 @@ describe('ClientJS', function () {
             client.getFingerprintAsync({},function (fingerprint) {
               newFingerprint = fingerprint;
               var similarity = ctph.similarity(fp, newFingerprint);
-              expect(similarity).toBeGreaterThan(95);
+              expect(similarity).toBeGreaterThan(94);
               expect(similarity).toBeLessThan(100);
               done()
             });
           });
 
-          it('should be greater than 95 and less than 100 with different media devices', function (done) {
+          it('should be greater than 94 and less than 100 with different media devices', function (done) {
             var newFingerprint;
 
             client.getMediaDevicesOption = jasmine.createSpy().and.callFake(function(callback){
@@ -430,7 +430,7 @@ describe('ClientJS', function () {
             client.getFingerprintAsync({},function (fingerprint) {
               newFingerprint = fingerprint;
               var similarity = ctph.similarity(fp, newFingerprint);
-              expect(similarity).toBeGreaterThan(95);
+              expect(similarity).toBeGreaterThan(94);
               expect(similarity).toBeLessThan(100);
               done()
             });
