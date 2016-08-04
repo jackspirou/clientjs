@@ -618,7 +618,7 @@
 
     // Get System Language.  Return a string containing the system language.
     getSystemLanguage: function() {
-      return navigator.systemLanguage;
+      return navigator.systemLanguage || window.navigator.language;
     },
 
     //
