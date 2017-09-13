@@ -48,7 +48,7 @@
 //
 //      client.getSoftwareVersion();
 //      client.getBrowserData();
-//      client.getFingerPrint();
+//      client.getFingerprint();
 //      client.getCustomFingerprint(...);
 //
 //      client.getUserAgent();
