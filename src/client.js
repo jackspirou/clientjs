@@ -604,7 +604,7 @@
     // Get Time Zone.  Return a string containing the time zone.
     getTimeZone: function() {
       var rightNow = new Date();
-      return String(String(rightNow).split("(")[1]).split(")")[0];
+      return String(-(rightNow.getTimezoneOffset()/60));
     },
 
     //
