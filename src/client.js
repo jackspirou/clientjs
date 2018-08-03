@@ -603,8 +603,18 @@
 
     // Get Time Zone.  Return a string containing the time zone.
     getTimeZone: function() {
-      var rightNow = new Date();
-      return String(-(rightNow.getTimezoneOffset()/60));
+      var rightNow, myNumber, formattedNumber, result;
+        rightNow = new Date();
+        myNumber = String(-(rightNow.getTimezoneOffset() / 60));
+        if (myNumber < 0) {
+            myNumber = myNumber * -1;
+            formattedNumber = ("0" + myNumber).slice(-2);
+            result = "-" + formattedNumber;
+        } else {
+            formattedNumber = ("0" + myNumber).slice(-2);
+            result = "+" + formattedNumber;
+        }
+        return result;
     },
 
     //
