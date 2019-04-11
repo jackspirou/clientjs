@@ -169,9 +169,9 @@ It is important to note this project owes much to other pieces great works.
 We had the advantage of observing how others had approached this problem.
 
 Built Upon:
-- https:github.com/Valve/fingerprintjs
-- http:darkwavetech.com/device_fingerprint.html
-- detectmobilebrowsers.com
+- [FingerprintJS)(https://github.com/Valve/fingerprintjs)
+- [DarkWave Tech](https://www.darkwavetech.com/index.php/device-fingerprint-blog)
+- [Detect Mobile Browsers](http://detectmobilebrowsers.com)
 
 ## Vendor Code
 All dependencies are included into `client.min.js` when the `build.sh` bash file minifies the project. Vendored dependencies should not be included separately.
