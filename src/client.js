@@ -523,7 +523,7 @@
 
     // Is Mime Types.  Check if a mime type is installed.
     isMimeTypes: function() {
-      if (navigator.mimeTypes.length) {
+      if (navigator.mimeTypes && navigator.mimeTypes.length) {
         return true;
       }
       return false;
@@ -533,11 +533,13 @@
     getMimeTypes: function() {
       var mimeTypeList = "";
 
-      for (var i = 0; i < navigator.mimeTypes.length; i++) {
-        if (i == navigator.mimeTypes.length - 1) {
-          mimeTypeList += navigator.mimeTypes[i].description;
-        } else {
-          mimeTypeList += navigator.mimeTypes[i].description + ", ";
+      if(navigator.mimeTypes) {
+        for (var i = 0; i < navigator.mimeTypes.length; i++) {
+          if (i == navigator.mimeTypes.length - 1) {
+            mimeTypeList += navigator.mimeTypes[i].description;
+          } else {
+            mimeTypeList += navigator.mimeTypes[i].description + ", ";
+          }
         }
       }
       return mimeTypeList;
