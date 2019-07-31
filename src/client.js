@@ -174,8 +174,9 @@
       var systemLanguage = this.getSystemLanguage();
       var cookies = this.isCookie();
       var canvasPrint = this.getCanvasPrint();
+      var gpu = this.getGpu();
 
-      var key = userAgent + bar + screenPrint + bar + pluginList + bar + fontList + bar + localStorage + bar + sessionStorage + bar + timeZone + bar + language + bar + systemLanguage + bar + cookies + bar + canvasPrint;
+      var key = userAgent + bar + screenPrint + bar + pluginList + bar + fontList + bar + localStorage + bar + sessionStorage + bar + timeZone + bar + language + bar + systemLanguage + bar + cookies + bar + canvasPrint + bar + gpu;
       var seed = 256;
 
       return murmurhash3_32_gc(key, seed);
@@ -692,6 +693,43 @@
       ctx.fillStyle = "rgba(102, 204, 0, 0.7)";
       ctx.fillText(txt, 4, 17);
       return canvas.toDataURL();
+    },
+
+    // isGpu: check if the Gpu is available through WebGL
+    isGpu: function() {
+      var canvas = document.createElement('canvas');
+
+      try {
+          if (canvas.getContext('webgl') || canvas.getContext('experimental-webgl') === null)
+	      return false;
+      } catch (e) {
+	  return false;
+      }
+      return true;
+    },
+
+    // getGpu: return a string containing vendor and model of the gpu, if available, else an empty string
+    getGpu: function() {
+      var canvas = document.createElement('canvas');
+      var gl;
+      var debugInfo;
+      var vendor;
+      var renderer;
+
+      try {
+        gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+        debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+	// null debugInfo may happen in case of privacy protection  
+	if ((gl === null) || (debugInfo === null))
+	    return '';
+      } catch (e) {
+	  return '';
+      }
+
+      vendor = gl.getParameter(debugInfo.UNMASKED_VENDOR_WEBGL);
+      renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
+
+      return vendor + '|' + renderer
     }
   };
 
