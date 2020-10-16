@@ -94,3 +94,11 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+##
+# Editors/IDEs
+##
+
+# VSCode + Plugins
+.history
+.vscode

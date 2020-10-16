@@ -2,7 +2,7 @@
 	is released under the MIT License <http://www.opensource.org/licenses/mit-license.php>
 */
 
-var swfobject = function() {
+module.exports = function() {
 	
 	var UNDEF = "undefined",
 		OBJECT = "object",

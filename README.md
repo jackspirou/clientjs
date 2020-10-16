@@ -50,7 +50,11 @@ Below is an example of how to generate and display a fingerprint:
 
 ```javascript
 // Create a new ClientJS object
+
+// in a browser:
 var client = new ClientJS();
+// or in a CommonJS environment:
+var client = require('clientjs').ClientJS;
 
 // Get the client's fingerprint id
 var fingerprint = client.getFingerprint();
@@ -190,15 +194,12 @@ Once cloned, install all dependencies. ClientJS uses [Karma](https://karma-runne
 ```shell
 # Install dependencies
 $ npm install
-
-# If you want tu run karma from the command line
-$ npm install -g karma-cli
 ```
 
 Run Karma and enjoy coding!
 
 ```shell
-$ karma start
+$ npm test
 ```
 
 Thanks for contributing to ClientJS! Please report any bug [here](https://github.com/jackspirou/clientjs/issues).

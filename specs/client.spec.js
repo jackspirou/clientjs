@@ -1,3 +1,8 @@
+"use strict";
+
+const ClientJS = require("../src/client").ClientJS;
+const UAParser = require("ua-parser-js");
+
 describe("ClientJS", function(){
   var client;
   beforeEach(function(){
@@ -10,25 +15,25 @@ describe("ClientJS", function(){
 
   describe("#getSoftwareVersion", function(){
     it("should be a string", function(){
-      expect(client.getSoftwareVersion()).toEqual(jasmine.any(String))
+      expect(client.getSoftwareVersion()).toEqual(jasmine.any(String));
     });
   });
 
   describe("browser data", function(){
     var browserData;
-    beforeEach(function() {
+    beforeEach(function(){
       browserData = client.getBrowserData();
-    })
+    });
 
     describe("#getBrowserData", function(){
       it("should return a UAParser result", function(){
-        var parser = (new (window.UAParser||exports.UAParser));
-        expect(browserData).toEqual(parser.getResult())
+        var parser = new UAParser();
+        expect(browserData).toEqual(parser.getResult());
       });
 
       it("should be something", function(){
-        expect(browserData).not.toBeNull()
-      })
+        expect(browserData).not.toBeNull();
+      });
     });
 
     describe("#getUserAgent", function(){
@@ -39,7 +44,9 @@ describe("ClientJS", function(){
 
     describe("#getUserAgentLowerCase", function(){
       it("should be equal to client.getUserAgent, but in lower case", function(){
-        expect(client.getUserAgentLowerCase()).toEqual(client.getUserAgent().toLowerCase());
+        expect(client.getUserAgentLowerCase()).toEqual(
+          client.getUserAgent().toLowerCase()
+        );
       });
     });
 
@@ -57,7 +64,9 @@ describe("ClientJS", function(){
 
     describe("#getBrowserMajorVersion", function(){
       it("should be equal to browserData.browser.major", function(){
-        expect(client.getBrowserMajorVersion()).toEqual(browserData.browser.major);
+        expect(client.getBrowserMajorVersion()).toEqual(
+          browserData.browser.major
+        );
       });
     });
 
@@ -67,12 +76,15 @@ describe("ClientJS", function(){
         for (var i = 0; i < browsers.length; i++) {
           var browser = browsers[i],
             isBrowser = client["is" + browser]();
-          if (client.getBrowser() == browser) {
-            expect(isBrowser).toBeTruthy()
-          } else if (client.getBrowser() == "Mobile Safari" && browser == "Safari") {
-            expect(isBrowser).toBeTruthy()
-          }else{
-            expect(isBrowser).toBeFalsy()
+          if (
+            client.getBrowser() === browser ||
+            (client.getBrowser() === "Chrome Headless" &&
+              browser === "Chrome") ||
+            (client.getBrowser() === "Mobile Safari" && browser === "Safari")
+          ) {
+            expect(isBrowser).toBeTruthy();
+          } else {
+            expect(isBrowser).toBeFalsy();
           }
         }
       });
@@ -86,7 +98,7 @@ describe("ClientJS", function(){
 
     describe("Fingerprint generators", function(){
       var fingerprint;
-      beforeEach(function() {
+      beforeEach(function(){
         fingerprint = client.getFingerprint();
       });
 
@@ -98,8 +110,11 @@ describe("ClientJS", function(){
 
       describe("#getCustomFingerprint", function(){
         var customFingerprint;
-        beforeEach(function() {
-          customFingerprint = client.getCustomFingerprint("custom", "fingerprint")
+        beforeEach(function(){
+          customFingerprint = client.getCustomFingerprint(
+            "custom",
+            "fingerprint"
+          );
         });
 
         it("should return a Number", function(){
@@ -112,7 +127,10 @@ describe("ClientJS", function(){
 
         //Fix to https://github.com/jackspirou/clientjs/issues/19
         it("should not ignore the last argument", function(){
-          var newCustomFingerprint = client.getCustomFingerprint("custom", "fingerprint :)");
+          var newCustomFingerprint = client.getCustomFingerprint(
+            "custom",
+            "fingerprint :)"
+          );
           expect(customFingerprint).not.toEqual(newCustomFingerprint);
         });
       });

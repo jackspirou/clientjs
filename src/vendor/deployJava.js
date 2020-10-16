@@ -1,4 +1,4 @@
-var deployJava = function() {
+module.exports = function() {
   var l = {
     core: ["id", "class", "title", "style"],
     i18n: ["lang", "dir"],
