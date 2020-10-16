@@ -12,14 +12,14 @@ If you want to fingerprint browsers, you are **_probably_** also interested in o
 
 Below are some features that make ClientJS different from other fingerprinting libraries:
 - It's pure native JavaScript
-- It's decently lightweight at ~45 KB
+- It's decently lightweight at ~50 KB (full bundle) or ~28 KB (minimal bundle)
 - All user data points are available by design, not just the 32bit integer fingerprint
 
 ## Documentation and Demos
 You can find more documentation and demos on each method at [clientjs.org](https://clientjs.org/).
 
 ## Installation
-To use ClientJS, simply include `dist/client.min.js`.
+To use ClientJS, simply include `dist/client.min.js` or one of the other bundles (see [bundles](#bundles) section for more details)
 
 ClientJS is available for download via [bower](http://bower.io/search/?q=clientjs) and [npm](https://www.npmjs.com/package/clientjs).
 
@@ -80,6 +80,14 @@ The current data-points that used to generate fingerprint 32bit integer hash ID 
 - system language
 - cookies
 - canvas print
+
+## Bundles
+For maximum flexibility, this library is distributed in 4 different pre-bundled variants for the browser:
+
+- `dist/client.min.js` - full distribution bundle, contains Flash and Java detection mechanisms
+- `dist/client.flash.min.js` - contains Flash detection mechanism but misses Java detection (`getJavaVersion()` will throw an error when called)
+- `dist/client.java.min.js` - contains Java detection mechanism but misses Flash detection (`getFlashVersion()` will throw an error when called)
+- `dist/client.base.min.js` - misses both, Flash and Java detection mechanisms (`getFlashVersion()` and `getJavaVersion()` will throw an error when called)
 
 ## Available Methods
 Below is the current list of available methods to find information on a users browser/device.
@@ -143,9 +151,9 @@ You can find documentation on each method at [clientjs.org](https://clientjs.org
 
   client.getPlugins();
   client.isJava();
-  client.getJavaVersion();
+  client.getJavaVersion(); // functional only in java and full builds, throws an error otherwise
   client.isFlash();
-  client.getFlashVersion();
+  client.getFlashVersion(); // functional only in flash and full builds, throws an error otherwise
   client.isSilverlight();
   client.getSilverlightVersion();
 
@@ -178,18 +186,18 @@ Built Upon:
 - detectmobilebrowsers.com
 
 ## Vendor Code
-All dependencies are included into `client.min.js` when the `build.sh` bash file minifies the project. Vendored dependencies should not be included separately.
+All dependencies are included into the minified bundles when the `npm run build` script minifies the project. Vendored dependencies should not be included separately.
 
 Dependencies Include:
-- ua-parser.js
 - fontdetect.js
-- swfobject.js
+- swfobject.js - included only in full and Flash builds (only `client.min.js` and `client.flash.min.js`)
 - murmurhash3.js
+- deployJava.js - included only in full and Java builds (only `client.min.js` and `client.java.min.js`)
 
 ## Contributing
 Collaborate by [forking](https://help.github.com/articles/fork-a-repo/) this project and sending a Pull Request this way.
 
-Once cloned, install all dependencies. ClientJS uses [Karma](https://karma-runner.github.io/0.13/index.html) as its testing environment.
+Once cloned, install all dependencies. ClientJS uses [Karma](https://karma-runner.github.io/5.2/index.html) as its testing environment.
 
 ```shell
 # Install dependencies

@@ -9,6 +9,8 @@ module.exports = {
   extends: ['eslint:recommended'],
   env: {
     node: true,
-    browser: true,
   },
+  rules: {
+    'strict': 'error'
+  }
 };
