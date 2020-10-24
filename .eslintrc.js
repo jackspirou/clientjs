@@ -1,5 +1,4 @@
 'use strict';
-
 module.exports = {
   root: true,
   parserOptions: {
@@ -11,6 +10,7 @@ module.exports = {
     node: true,
   },
   rules: {
-    'strict': 'error'
-  }
+    strict: 'error',
+    'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+  },
 };

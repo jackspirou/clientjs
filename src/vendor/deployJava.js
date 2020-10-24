@@ -1,3 +1,6 @@
+/* globals ActiveXObject:readonly, oClientCaps:readonly */
+/* eslint-disable strict */
+
 /*
  * Copyright (c) 2006, 2016, Oracle and/or its affiliates. All rights reserved.
  * ORACLE PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
@@ -1024,7 +1027,7 @@ var deployJava = {
   /*
    * sets the preferred install type : null, online, kernel
    */
-  setInstallerType: function (type) {
+  setInstallerType: function (_type) {
     log(
       'The Deployment Toolkit no longer installs JRE. Method setInstallerType() is no-op. ' +
         'More Information on usage of the Deployment Toolkit can be found in the Deployment Guide at ' +
@@ -1037,7 +1040,7 @@ var deployJava = {
   /*
    * sets additional package list - to be used by kernel installer
    */
-  setAdditionalPackages: function (packageList) {
+  setAdditionalPackages: function (_packageList) {
     log(
       'The Deployment Toolkit no longer installs JRE. Method setAdditionalPackages() is no-op. ' +
         'More Information on usage of the Deployment Toolkit can be found in the Deployment Guide at ' +
@@ -1294,7 +1297,7 @@ var deployJava = {
     return false;
   },
 
-  done: function (name, result) {},
+  done: function (_name, _result) {},
 
   FFInstall: function () {
     location.href = constructGetJavaURL(
@@ -1424,17 +1427,23 @@ if (deployJava.locale == null) {
   if (loc == null)
     try {
       loc = navigator.userLanguage;
-    } catch (err) {}
+    } catch (err) {
+      // ignore error
+    }
 
   if (loc == null)
     try {
       loc = navigator.systemLanguage;
-    } catch (err) {}
+    } catch (err) {
+      // ignore error
+    }
 
   if (loc == null)
     try {
       loc = navigator.language;
-    } catch (err) {}
+    } catch (err) {
+      // ignore error
+    }
 
   if (loc != null) {
     loc.replace('-', '_');

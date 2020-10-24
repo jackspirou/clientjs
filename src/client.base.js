@@ -129,9 +129,9 @@
 'use strict';
 
 var globalThis = require('globalthis/polyfill')();
-var Detector = require('./vendor/fontdetect');
-var murmurhash3_32_gc = require('./vendor/murmurhash3');
+var murmurhash3_32_gc = require('murmurhash-js/murmurhash3_gc');
 var UAParser = require('ua-parser-js');
+var Detector = require('./vendor/fontdetect');
 
 var browserData; // Global user agent browser object.
 var fontDetective; // Global font detective object.
