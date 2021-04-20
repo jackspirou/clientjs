@@ -3,12 +3,18 @@
   "version": "0.1.11",
   "main": ["dist/client.min.js"],
   "ignore": [
-    ".travis.yml",
+    ".drone.sec",
+    ".drone.yml",
     ".gitignore",
-    "build",
-    "grunt.js",
+    ".travis.yml",
+    "justrelease.yml",
+    "karma",
     "LICENSE",
     "node_modules",
-    "package.json"
+    "package-lock.json",
+    "package.json",
+    "scripts",
+    "specs",
+    "webpack.config.js"
   ]
 }

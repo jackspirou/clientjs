@@ -32,26 +32,46 @@
     "url": "https://github.com/jackspirou/clientjs/issues"
   },
   "scripts": {
+    "build": "webpack -c webpack.config.js",
+    "lint": "eslint '**/*.js'",
     "postinstall": "node scripts/install.js",
-    "test": "node scripts/test.js",
-    "posttest": "./node_modules/karma/bin/karma start karma/aircover.conf.js",
-    "prepublish": "./node_modules/gulp/bin/gulp.js"
+    "posttest": "npm run test:aircover",
+    "prepublish": "npm run lint && npm run build",
+    "test": "npm run test:local",
+    "test:local": "karma start karma/local.conf.js",
+    "test:aircover": "karma start karma/aircover.conf.js",
+    "test:drone": "karma start karma/drone.conf.js"
   },
-  "main": "dist/client.min.js",
+  "main": "src/client.js",
+  "browser": "dist/client.min.js",
+  "files": [
+    "dist/**/*",
+    "logo.jpg",
+    "src/**/*"
+  ],
   "devDependencies": {
-    "gulp": "^3.9.0",
-    "gulp-closure-compiler": "^0.4.0",
-    "jasmine-core": "~2.4.1",
-    "karma": "^0.13.19",
-    "karma-chrome-launcher": "~0.2.2",
-    "karma-coverage": "^0.5.3",
-    "karma-firefox-launcher": "~0.1.7",
-    "karma-jasmine": "^0.3.6",
-    "karma-opera-launcher": "~0.3.0",
-    "karma-phantomjs-launcher": "^0.2.3",
-    "karma-safari-launcher": "~0.1.1",
-    "karma-sauce-launcher": "^0.3.0",
-    "phantomjs": "^1.9.19"
+    "eslint": "^7.11.0",
+    "istanbul-instrumenter-loader": "^3.0.1",
+    "jasmine-core": "^3.6.0",
+    "karma": "^5.2.3",
+    "karma-chrome-launcher": "^3.1.0",
+    "karma-coverage-istanbul-reporter": "^3.0.3",
+    "karma-firefox-launcher": "^2.0.0",
+    "karma-jasmine": "^4.0.1",
+    "karma-opera-launcher": "^1.0.0",
+    "karma-safari-launcher": "^1.0.0",
+    "karma-sauce-launcher": "^4.1.6",
+    "karma-sourcemap-loader": "^0.3.8",
+    "karma-webpack": "^4.0.2",
+    "terser-webpack-plugin": "^4.2.3",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^4.1.0"
+  },
+  "dependencies": {
+    "globalthis": "^1.0.1",
+    "inherits": "^2.0.4",
+    "murmurhash-js": "^1.0.0",
+    "ua-parser-js": "^0.7.22"
   },
   "license": "Apache-2.0",
   "licenses": [

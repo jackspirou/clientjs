@@ -6,8 +6,7 @@ build:
   commands:
     - export BUILD_NUMBER=$DRONE_BUILD_NUMBER
     - npm install --quiet
-    - npm install --quiet -g karma-cli
-    - npm test
+    - npm run test:drone
 
 publish:
   coverage:

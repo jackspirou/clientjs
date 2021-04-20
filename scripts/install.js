@@ -1,3 +1,5 @@
+'use strict';
+
 // Creates sauce.json if not yet present after install
 var fs = require('fs');
 

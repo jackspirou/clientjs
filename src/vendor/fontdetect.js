@@ -1,3 +1,5 @@
+/* eslint-disable strict */
+
 /**
  * JavaScript code to detect available availability of a
  * particular font in a browser using JavaScript and CSS.
@@ -22,7 +24,7 @@
  * Usage: d = new Detector();
  *        d.detect('font name');
  */
-var Detector = function() {
+module.exports = function Detector() {
     // a font will be compared against all the three default fonts.
     // and if it doesn't match all 3 then that font is not available.
     var baseFonts = ['monospace', 'sans-serif', 'serif'];

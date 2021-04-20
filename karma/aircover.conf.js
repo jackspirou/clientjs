@@ -1,40 +1,41 @@
-module.exports = function(config) {
+'use strict';
 
-  config.set({
+const path = require('path');
+const karmaBaseConfigFactory = require('./base.conf');
 
-    // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '../',
+module.exports = function (config) {
+  const aircoverConfig = karmaBaseConfigFactory(config);
 
-    // frameworks to use
-    // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jasmine'],
-
-    // list of files / patterns to load in the browser
-    files: [
-      'src/**/*.js',
-      'specs/**/*.js'
+  aircoverConfig.webpack.module = {
+    ...aircoverConfig.webpack.module,
+    rules: [
+      ...((aircoverConfig.webpack.module || {}).rules || []),
+      // instrument only testing sources with Istanbul
+      {
+        test: /\.js$/,
+        use: { loader: 'istanbul-instrumenter-loader' },
+        include: path.resolve(__dirname, '../src/'),
+      },
     ],
-
-    // test results reporter to use
-    // possible values: 'dots', 'progress'
-    // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress', 'coverage'],
-    preprocessors: {
-      'src/*.js': ['coverage']
+  };
+  aircoverConfig.reporters.push('coverage-istanbul');
+  aircoverConfig.coverageIstanbulReporter = {
+    dir: path.resolve(__dirname, '../coverage'),
+    fixWebpackSourcePaths: true,
+    reports: ['lcovonly'],
+    'report-config': {
+      lcovonly: {
+        file: 'lcov.info',
+      },
     },
-
-    browsers: ['PhantomJS'],
-
-    coverageReporter: {
-      // specify a common output directory
-      dir: 'coverage',
-      reporters: [
-        // reporters supporting the `file` property, use `subdir` to directly
-        // output them in the `dir` directory
-        { type: 'lcovonly', subdir: '.', file: 'lcov.info' }
-      ]
+  };
+  aircoverConfig.browsers = ['ChromeCi'];
+  aircoverConfig.customLaunchers = {
+    ChromeCi: {
+      base: 'ChromeHeadless',
+      flags: ['--no-sandbox', '--disable-gpu'],
     },
+  };
 
-    singleRun: true
-  });
+  config.set(aircoverConfig);
 };
