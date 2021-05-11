@@ -47,6 +47,7 @@
   "files": [
     "dist/**/*",
     "logo.jpg",
+    "scripts/**/*",
     "src/**/*"
   ],
   "devDependencies": {
