@@ -52,12 +52,13 @@ Below is an example of how to generate and display a fingerprint:
 // Create a new ClientJS object
 
 // in a browser:
-var client = new ClientJS();
+const client = new ClientJS();
 // or in a CommonJS environment:
-var client = require('clientjs').ClientJS;
+const { ClientJS } = require('clientjs');
+const client = new ClientJS();
 
 // Get the client's fingerprint id
-var fingerprint = client.getFingerprint();
+const fingerprint = client.getFingerprint();
 
 // Print the 32bit hash id to the console
 console.log(fingerprint);
@@ -95,7 +96,7 @@ Below is the current list of available methods to find information on a users br
 You can find documentation on each method at [clientjs.org](https://clientjs.org/).
 
 ```
-  var client = new ClientJS();
+  const client = new ClientJS();
 
   client.getBrowserData();
   client.getFingerprint();
