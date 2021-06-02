@@ -95,7 +95,7 @@ Below is the current list of available methods to find information on a users br
 
 You can find documentation on each method at [clientjs.org](https://clientjs.org/).
 
-```
+```js
   const client = new ClientJS();
 
   client.getBrowserData();
