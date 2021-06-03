@@ -53,8 +53,13 @@ Below is an example of how to generate and display a fingerprint:
 
 // in a browser:
 const client = new ClientJS();
+
 // or in a CommonJS environment:
 const { ClientJS } = require('clientjs');
+const client = new ClientJS();
+
+// or via ES6 imports:
+import { ClientJS } from 'clientjs';
 const client = new ClientJS();
 
 // Get the client's fingerprint id
