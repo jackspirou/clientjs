@@ -45,7 +45,7 @@
     "test:drone": "karma start karma/drone.conf.js"
   },
   "main": "src/client.js",
-  "browser": "dist/client.min.js",
+  "browser": "dist/client.base.min.js",
   "files": [
     "dist/**/*",
     "logo.jpg",
