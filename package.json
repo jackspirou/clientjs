@@ -4,7 +4,7 @@
   "homepage": "https://clientjs.org",
   "repository": {
     "type": "git",
-    "url": "git://github.com/jackspirou/clientjs.git"
+    "url": "https://github.com/jackspirou/clientjs.git"
   },
   "description": "Device information and digital fingerprinting written in pure JavaScript.",
   "keywords": [
@@ -33,10 +33,12 @@
   },
   "scripts": {
     "build": "webpack -c webpack.config.js",
+    "checks": "npm run lint && npm test && npm run build",
     "lint": "eslint '**/*.js'",
     "postinstall": "node scripts/install.js",
     "posttest": "npm run test:aircover",
-    "prepublish": "npm run lint && npm run build",
+    "prepublishOnly": "npm run checks",
+    "preversion": "npm run checks",
     "test": "npm run test:local",
     "test:local": "karma start karma/local.conf.js",
     "test:aircover": "karma start karma/aircover.conf.js",
@@ -51,28 +53,28 @@
     "src/**/*"
   ],
   "devDependencies": {
-    "eslint": "^7.11.0",
+    "eslint": "^7.32.0",
     "istanbul-instrumenter-loader": "^3.0.1",
-    "jasmine-core": "^3.6.0",
-    "karma": "^5.2.3",
+    "jasmine-core": "^3.9.0",
+    "karma": "^6.3.4",
     "karma-chrome-launcher": "^3.1.0",
     "karma-coverage-istanbul-reporter": "^3.0.3",
-    "karma-firefox-launcher": "^2.0.0",
+    "karma-firefox-launcher": "^2.1.1",
     "karma-jasmine": "^4.0.1",
     "karma-opera-launcher": "^1.0.0",
     "karma-safari-launcher": "^1.0.0",
-    "karma-sauce-launcher": "^4.1.6",
+    "karma-sauce-launcher": "^4.3.6",
     "karma-sourcemap-loader": "^0.3.8",
     "karma-webpack": "^4.0.2",
     "terser-webpack-plugin": "^4.2.3",
     "webpack": "^4.44.2",
-    "webpack-cli": "^4.1.0"
+    "webpack-cli": "^4.8.0"
   },
   "dependencies": {
-    "globalthis": "^1.0.1",
+    "globalthis": "^1.0.2",
     "inherits": "^2.0.4",
     "murmurhash-js": "^1.0.0",
-    "ua-parser-js": "^0.7.22"
+    "ua-parser-js": "^0.7.28"
   },
   "license": "Apache-2.0",
   "licenses": [
