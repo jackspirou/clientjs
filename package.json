@@ -72,6 +72,7 @@
     "karma-sourcemap-loader": "^0.3.8",
     "karma-webpack": "^4.0.2",
     "lint-staged": "^11.1.2",
+    "release-it": "^14.11.5",
     "terser-webpack-plugin": "^4.2.3",
     "webpack": "^4.44.2",
     "webpack-cli": "^4.8.0"

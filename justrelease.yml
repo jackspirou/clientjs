@@ -1,8 +1,0 @@
-version.update:
-    - json
-create.artifacts:
-        - npm install
-publish:
-        - github:
-            - description:releasenotes.md
-            - attachment:dist/client.min.js
