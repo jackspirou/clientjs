@@ -52,11 +52,13 @@
     "dist/**/*",
     "logo.jpg",
     "scripts/**/*",
-    "src/**/*"
+    "src/**/*",
+    "!.eslintrc.js"
   ],
   "devDependencies": {
     "@commitlint/cli": "^13.1.0",
     "@commitlint/config-conventional": "^13.1.0",
+    "@release-it/keep-a-changelog": "^2.3.0",
     "eslint": "^7.32.0",
     "husky": "^7.0.1",
     "istanbul-instrumenter-loader": "^3.0.1",

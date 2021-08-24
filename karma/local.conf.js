@@ -10,7 +10,7 @@ module.exports = function (config) {
   localConfig.concurrency = Infinity;
   // start these browsers
   // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-  localConfig.browsers = ['Chrome', 'Safari', 'Firefox', 'Opera'];
+  localConfig.browsers = ['Chrome', 'Firefox', 'Opera'];
 
   config.set(localConfig);
 };
