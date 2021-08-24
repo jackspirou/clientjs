@@ -34,9 +34,11 @@
   "scripts": {
     "build": "webpack -c webpack.config.js",
     "checks": "npm run lint && npm test && npm run build",
-    "lint": "eslint '**/*.js'",
+    "lint": "eslint --fix '**/*.js'",
+    "lint:check": "eslint '**/*.js'",
     "postinstall": "node scripts/install.js",
     "posttest": "npm run test:aircover",
+    "prepare": "husky install",
     "prepublishOnly": "npm run checks",
     "preversion": "npm run checks",
     "test": "npm run test:local",
@@ -53,7 +55,10 @@
     "src/**/*"
   ],
   "devDependencies": {
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0",
     "eslint": "^7.32.0",
+    "husky": "^7.0.1",
     "istanbul-instrumenter-loader": "^3.0.1",
     "jasmine-core": "^3.9.0",
     "karma": "^6.3.4",
@@ -66,6 +71,7 @@
     "karma-sauce-launcher": "^4.3.6",
     "karma-sourcemap-loader": "^0.3.8",
     "karma-webpack": "^4.0.2",
+    "lint-staged": "^11.1.2",
     "terser-webpack-plugin": "^4.2.3",
     "webpack": "^4.44.2",
     "webpack-cli": "^4.8.0"
