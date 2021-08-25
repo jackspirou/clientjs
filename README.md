@@ -181,9 +181,9 @@ It is important to note this project owes much to other pieces great works.
 We had the advantage of observing how others had approached this problem.
 
 Built Upon:
-- https:github.com/Valve/fingerprintjs
-- http:darkwavetech.com/device_fingerprint.html
-- detectmobilebrowsers.com
+- https://web.archive.org/web/20200714191004/https://github.com/Valve/fingerprintjs
+- https://web.archive.org/web/20200411083356/https://www.darkwavetech.com/index.php/device-fingerprint-blog
+- http://detectmobilebrowsers.com
 
 ## Contributing
 Collaborate by [forking](https://help.github.com/articles/fork-a-repo/) this project and sending a Pull Request this way.
