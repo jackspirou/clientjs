@@ -203,5 +203,19 @@ $ npm test
 
 Thanks for contributing to ClientJS! Please report any bug [here](https://github.com/jackspirou/clientjs/issues).
 
+## Releasing
+
+To make a new release, use the [`release-it`](https://github.com/release-it/release-it) tool, this will guide you through the release process:
+
+```sh
+npx release-it
+```
+
+You can make a dry run of the release process with the following command:
+
+```sh
+npx release-it --dry-run
+```
+
 ## LICENSE
 [Apache License 2.0](https://github.com/jackspirou/clientjs/blob/master/LICENSE)
