@@ -9,10 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Modularize Java and Flash detection, offer bundles excluding either Java or Flash detection or both
 
 ### Changed
-- (**breaking**) Expose the client.js variant that *without* Java and Flash detection for browser bundlers
+- (**breaking**) Expose the client.js variant *without* Java and Flash detection for browser bundlers
 - Update all production and dev dependencies
 - Use `ua-parser-js` package from `npm` instead of a vendored copy
-- Use `murmurhash-js` package from `npm` insteda of a vendored copy of an older implementation
+- Use `murmurhash-js` package from `npm` instead of a vendored copy of an older implementation
 - Update vendored `deployJava.js` to latest version
 
 ### Fixed
