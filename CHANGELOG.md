@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+### Changed
+- Bump potentialy vulnerable `ua-parser-js` version to a safe version range. Security advisory: [GHSA-pjwm-rvh2-c87w](https://github.com/advisories/GHSA-pjwm-rvh2-c87w).
+
 ## [0.2.0] - 2021-08-25
 ### Added
 - Modularize Java and Flash detection, offer bundles excluding either Java or Flash detection or both

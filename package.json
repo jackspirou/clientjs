@@ -56,15 +56,15 @@
     "!.eslintrc.js"
   ],
   "devDependencies": {
-    "@commitlint/cli": "^13.1.0",
-    "@commitlint/config-conventional": "^13.1.0",
+    "@commitlint/cli": "^13.2.1",
+    "@commitlint/config-conventional": "^13.2.0",
     "@release-it/bumper": "^3.0.1",
     "@release-it/keep-a-changelog": "^2.3.0",
     "eslint": "^7.32.0",
-    "husky": "^7.0.1",
+    "husky": "^7.0.4",
     "istanbul-instrumenter-loader": "^3.0.1",
-    "jasmine-core": "^3.9.0",
-    "karma": "^6.3.4",
+    "jasmine-core": "^3.10.1",
+    "karma": "^6.3.5",
     "karma-chrome-launcher": "^3.1.0",
     "karma-coverage-istanbul-reporter": "^3.0.3",
     "karma-firefox-launcher": "^2.1.1",
@@ -74,11 +74,11 @@
     "karma-sauce-launcher": "^4.3.6",
     "karma-sourcemap-loader": "^0.3.8",
     "karma-webpack": "^4.0.2",
-    "lint-staged": "^11.1.2",
-    "release-it": "^14.11.5",
+    "lint-staged": "11.2.3",
+    "release-it": "^14.11.6",
     "terser-webpack-plugin": "^4.2.3",
     "webpack": "^4.44.2",
-    "webpack-cli": "^4.8.0"
+    "webpack-cli": "^4.9.1"
   },
   "dependencies": {
     "globalthis": "^1.0.2",
