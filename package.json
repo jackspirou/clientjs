@@ -84,7 +84,7 @@
     "globalthis": "^1.0.2",
     "inherits": "^2.0.4",
     "murmurhash-js": "^1.0.0",
-    "ua-parser-js": "^0.7.28"
+    "ua-parser-js": "^0.7.30"
   },
   "license": "Apache-2.0",
   "licenses": [
