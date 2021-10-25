@@ -1,7 +1,9 @@
 {
   "name": "clientjs",
-  "version": "0.2.0",
-  "main": ["dist/client.base.min.js"],
+  "version": "0.2.1",
+  "main": [
+    "dist/client.base.min.js"
+  ],
   "ignore": [
     ".husky",
     ".drone.sec",
