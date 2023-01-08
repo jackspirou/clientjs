@@ -170,15 +170,15 @@ ClientJS.prototype = {
     var screenPrint = this.getScreenPrint();
     var pluginList = this.getPlugins();
     var fontList = this.getFonts();
-    var localStorage = this.isLocalStorage();
-    var sessionStorage = this.isSessionStorage();
+    var _localStorage = this.isLocalStorage();
+    var _sessionStorage = this.isSessionStorage();
     var timeZone = this.getTimeZone();
     var language = this.getLanguage();
     var systemLanguage = this.getSystemLanguage();
     var cookies = this.isCookie();
     var canvasPrint = this.getCanvasPrint();
 
-    var key = userAgent + bar + screenPrint + bar + pluginList + bar + fontList + bar + localStorage + bar + sessionStorage + bar + timeZone + bar + language + bar + systemLanguage + bar + cookies + bar + canvasPrint;
+    var key = userAgent + bar + screenPrint + bar + pluginList + bar + fontList + bar + _localStorage + bar + _sessionStorage + bar + timeZone + bar + language + bar + systemLanguage + bar + cookies + bar + canvasPrint;
     var seed = 256;
 
     return murmurhash3_32_gc(key, seed);
